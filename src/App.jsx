@@ -5,6 +5,7 @@ import Home from '../src/Screens/Homescreen';
 import Dashboard from '../src/Screens/Dashboard';
 import Profile from '../src/Screens/Profile';
 import Footer from '../src/Footer/Footer.jsx';
+import UpdateProfile from './Screens/Updateprofile.jsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/UpdateProfile" element={<UpdateProfile />} />
         </Routes>
         <Footer />
       </div>
