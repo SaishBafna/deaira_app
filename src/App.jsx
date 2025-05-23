@@ -21,7 +21,6 @@ function App() {
           <Route path="/Deposit" element={<Deposit/>} />
            <Route path="/DepositHistory" element={<DepositHistory/>} />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );

@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import Footer from '../Footer/Footer';
 import imageRo from '../assets/Images/robot.png';
+import chevron from '../assets/Images/chevron-down-circle-line_svgrepo.png';
 
 const Profile = () => {
   return (
@@ -52,8 +53,10 @@ const Profile = () => {
             </div>
 
             {/* Right Side: ID Display */}
-            <div className="bg-purple-500/30 backdrop-blur-sm rounded-2xl px-4 py-2 border border-purple-400/30">
-              <p className="text-sm font-medium">ID: CA120609</p>
+            <div
+              className=" w-[126px] h-[33px] top-[110px] left-[277px] rounded-[12px] border border-[#5401BD] bg-gradient-to-r from-[#E0B9F2] to-[#4E10FF] backdrop-blur-sm"
+            >
+              <p className="text-sm font-medium text-white text-center leading-[33px]">ID: CA120609</p>
             </div>
           </div>
         </div>
@@ -80,7 +83,10 @@ const Profile = () => {
           </div>
 
           {/* Join Button */}
-          <button className="w-40 border border-white text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-3xl py-3 font-semibold text-lg transition-all duration-300">
+
+          <button
+            className=" w-[92px] h-[25px] top-[261px] left-[40px] rounded-[24px] border border-[#D9D9D9] bg-gradient-to-b from-[#A800F7] to-[rgba(233,171,255,0.34)] text-white font-semibold transition-all duration-300"
+          >
             Join Now
           </button>
         </div>
@@ -88,72 +94,66 @@ const Profile = () => {
         {/* Team Stats */}
         <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 mb-6 border border-white/10">
           {/* Team Stats Grid */}
-          <div className="grid grid-cols-3 sm:grid-cols-3 gap-4 mb-4">
-            {/* Downline Team */}
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 mb-2">
+          <div className="grid grid-cols-3 gap-4 mb-6 relative">
+            {/* Divider - Hidden on mobile, shown on md+ */}
+            <div className="hidden md:block absolute top-1/2 left-1/3 -translate-y-1/2 w-[1px] h-[50px] bg-gradient-to-b from-[#3D3E67] via-[#5B00F7] to-[#3C3A60]"></div>
+            <div className="hidden md:block absolute top-1/2 left-2/3 -translate-y-1/2 w-[1px] h-[50px] bg-gradient-to-b from-[#3D3E67] via-[#5B00F7] to-[#3C3A60]"></div>
+
+            {/* Stats Items - Repeated 3 times */}
+
+            <div className="text-center flex flex-col items-center">
+              <div className="flex items-center gap-1 ">
                 <Users size={16} className="text-blue-400" />
-                <p className="text-sm opacity-70">Downline Team</p>
+                <p className="text opacity-70 ">Direct  Team</p>
               </div>
-              <div className="bg-blue-600/40 rounded-2xl border border-blue-400/30 py-2">
-                <p className="text-3xl font-bold">3</p>
+              <div className="w-[95px] h-[34px] rounded-[5px] border border-white bg-[#6B37FF5C] flex items-center justify-center">
+                <p className="text-sm font-bold">3</p>
+              </div>
+            </div>
+            <div className="text-center flex flex-col items-center">
+              <div className="flex items-center gap-1  mb-2">
+                <Users size={16} className="text-blue-400" />
+                <p className="text-sm opacity-70 "> Downline  Team</p>
+              </div>
+              <div className="w-[95px] h-[34px] rounded-[5px] border border-white bg-[#6B37FF5C] flex items-center justify-center">
+                <p className="text-sm font-bold">3</p>
+              </div>
+            </div>
+            <div className="text-center flex flex-col   items-center">
+              <div className="flex items-center gap-1  mb-2">
+                <Users size={16} className="text-blue-400" />
+                <p className="text-sm opacity-60 ">Total Active Team</p>
+              </div>
+              <div className="w-[95px] h-[34px] rounded-[5px] border border-white bg-[#6B37FF5C] flex items-center justify-center">
+                <p className="text-sm font-bold">3</p>
               </div>
             </div>
 
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Users size={16} className="text-blue-400" />
-                <p className="text-sm opacity-70">Downline Team</p>
-              </div>
-              <div className="bg-blue-600/40 rounded-2xl border border-blue-400/30 py-2">
-                <p className="text-3xl font-bold">3</p>
-              </div>
-            </div>
-
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Users size={16} className="text-blue-400" />
-                <p className="text-sm opacity-70">Downline Team</p>
-              </div>
-              <div className="bg-blue-600/40 rounded-2xl border border-blue-400/30 py-2">
-                <p className="text-3xl font-bold">3</p>
-              </div>
-            </div>
           </div>
 
           {/* Referral Link Section */}
-          <div className="bg-black/30 rounded-2xl p-2 flex items-start sm:items-center justify-between mb-4 border-2 border-dashed border-white/30 gap-2">
-            <span className="text-sm text-blue-300 truncate pr-2 mt-2 sm:mt-0">
+          <div className="bg-black/30 rounded-2xl p-3 flex flex-col-2 sm:flex-row items-center justify-between mb-6 border-2 border-dashed border-white/30 gap-3">
+            <span className="text-sm text-blue-300 truncate w-full sm:w-auto text-center sm:text-left">
               https://cryptocurq.pro/register?sponsors
             </span>
-            <button className="text-purple-500 px-4 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-2 border border-white/20 hover:bg-purple-500/20">
-              <Copy size={16} className="mr-1" />
-              Copy
+            <button className="text-purple-500 px-4 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1 border border-white/20 hover:bg-purple-500/20 whitespace-nowrap">
+              <Copy size={16} />
+              <span>Copy</span>
             </button>
           </div>
 
           {/* Total Team Business */}
           <div className="text-center">
-            <div className="flex items-center justify-between w-full mb-2">
-              {/* Icon */}
-              <div className="flex justify-center w-1/3">
-                <Sprout size={16} className="text-green-400 shrink-0" />
+            <div className="flex flex-col-2 sm:flex-row items-center justify-between gap-4 mb-3">
+              <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto justify-center sm:justify-start">
+                <Sprout size={16} className="text-green-400" />
+                <p className="text-sm opacity-70 whitespace-nowrap">Total Team Business</p>
               </div>
-
-              {/* Label */}
-              <div className="flex justify-center w-1/3">
-                <p className="text-sm opacity-70 whitespace-nowrap text-center">Total Team Business</p>
-              </div>
-
-              {/* Value */}
-              <div className="flex justify-center w-1/3">
-                <div className="bg-purple-600/40 rounded-2xl border border-purple-400/30 py-2 px-4">
-                  <p className="text-xl font-bold">1</p>
-                </div>
+              <div className="w-[95px] h-[34px] rounded-[5px] border border-white bg-[#6B37FF5C] flex items-center justify-center mx-auto sm:mx-0">
+                <p className="text-sm font-bold">3</p>
               </div>
             </div>
-
-            <p className="text-purple-400 text-sm mt-2">Invite. Invest. Grow with Smart Trades.</p>
+            <p className="text-purple-400 text-sm">Invite. Invest. Grow with Smart Trades.</p>
           </div>
         </div>
 
@@ -247,7 +247,7 @@ const Profile = () => {
         </div>
 
         {/* Settings Menu */}
-        <div className="space-y-3 w-full rounded-3xl border border-transparent 
+        <div className="space-y-3 w-full  border border-transparent 
                 bg-gradient-to-b from-[#02010B]/[0.43] to-[#353E3D]/[0.43] 
                 p-5 backdrop-blur-md shadow-lg shadow-black/10
                 [border-image:linear-gradient(261.7deg,rgba(255,255,255,0.54)_5.39%,rgba(0,0,0,0)_19.41%)_1]">
@@ -259,7 +259,7 @@ const Profile = () => {
               <RefreshCw size={20} className="text-blue-400" />
               <span className="font-medium">Change Password</span>
             </div>
-            <ChevronRight size={20} className="text-gray-400" />
+            <img src={chevron} alt="AI Bot" className="w-10 h-10 object-contain " />
           </button>
 
           {/* Downline Team */}
@@ -309,6 +309,7 @@ const Profile = () => {
               <LogOut size={20} className="text-red-400" />
               <span className="font-medium">Logout</span>
             </div>
+
             <ChevronRight size={20} className="text-gray-400" />
           </button>
         </div>
