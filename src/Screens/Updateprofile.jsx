@@ -21,28 +21,36 @@ const UpdateProfile = () => {
       </div>
 
       {/* Profile Card */}
-      <div className="w-full max-w-4xl bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg border border-white/10">
+      <div className="w-full max-w-4xl  rounded-2xl p-6 shadow-lg ">
         <div className="flex flex-col md:flex-row gap-6">
           {/* Left Section */}
           <div className="flex-1 flex flex-col gap-6">
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold">Radhika</h2>
-              <button className="flex items-center gap-1 text-blue-400 hover:text-blue-300">
-                <FiEdit size={16} />
-                <span>Edit Profile</span>
-              </button>
+            <div
+              className="flex flex-col p-4 w-[384px] h-[88px] absolute top-[120px] left-[22px] rounded-lg mx-auto"
+              style={{
+                background: 'linear-gradient(0deg, #130027 0%, #350C5E 100%)',
+                border: '0.5px solid transparent',
+                borderImage: 'linear-gradient(180deg, #DDCDE5 0%, #A600F4 100%) 1'
+              }}
+            >
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-semibold text-white">Radhika</h2>
+                
+              </div>
+
+              <div className="mt-1 text-white/80 text-sm">
+                <p>+911234567890</p>
+              </div>
             </div>
 
-            <div className="text-white/80">
-              <p>+911234567890</p>
-            </div>
+            
 
             {/* Personal Details Form */}
             <div className="space-y-6">
               <div>
                 <label className="block text-sm font-medium mb-1">Enter Your Name</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter your name"
                 />
@@ -50,8 +58,8 @@ const UpdateProfile = () => {
 
               <div>
                 <label className="block text-sm font-medium mb-1">Mobile Number</label>
-                <input 
-                  type="tel" 
+                <input
+                  type="tel"
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Mobile number"
                 />
@@ -59,8 +67,8 @@ const UpdateProfile = () => {
 
               <div>
                 <label className="block text-sm font-medium mb-1">Email ID</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Email address"
                 />
@@ -79,8 +87,8 @@ const UpdateProfile = () => {
             <div className="bg-white/5 p-4 rounded-xl border border-white/10">
               <h3 className="font-medium mb-3">OTP Verification</h3>
               <div className="flex flex-col sm:flex-row gap-3">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter OTP"
                 />
@@ -96,8 +104,8 @@ const UpdateProfile = () => {
 
               <div>
                 <label className="block text-sm font-medium mb-1">Account Number</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Account number"
                 />
@@ -105,8 +113,8 @@ const UpdateProfile = () => {
 
               <div>
                 <label className="block text-sm font-medium mb-1">Final Account Number</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Final account number"
                 />
@@ -114,8 +122,8 @@ const UpdateProfile = () => {
 
               <div>
                 <label className="block text-sm font-medium mb-1">Name</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Name as in bank"
                 />
@@ -123,8 +131,8 @@ const UpdateProfile = () => {
 
               <div>
                 <label className="block text-sm font-medium mb-1">IFSC CODE</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="IFSC code"
                 />
@@ -148,7 +156,7 @@ const UpdateProfile = () => {
         </div>
 
         {/* Update Button */}
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex justify-center mb-4">
           <button className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-full font-medium text-lg transition-colors shadow-lg">
             Update
           </button>
