@@ -7,6 +7,7 @@ import { ArrowDownLeft, ArrowUpRight, Calculator, DollarSign, Lock, RotateCcw, T
 import Image1 from '../assets/Images/panel4.png';
 import { Banknote, Wallet, Users, Trophy } from "lucide-react";
 import { Calendar, Search, BarChart3, Share2, } from 'lucide-react';
+import Footer from '../Footer/Footer';
 
 const Dashboard = () => {
   return (
@@ -470,6 +471,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+     <Footer/>
     </div>
   )
 }
