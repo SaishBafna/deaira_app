@@ -2,6 +2,7 @@ import { Plus } from 'lucide-react';
 import React from 'react';
 import { FiEdit, FiUpload, FiChevronLeft, FiUser, FiPhone, FiMail, FiLock, FiCreditCard, FiFileText } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
+import Group344 from '../assets/Images/Group344.png';
 const UpdateProfile = () => {
   const navigate = useNavigate();
   return (
@@ -28,17 +29,18 @@ const UpdateProfile = () => {
           {/* Left Section */}
           <div className="flex-1 flex flex-col gap-4 md:gap-6">
             <div
-              className="flex items-center p-4 w-full h-[88px] rounded-[5px] mx-auto"
+              className="flex items-center p-4 w-full h-[88px] mx-auto"
               style={{
                 background: 'linear-gradient(0deg, #130027 0%, #350C5E 100%)',
-                border: '0.5px solid transparent',
-                borderImage: 'linear-gradient(180deg, #DDCDE5 0%, #A600F4 100%) 1'
+                border: '0.5px solid linear-gradient(180deg, #DDCDE5 0%, #A600F4 100%)',
+                // borderImage: 'linear-gradient(180deg, #DDCDE5 0%, #A600F4 100%) 1',
+                borderRadius: '10px',
               }}
             >
               {/* Image on the left side (replaces FiUser) */}
               <div className="mr-3">
                 <img
-                  src="/path-to-your-image.jpg"
+                  src={Group344}
                   alt="Profile"
                   className="w-10 h-10 rounded-full object-cover border border-[#5B00F7]"
                 />
@@ -62,7 +64,6 @@ const UpdateProfile = () => {
               </button>
 
               <div>
-                <label className="block text-xs md:text-sm font-medium mb-1">Enter Your Name</label>
                 <div className="relative">
                   <input
                     type="text"
@@ -75,7 +76,6 @@ const UpdateProfile = () => {
               </div>
 
               <div>
-                <label className="block text-xs md:text-sm font-medium mb-1">Mobile Number</label>
                 <div className="relative">
                   <FiPhone className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
                   <input
@@ -88,7 +88,6 @@ const UpdateProfile = () => {
               </div>
 
               <div>
-                <label className="block text-xs md:text-sm font-medium mb-1">Email ID</label>
                 <div className="relative">
                   <FiMail className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
                   <input
@@ -100,16 +99,20 @@ const UpdateProfile = () => {
                 </div>
               </div>
 
-              <button className="text-blue-400 hover:text-blue-300 text-xs md:text-sm font-medium flex items-center gap-1">
-                <FiEdit size={14} />
-                <span>Change Password</span>
-              </button>
+             
+              <div>
+                <div className="relative">
+                  <FiMail className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
+                  <input
+                    type="email"
+                    className="w-full bg-[#00000040] border border-[#DDCDE575] rounded-[10px] px-4 md:px-10 py-2 md:py-3 focus:outline-none focus:ring-1 focus:ring-[#5B00F7]"
+                    placeholder="Email address"
+                    style={{ height: '44px', minHeight: '44px' }}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* Right Section */}
-          <div className="flex-1 flex flex-col gap-4 md:gap-6">
-            {/* OTP Verification */}
             <div className="p-2 rounded-xl">
               <h3 className="font-medium mb-2 md:mb-3">OTP Verification</h3>
               <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
@@ -126,13 +129,18 @@ const UpdateProfile = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Right Section */}
+          <div className="flex-1 flex flex-col gap-4 md:gap-6 ">
+            {/* OTP Verification */}
+
 
             {/* Account Details */}
             <div className="space-y-4 md:space-y-6">
               <h3 className="font-medium">Account Details</h3>
 
               <div>
-                <label className="block text-xs md:text-sm font-medium mb-1">Account Number</label>
                 <div className="relative">
                   <FiCreditCard className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
                   <input
@@ -145,7 +153,6 @@ const UpdateProfile = () => {
               </div>
 
               <div>
-                <label className="block text-xs md:text-sm font-medium mb-1">Final Account Number</label>
                 <div className="relative">
                   <FiCreditCard className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
                   <input
@@ -158,7 +165,6 @@ const UpdateProfile = () => {
               </div>
 
               <div>
-                <label className="block text-xs md:text-sm font-medium mb-1">Name</label>
                 <div className="relative">
                   <FiUser className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
                   <input
@@ -171,7 +177,6 @@ const UpdateProfile = () => {
               </div>
 
               <div>
-                <label className="block text-xs md:text-sm font-medium mb-1">IFSC CODE</label>
                 <div className="relative">
                   <FiFileText className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
                   <input
@@ -185,7 +190,6 @@ const UpdateProfile = () => {
 
               {/* Upload Section */}
               <div>
-                <label className="block text-xs md:text-sm font-medium mb-1 text-white">Upload Passbook Details</label>
                 <div className="flex flex-col sm:flex-row gap-2 md:gap-4">
                   <div
                     className="flex items-center justify-between gap-2 md:gap-4 rounded-[10px] border-2 border-dashed relative px-3 md:px-4"
