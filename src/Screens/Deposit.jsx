@@ -1,0 +1,88 @@
+import React from 'react'
+import Image3 from '../assets/Images/depositimg.png';
+
+const Deposit = () => {
+  return (
+    <div className="w-screen h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center p-6 gap-6">
+
+      {/* Blur circles */}
+      <div className="fixed w-52 h-52 bg-purple-700 rounded-full blur-3xl top-0 right-10 opacity-50 pointer-events-none"></div>
+      <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none"></div>
+      <div className="fixed w-36 h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none"></div>
+
+
+      <div className="w-full flex justify-center">
+        <h1 className="text-white text-2xl font-bold">Deposit</h1>
+      </div>
+
+
+      <div className="w-full max-w-xl bg-gradient-to-r from-[#1a1a40] to-[#3b007d] rounded-xl p-4 flex items-center gap-4 shadow-lg">
+        {/* Left Text Section - Wider */}
+        <div className="flex flex-col text-white w-[70%]">
+          <h2 className="text-lg font-semibold leading-tight">
+            Power Up with Our AI based Community
+          </h2>
+          <p className="text-sm mt-1 text-pink-300">
+            Be part of DeAlra's AI investor network.
+          </p>
+          <button className="mt-3 self-start bg-purple-600 border border-white text-white text-sm font-semibold py-1.5 px-4 rounded-full shadow hover:bg-purple-700 transition">
+            Join Now
+          </button>
+        </div>
+
+        {/* Right Image Section - Narrower */}
+        <div className="w-[30%] flex justify-center">
+          <img
+            src={Image3}
+            alt="AI Community"
+            className="h-32 w-auto object-contain"
+          />
+        </div>
+      </div>
+
+      {/* Form Fields Section - Modified for desktop width */}
+      <div className="w-full max-w-xl space-y-4"> {/* Changed to max-w-xl to match other containers */}
+        {/* Enter Amount */}
+        <div>
+          <label className="block text-white font-semibold mb-1">Enter Amount</label>
+          <input
+            type="number"
+            placeholder="10"
+            className="w-full px-4 py-2 rounded-md bg-transparent border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-purple-500 md:w-[120%] md:-ml-[10%]" // Added responsive width
+          />
+        </div>
+
+        {/* Select Currency */}
+        <div>
+          <label className="block text-white font-semibold mb-1">Select Currency</label>
+          <select
+            className="w-full px-4 py-2 rounded-md bg-transparent border border-white text-white focus:outline-none focus:ring-2 focus:ring-purple-500 md:w-[120%] md:-ml-[10%]" // Added responsive width
+          >
+            <option value="">Select Currency</option>
+            <option value="USDT">USDT</option>
+            <option value="BTC">BTC</option>
+            <option value="ETH">ETH</option>
+          </select>
+        </div>
+
+        <div className="w-full flex justify-center"> {/* Centered container */}
+          <button className="mt-3 bg-purple-600 border border-white text-white text-sm font-semibold py-1.5 px-4 rounded-full shadow hover:bg-purple-700 transition">
+            Confirm
+          </button>
+        </div>
+
+        <div className="mt-4 mb-20 p-4 bg-[#504949] rounded-lg border border-gray-200 text-sm text-[#F64AFF]">
+          <p className="mb-2">
+            <span className="font-semibold ">Hint:</span> You can purchase USDT from Binance, KuCoin, OKX or any other exchange and deposit to the given address.
+          </p>
+          <p>
+            If your funds haven't reached your wallet, please contact online support.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  )
+}
+
+export default Deposit
