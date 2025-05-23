@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import Footer from '../Footer/Footer';
 import imageRo from '../assets/Images/robot.png';
+import chevron from '../assets/Images/chevron-down-circle-line_svgrepo.png';
 
 const Profile = () => {
   return (
@@ -99,17 +100,35 @@ const Profile = () => {
             <div className="hidden md:block absolute top-1/2 left-2/3 -translate-y-1/2 w-[1px] h-[50px] bg-gradient-to-b from-[#3D3E67] via-[#5B00F7] to-[#3C3A60]"></div>
 
             {/* Stats Items - Repeated 3 times */}
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="text-center flex flex-col items-center">
-                <div className="flex items-center gap-2 mb-2">
-                  <Users size={16} className="text-blue-400" />
-                  <p className="text-sm opacity-70 whitespace-nowrap">Downline Team</p>
-                </div>
-                <div className="w-[95px] h-[34px] rounded-[5px] border border-white bg-[#6B37FF5C] flex items-center justify-center">
-                  <p className="text-sm font-bold">3</p>
-                </div>
+
+            <div className="text-center flex flex-col items-center">
+              <div className="flex items-center gap-1 ">
+                <Users size={16} className="text-blue-400" />
+                <p className="text opacity-70 ">Direct  Team</p>
               </div>
-            ))}
+              <div className="w-[95px] h-[34px] rounded-[5px] border border-white bg-[#6B37FF5C] flex items-center justify-center">
+                <p className="text-sm font-bold">3</p>
+              </div>
+            </div>
+            <div className="text-center flex flex-col items-center">
+              <div className="flex items-center gap-1  mb-2">
+                <Users size={16} className="text-blue-400" />
+                <p className="text-sm opacity-70 "> Downline  Team</p>
+              </div>
+              <div className="w-[95px] h-[34px] rounded-[5px] border border-white bg-[#6B37FF5C] flex items-center justify-center">
+                <p className="text-sm font-bold">3</p>
+              </div>
+            </div>
+            <div className="text-center flex flex-col   items-center">
+              <div className="flex items-center gap-1  mb-2">
+                <Users size={16} className="text-blue-400" />
+                <p className="text-sm opacity-60 ">Total Active Team</p>
+              </div>
+              <div className="w-[95px] h-[34px] rounded-[5px] border border-white bg-[#6B37FF5C] flex items-center justify-center">
+                <p className="text-sm font-bold">3</p>
+              </div>
+            </div>
+
           </div>
 
           {/* Referral Link Section */}
@@ -240,7 +259,7 @@ const Profile = () => {
               <RefreshCw size={20} className="text-blue-400" />
               <span className="font-medium">Change Password</span>
             </div>
-            <ChevronRight size={20} className="text-gray-400" />
+            <img src={chevron} alt="AI Bot" className="w-10 h-10 object-contain " />
           </button>
 
           {/* Downline Team */}

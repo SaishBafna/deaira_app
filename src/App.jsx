@@ -18,7 +18,6 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/UpdateProfile" element={<UpdateProfile />} />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );
