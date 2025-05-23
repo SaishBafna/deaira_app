@@ -8,11 +8,7 @@ const UpdateProfile = () => {
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center p-4 md:p-6 gap-4 md:gap-6 text-white">
 
-      {/* Blur circles */}
-      <div className="fixed w-52 h-52 bg-purple-700 rounded-full blur-3xl top-0 right-10 opacity-50 pointer-events-none"></div>
-      <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none"></div>
-      <div className="fixed w-36 h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none"></div>
-
+      
       {/* Header */}
       <div className="w-full max-w-4xl flex items-center justify-between mb-2 md:mb-4">
         <button className="flex items-center gap-2 text-white/80 hover:text-white" onClick={() => navigate(-1)}>
