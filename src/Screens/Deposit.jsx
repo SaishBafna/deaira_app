@@ -16,7 +16,7 @@ const Deposit = () => {
       </div>
 
 
-      <div className="w-full max-w-xl bg-gradient-to-r from-[#1a1a40] to-[#3b007d] rounded-xl p-4 flex items-center gap-4 shadow-lg">
+      <div className="w-full max-w-xl md:max-w-3xl bg-gradient-to-r from-[#1a1a40] to-[#3b007d] rounded-xl p-4 flex items-center gap-4 shadow-lg">
         {/* Left Text Section - Wider */}
         <div className="flex flex-col text-white w-[70%]">
           <h2 className="text-lg font-semibold leading-tight">
@@ -40,15 +40,15 @@ const Deposit = () => {
         </div>
       </div>
 
-      {/* Form Fields Section - Modified for desktop width */}
-      <div className="w-full max-w-xl space-y-4"> {/* Changed to max-w-xl to match other containers */}
+      {/* Form Fields Section - Wider on desktop */}
+      <div className="w-full max-w-xl md:max-w-3xl space-y-4">
         {/* Enter Amount */}
         <div>
           <label className="block text-white font-semibold mb-1">Enter Amount</label>
           <input
             type="number"
             placeholder="10"
-            className="w-full px-4 py-2 rounded-md bg-transparent border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-purple-500 md:w-[120%] md:-ml-[10%]" // Added responsive width
+            className="w-full px-4 py-2 rounded-md bg-transparent border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>
 
@@ -56,7 +56,7 @@ const Deposit = () => {
         <div>
           <label className="block text-white font-semibold mb-1">Select Currency</label>
           <select
-            className="w-full px-4 py-2 rounded-md bg-transparent border border-white text-white focus:outline-none focus:ring-2 focus:ring-purple-500 md:w-[120%] md:-ml-[10%]" // Added responsive width
+            className="w-full px-4 py-2 rounded-md bg-transparent border border-white text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
           >
             <option value="">Select Currency</option>
             <option value="USDT">USDT</option>
@@ -65,7 +65,7 @@ const Deposit = () => {
           </select>
         </div>
 
-        <div className="w-full flex justify-center"> {/* Centered container */}
+        <div className="w-full flex justify-center">
           <button className="mt-3 bg-purple-600 border border-white text-white text-sm font-semibold py-1.5 px-4 rounded-full shadow hover:bg-purple-700 transition">
             Confirm
           </button>
@@ -85,4 +85,4 @@ const Deposit = () => {
   )
 }
 
-export default Deposit
+export default Deposit

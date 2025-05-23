@@ -21,7 +21,7 @@ const Dashboard = () => {
         <h1 className="text-white text-2xl font-bold">Dashboard</h1>
       </div>
 
-      <div className="w-full max-w-xl">
+      <div className="w-full max-w-xl lg:max-w-4xl">
         <div className="relative">
           <input
             type="text"
@@ -32,7 +32,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-between p-1 rounded-xl w-full max-w-xl">
+      <div className="flex items-center justify-between p-1 rounded-xl w-full max-w-xl lg:max-w-4xl">
         {/* Left side: Image + Text group */}
         <div className="flex items-center">
           <img src={Image2} alt="Panel" className="w-16 h-16 rounded-lg" />
@@ -55,7 +55,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-xl bg-gradient-to-r from-[#1a1a40] to-[#3b007d] rounded-xl p-4 flex items-center gap-4 shadow-lg">
+      <div className="w-full max-w-xl lg:max-w-4xl bg-gradient-to-r from-[#1a1a40] to-[#3b007d] rounded-xl p-4 flex items-center gap-4 shadow-lg">
         {/* Left Text Section - Wider */}
         <div className="flex flex-col text-white w-[70%]">
           <h2 className="text-lg font-semibold leading-tight">
@@ -79,14 +79,14 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="text-left w-full mt-2 max-w-xl">
+      <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-white font-medium text-lg">Wallet Overview</span>
           <Lock className="w-5 h-5 text-[#6B37FF]" />
         </div>
       </div>
 
-      <div className="backdrop-blur-sm bg-[#2b2929] p-4 rounded-2xl w-full max-w-xl mx-auto font-sans border border-white/10">
+      <div className="backdrop-blur-sm bg-[#2b2929] p-4 rounded-2xl w-full max-w-xl lg:max-w-4xl mx-auto font-sans border border-white/10">
         <div className="rounded-2xl p-6 shadow-2xl relative overflow-hidden bg-transparent bg-[#262424]">
           {/* Background decorative elements */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -translate-y-16 translate-x-16"></div>
@@ -120,8 +120,8 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Action Buttons Grid */}
-        <div className="grid grid-cols-2 gap-3 mt-4">
+        {/* Action Buttons Grid - Mobile remains 2 columns, desktop 4 columns */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
           {/* First Row */}
           <div className="bg-[#262424] rounded-xl p-3 flex items-center gap-2">
             <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
@@ -193,14 +193,14 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="text-left w-full mt-4 max-w-xl">
+      <div className="text-left w-full mt-4 max-w-xl lg:max-w-4xl">
         <div className="flex items-center gap-2 mb-4">
           <Lock className="w-5 h-5 text-white" />
           <span className="text-white font-medium text-lg">Quick Actions</span>
         </div>
       </div>
 
-      <div className="mb-5 w-full max-w-xl">
+      <div className="mb-5 w-full max-w-xl lg:max-w-4xl">
         <div className="grid grid-cols-4 gap-6">
           {/* Deposit */}
           <div className="flex flex-col items-center justify-center">
@@ -236,18 +236,18 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-xl flex justify-center">
+      <div className="w-full max-w-xl lg:max-w-4xl flex justify-center">
         <img src={Image1} alt="Panel" className="w-full" />
       </div>
 
-      <div className="text-left w-full mt-4 max-w-xl">
+      <div className="text-left w-full mt-4 max-w-xl lg:max-w-4xl">
         <div className="flex items-center gap-2 mb-4">
           <Lock className="w-5 h-5 text-white" />
           <span className="text-white font-medium text-lg">Your Income</span>
         </div>
       </div>
 
-      <div className="w-full max-w-xl space-y-4">
+      <div className="w-full max-w-xl lg:max-w-4xl space-y-4">
         {/* Top Section with Weekly Bonus and ID Free */}
         <div className="flex gap-4">
           {/* Weekly Bonus Card */}
@@ -351,14 +351,14 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="text-left w-full mt-4 max-w-xl">
+      <div className="text-left w-full mt-4 max-w-xl lg:max-w-4xl">
         <div className="flex items-center gap-2 mb-4">
           <TrendingUpIcon className="w-5 h-5 text-white" />
           <span className="text-white font-medium text-lg">Investment Opportunity</span>
         </div>
       </div>
 
-      <div className="w-full max-w-xl mx-auto">
+      <div className="w-full max-w-xl lg:max-w-4xl mx-auto">
         <div className="bg-gradient-to-br from-[#0c10cc5c] to-indigo-900 rounded-xl p-6 text-white relative">
           {/* Header with Saving and coin icon */}
           <div className="flex items-center justify-center gap-2 mb-8">
@@ -429,7 +429,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-xl mx-auto mb-20">
+      <div className="w-full max-w-xl lg:max-w-4xl mx-auto mb-20">
         <div className="bg-gradient-to-r from-[#27064ae7] to-purple-800 rounded-lg p-6 text-white">
           {/* Header Section */}
           <div className="flex items-center gap-3 mb-2">
