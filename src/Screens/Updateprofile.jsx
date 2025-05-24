@@ -204,7 +204,7 @@ const UpdateProfile = () => {
           <FiChevronLeft size={20} />
           <span className="hidden sm:inline">Back</span>
         </button>
-        <h1 className="text-2xl font-bold text-center">Update Profile</h1>
+        <h1 className="text-2xl font-bold text-center ">Update Profile</h1>
         <div className="w-10"></div> {/* Spacer for alignment */}
       </div>
 
