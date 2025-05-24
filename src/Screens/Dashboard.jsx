@@ -2,13 +2,17 @@ import React from 'react'
 import { FiSearch } from 'react-icons/fi'
 import Image2 from '../assets/Images/dash.png';
 import Image3 from '../assets/Images/robot.png';
-import { FaWallet } from 'react-icons/fa';
+import { FaAndroid, FaGooglePlay, FaWallet } from 'react-icons/fa';
 import { ArrowDownLeft, ArrowUpRight, Calculator, DollarSign, Lock, RotateCcw, TrendingUp, Plus, Play, Smartphone, TrendingUpIcon } from 'lucide-react';
-import Image1 from '../assets/Images/panel4.png';
+import Image1 from '../assets/Images/i5.png';
 import { Banknote, Wallet, Users, Trophy } from "lucide-react";
 import { Calendar, Search, BarChart3, Share2, } from 'lucide-react';
 import Footer from '../Footer/Footer';
-
+import I1 from '../assets/Images/i6.png'; 
+import I2 from '../assets/Images/i7.png'; 
+import I3 from '../assets/Images/i8.png'; 
+import I4 from '../assets/Images/i9.png'; 
+import Header1 from '../Header/header1.jsx';
 const Dashboard = () => {
   return (
     <div className="w-full min-h-screen overflow-y-auto bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-6 py-4 gap-4">
@@ -18,11 +22,11 @@ const Dashboard = () => {
       <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none"></div>
       <div className="fixed w-36 h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none"></div>
 
-      <div className="w-full flex justify-center">
+      {/* <div className="w-full flex justify-center">
         <h1 className="text-white text-2xl font-bold">Dashboard</h1>
-      </div>
+      </div> */}
 
-      <div className="w-full max-w-xl lg:max-w-4xl">
+      {/* <div className="w-full max-w-xl lg:max-w-4xl">
         <div className="relative">
           <input
             type="text"
@@ -31,7 +35,9 @@ const Dashboard = () => {
           />
           <FiSearch className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/70 text-xl" />
         </div>
-      </div>
+      </div> */}
+
+     <Header1 title="Dashboard" />
 
       <div className="flex items-center justify-between p-1 rounded-xl w-full max-w-xl lg:max-w-4xl">
         {/* Left side: Image + Text group */}
@@ -83,11 +89,12 @@ const Dashboard = () => {
       <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-white font-medium text-lg">Wallet Overview</span>
-          <Lock className="w-5 h-5 text-[#6B37FF]" />
+          <img src={I1} alt="Lock" className="w-5 h-5" />
         </div>
       </div>
 
-      <div className="backdrop-blur-sm bg-[#2b2929] p-4 rounded-2xl w-full max-w-xl lg:max-w-4xl mx-auto font-sans border border-white/10">
+
+      <div className="backdrop-blur-sm p-4 rounded-2xl w-full max-w-xl lg:max-w-4xl mx-auto font-sans border border-white/10">
         <div className="rounded-2xl p-6 shadow-2xl relative overflow-hidden bg-transparent bg-[#262424]">
           {/* Background decorative elements */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -translate-y-16 translate-x-16"></div>
@@ -194,10 +201,10 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="text-left w-full mt-4 max-w-xl lg:max-w-4xl">
-        <div className="flex items-center gap-2 mb-4">
-          <Lock className="w-5 h-5 text-white" />
-          <span className="text-white font-medium text-lg">Quick Actions</span>
+     <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-white font-medium text-lg">Quick Action</span>
+          <img src={I2} alt="Lock" className="w-5 h-5" />
         </div>
       </div>
 
@@ -241,10 +248,10 @@ const Dashboard = () => {
         <img src={Image1} alt="Panel" className="w-full" />
       </div>
 
-      <div className="text-left w-full mt-4 max-w-xl lg:max-w-4xl">
-        <div className="flex items-center gap-2 mb-4">
-          <Lock className="w-5 h-5 text-white" />
+     <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
+        <div className="flex items-center gap-2 mb-2">
           <span className="text-white font-medium text-lg">Your Income</span>
+          <img src={I3} alt="Lock" className="w-5 h-5" />
         </div>
       </div>
 
@@ -352,10 +359,10 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="text-left w-full mt-4 max-w-xl lg:max-w-4xl">
-        <div className="flex items-center gap-2 mb-4">
-          <TrendingUpIcon className="w-5 h-5 text-white" />
+    <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
+        <div className="flex items-center gap-2 mb-2">
           <span className="text-white font-medium text-lg">Investment Opportunity</span>
+          <img src={I4} alt="Lock" className="w-5 h-5" />
         </div>
       </div>
 
@@ -447,10 +454,8 @@ const Dashboard = () => {
           <div className="flex gap-4">
             {/* Android Button */}
             <button className="flex-1 border border-white rounded-full px-4 py-2 flex items-center gap-3 hover:opacity-90 transition-all bg-gradient-to-r from-[#6B37FF] to-[#116DA1]">
-              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                <svg className="w-3.5 h-3.5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.523 15.3414c-.5665 0-1.0312-.4647-1.0312-1.0312s.4647-1.0313 1.0312-1.0313 1.0313.4648 1.0313 1.0313-.4648 1.0312-1.0313 1.0312zm-11.046 0c-.5665 0-1.0312-.4647-1.0312-1.0312s.4647-1.0313 1.0312-1.0313 1.0312.4648 1.0312 1.0313-.4647 1.0312-1.0312 1.0312zm13.176-6.4776l1.2274-2.1255c.0671-.1161.0274-.2634-.0888-.3305-.1161-.0671-.2634-.0274-.3305.0888l-1.2411 2.1493c-.9621-.4362-2.0515-.6786-3.2143-.6786s-2.2522.2424-3.2143.6786L11.5929 6.4766c-.0671-.1162-.2144-.1559-.3305-.0888-.1162.0671-.1559.2144-.0888.3305l1.2274 2.1255C10.0357 9.8747 8.5 12.3694 8.5 15.25h15c0-2.8806-1.5357-5.3753-3.8471-6.4086z" />
-                </svg>
+              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                <FaAndroid className="w-5 h-5 text-green-600" />
               </div>
               <div className="text-left text-white">
                 <div className="text-xs">Get it on</div>
@@ -460,8 +465,8 @@ const Dashboard = () => {
 
             {/* Play Store Button */}
             <button className="flex-1 border border-white rounded-full px-4 py-2 flex items-center gap-3 hover:opacity-90 transition-all bg-gradient-to-r from-[#6B37FF] to-[#116DA1]">
-              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                <Play className="w-3.5 h-3.5 text-black" />
+              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                <FaGooglePlay className="w-5 h-5 text-black" />
               </div>
               <div className="text-left text-white">
                 <div className="text-xs">Download from</div>
@@ -469,9 +474,10 @@ const Dashboard = () => {
               </div>
             </button>
           </div>
+
         </div>
       </div>
-     <Footer/>
+      <Footer />
     </div>
   )
 }
