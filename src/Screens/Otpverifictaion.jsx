@@ -4,24 +4,23 @@ import { WalletContext } from "../context/walletcontext";
 import { useContext } from "react";
 import axios from "axios";
 
-const Register = () => {
+const OtpVerifictaion = () => {
   const { walletAddress, connectWallet } = useContext(WalletContext);
 
-  const [sponsorId, setSponsorId] = useState("");
-  const [email, setemail] = useState("");
+  const [otp, setotp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleRegister = async () => {
+  const handleverify = async () => {
     if (!walletAddress || !email || isLoading) return;
     
     setIsLoading(true);
     try {
       const response = await axios.post(`https://web.deaira.io/api/register`, {
-        email: email,
-        sponcer_id: sponsorId,
         walletAddress: walletAddress,
+        otp: otp
       });
       console.log(response.data);
+      navigation.navigate('OtpVerifictaion')
     } catch (error) {
       console.log(error);
     } finally {
@@ -54,14 +53,14 @@ const Register = () => {
       <div className="w-full max-w-md relative z-10">
         {/* Logo Section */}
         <div className="flex items-center justify-between mb-8">
-          <button className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group">
+          {/* <button className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group">
             <ChevronLeft
               size={20}
               className="group-hover:-translate-x-1 transition-transform"
             />
             <span className="font-medium">Back</span>
-          </button>
-          <h2 className="text-xl font-semibold text-white">Registration</h2>
+          </button> */}
+          <h2 className="text-xl font-semibold text-white">Verify OTP</h2>
           <div className="w-16"></div>
         </div>
         <div className="flex justify-center mb-8">
@@ -79,10 +78,9 @@ const Register = () => {
         <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20">
           {/* Form Fields */}
           <div className="space-y-6">
-            {/* Sponsor ID Input */}
             <div>
               <label className="block text-white/80 text-sm font-medium mb-2">
-                Sponsor ID
+                Enter OTP{" "}
               </label>
               <div className="relative">
                 <User
@@ -91,29 +89,10 @@ const Register = () => {
                 />
                 <input
                   type="text"
-                  value={sponsorId}
-                  onChange={(e) => setSponsorId(e.target.value)}
+                  value={otp}
+                  onChange={(e) => setotp(e.target.value)}
                   className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded pl-12 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-white placeholder-white/40"
-                  placeholder="Enter your sponsor ID"
-                  disabled={isLoading}
-                />
-              </div>
-            </div>
-            <div>
-              <label className="block text-white/80 text-sm font-medium mb-2">
-                Email{" "}
-              </label>
-              <div className="relative">
-                <User
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 text-purple-400"
-                  size={18}
-                />
-                <input
-                  type="text"
-                  value={email}
-                  onChange={(e) => setemail(e.target.value)}
-                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded pl-12 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-white placeholder-white/40"
-                  placeholder="Enter your email"
+                  placeholder="Enter your OTP"
                   disabled={isLoading}
                 />
               </div>
@@ -122,8 +101,8 @@ const Register = () => {
             {/* Wallet Connection */}
             <div>
               <button
-                onClick={walletAddress ? handleRegister : connectWallet}
-                disabled={isLoading || (!walletAddress && isLoading)}
+                onClick={handleverify}
+                disabled={isLoading}
                 className={`w-full font-medium py-2 transition-colors shadow-lg ${
                   isLoading ? 'opacity-70' : 'hover:opacity-90'
                 } active:translate-x-[-4px] active:duration-300 active:ease-out text-sm md:text-base disabled:cursor-not-allowed`}
@@ -135,22 +114,18 @@ const Register = () => {
                 }}
               >
                 <div className="flex items-center justify-center gap-3">
-                  {isLoading ? (
+                  {isLoading && (
                     <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                  ) : walletAddress ? (
-                    <User size={20} />
-                  ) : (
-                    <Wallet size={20} />
                   )}
                   <span
                     style={{
                       fontSize: "18px",
                     }}
                   >
-                    {isLoading ? "Processing..." : walletAddress ? "Register" : "Connect Wallet"}
+                    {isLoading ? "Processing..." : "Verify OTP"}
                   </span>
                 </div>
               </button>
@@ -162,4 +137,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default OtpVerifictaion;
