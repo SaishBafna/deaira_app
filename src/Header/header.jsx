@@ -1,10 +1,9 @@
-// Header.js
 import React, { useState } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
-import Image from '../assets/Images/logo.png';
+import { FiMenu } from 'react-icons/fi';
 import Sidebar from '../Sidebar/sidebar';
+import Image from '../assets/Images/logo.png';
 
-const header = () => {
+const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -12,7 +11,7 @@ const header = () => {
   };
 
   return (
-    <div className="relative w-full flex justify-between items-center px-4 py-2 bg-gray-900 text-white">
+    <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-2 bg-gray-900 text-white shadow-md">
       {/* Logo */}
       <div className="text-xl font-bold">
         <img src={Image} alt="Logo" className="h-10 w-auto" />
@@ -20,17 +19,26 @@ const header = () => {
 
       {/* Menu Icon */}
       <div className="text-2xl cursor-pointer" onClick={toggleSidebar}>
-        {sidebarOpen ? <FiX /> : <FiMenu />}
+        <FiMenu />
       </div>
 
-      {/* Sidebar */}
+      {/* Sidebar Overlay and Sidebar */}
       {sidebarOpen && (
-        <div className="absolute top-14 right-0 w-64 h-screen bg-gray-800 text-white p-6 shadow-lg z-50">
-          <Sidebar /> {/* <-- yahan use karo */}
-        </div>
+        <>
+          {/* Background Overlay */}
+          <div
+            className="fixed inset-0 bg-black bg-opacity-40 z-40"
+            onClick={toggleSidebar}
+          />
+
+          {/* Sidebar */}
+          <div className="fixed inset-0 z-50">
+            <Sidebar onClose={toggleSidebar} />
+          </div>
+        </>
       )}
     </div>
   );
 };
 
-export default header;
+export default Header;

@@ -78,10 +78,10 @@ const Homescreen = () => {
             Quick Stats
             <img src={I1} alt="icon" className="w-5 h-5" />
           </span>
-          <span className="text-xs inline-flex items-center gap-1 text-sm text-white hover:text-purple-200 transition-colors cursor-pointer">
+          {/* <span className="text-xs inline-flex items-center gap-1 text-sm text-white hover:text-purple-200 transition-colors cursor-pointer">
             See More
             <FiChevronRight className="text-white" />
-          </span>
+          </span> */}
         </div>
 
         {/* Quick Stats Cards */}
@@ -189,10 +189,10 @@ const Homescreen = () => {
             AI - Powered Suggestions
             <img src={I2} alt="icon" className="w-5 h-5" />
           </span>
-          <span className="text-xs inline-flex items-center gap-1 text-sm text-white hover:text-purple-200 transition-colors cursor-pointer">
+          {/* <span className="text-xs inline-flex items-center gap-1 text-sm text-white hover:text-purple-200 transition-colors cursor-pointer">
             See More
             <FiChevronRight className="text-white" />
-          </span>
+          </span> */}
         </div>
 
         <div className="w-full overflow-x-auto scrollbar-hide px-0">

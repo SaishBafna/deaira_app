@@ -1,7 +1,10 @@
 import React from 'react'
 import Image3 from '../assets/Images/depositimg.png';
+import { FiChevronLeft } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 const Deposit = () => {
+   const navigate = useNavigate();
   return (
     <div className="w-screen h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center p-6 gap-6">
 
@@ -11,10 +14,14 @@ const Deposit = () => {
       <div className="fixed w-36 h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none"></div>
 
 
-      <div className="w-full flex justify-center">
-        <h1 className="text-white text-2xl font-bold">Deposit</h1>
+      <div className="w-full max-w-4xl flex items-center justify-between mb-2 md:mb-4">
+        <button className="flex items-center gap-2 text-white/80 hover:text-white" onClick={() => navigate(-1)}>
+          <FiChevronLeft size={20} />
+          <span className="hidden sm:inline">Back</span>
+        </button>
+        <h1 className=" text-2xl font-bold text-center text-white">Deposit</h1>
+        <div className="w-10"></div> {/* Spacer for alignment */}
       </div>
-
 
       <div className="w-full max-w-xl md:max-w-3xl bg-gradient-to-r from-[#1a1a40] to-[#3b007d] rounded-xl p-4 flex items-center gap-4 shadow-lg">
         {/* Left Text Section - Wider */}
