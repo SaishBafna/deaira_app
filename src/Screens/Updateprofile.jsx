@@ -249,7 +249,7 @@ const UpdateProfile = () => {
             {/* Personal Details Form */}
             <div className="space-y-4 md:space-y-6">
               <button className="text-blue-400 hover:text-blue-300 text-xs md:text-sm font-medium flex items-center gap-1">
-                <p className='text-bold bold text-white'>Edit Profile</p>
+                <h3 className='text-lg bold text-white'>Edit Profile</h3>
                 <FiEdit size={14} />
               </button>
 
@@ -315,7 +315,7 @@ const UpdateProfile = () => {
             </div>
 
             <div className="p-2 rounded-xl">
-              <h3 className="font-medium mb-2 md:mb-3">
+              <h3 className="text-lg font-medium mb-2 md:mb-3">
                 OTP Verification  
                 <img src={otp} alt="OTP Icon" className="inline-block ml-1 w-5 h-5" />
               </h3>

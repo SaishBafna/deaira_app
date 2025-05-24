@@ -40,6 +40,7 @@ import tele from '../assets/Images/tele.png';
 
 import { useNavigate } from 'react-router-dom';
 import { FiChevronLeft } from 'react-icons/fi';
+import Header1 from '../Header/header1';
 const Profile = () => {
   const navigate = useNavigate();
   return (
@@ -87,17 +88,21 @@ const Profile = () => {
       {/* Main Content */}
       <div className="w-full max-w-4xl pb-24 z-10">
         {/* Header */}
-        <div className="w-full max-w-4xl flex items-center justify-between mb-2 md:mb-4">
+
+        <Header1 title={"Profile"} />
+        {/* <div className="w-full max-w-4xl flex items-center justify-between mb-2 md:mb-4">
           <button className="flex items-center gap-2 text-white/80 hover:text-white" onClick={() => navigate(-1)}>
             <FiChevronLeft size={20} />
             <span className="hidden sm:inline">Back</span>
           </button>
-          <h1 className=" text-2xl font-bold text-center text-white">Profile</h1>
-          <div className="w-10"></div> {/* Spacer for alignment */}
-        </div>
+          <h1 className=" text-3xl font-bold text-center text-white">Profile</h1>
+          <div className="w-10">
+            <Header />
+          </div> {/* Spacer for alignment */}
+        {/* </div> */} 
 
         {/* Welcome Section */}
-        <div className=" mb-6 mt-8">
+        <div className=" mb-6 mt-15">
           {/* Top Row: Avatar + Welcome and ID */}
           <div className="flex justify-between items-center">
             {/* Left Side: Avatar + Welcome Message */}
@@ -109,13 +114,13 @@ const Profile = () => {
                   className="w-10 h-10 object-contain" />
               </div>
               <div>
-                <p className="text-lg opacity-90">Welcome back,</p>
-                <p className="text-2xl md:text-xl font-bold">Radhika</p>
+                <p className="text-lg ">Welcome back,</p>
+                <p className="text-lg  ">Radhika</p>
               </div>
             </div>
 
             {/* Right Side: ID Display */}
-            <div className="w-[126px] h-[33px] rounded-[12px] border border-[#5401BD] bg-gradient-to-r from-[#E0B9F2] to-[#4E10FF] backdrop-blur-sm">
+            <div className="w-[120px] h-[33px] rounded-[12px] border border-[#5401BD] bg-gradient-to-r from-[#E0B9F2] to-[#4E10FF] backdrop-blur-sm">
               <p className="text-sm font-medium text-white text-center leading-[33px]">ID: CA120609</p>
             </div>
           </div>
