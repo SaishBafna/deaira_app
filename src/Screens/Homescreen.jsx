@@ -38,7 +38,8 @@ const Homescreen = () => {
 
       {/* Scrollable content */}
       <div className="w-full max-w-4xl flex flex-col gap-2">
-        <Header />
+
+      <Header/>
         {/* Logo */}
         {/* <div className="w-full flex justify-center">
           <img src={Image} alt="Logo" className="h-15 w-auto" />

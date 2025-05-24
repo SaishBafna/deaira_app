@@ -1,8 +1,10 @@
+// Header.js
 import React, { useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import Image from '../assets/Images/logo.png';
+import Sidebar from '../Sidebar/sidebar';
 
-const Header = () => {
+const header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -24,17 +26,11 @@ const Header = () => {
       {/* Sidebar */}
       {sidebarOpen && (
         <div className="absolute top-14 right-0 w-64 h-screen bg-gray-800 text-white p-6 shadow-lg z-50">
-          <h2 className="text-lg font-semibold mb-4">Sidebar Menu</h2>
-          <ul className="space-y-4">
-            <li className="hover:text-yellow-400 cursor-pointer">Home</li>
-            <li className="hover:text-yellow-400 cursor-pointer">Profile</li>
-            <li className="hover:text-yellow-400 cursor-pointer">Settings</li>
-            <li className="hover:text-yellow-400 cursor-pointer">Logout</li>
-          </ul>
+          <Sidebar /> {/* <-- yahan use karo */}
         </div>
       )}
     </div>
   );
 };
 
-export default Header;
+export default header;
