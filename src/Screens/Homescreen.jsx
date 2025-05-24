@@ -1,26 +1,34 @@
-import React from 'react';
-import { FiBarChart2, FiChevronRight, FiSearch, FiTrendingUp, FiZap } from 'react-icons/fi';
-import { FaWallet } from 'react-icons/fa';
-import { BiBot } from 'react-icons/bi';
-import { HiUsers } from 'react-icons/hi';
-import { SiBitcoinsv } from 'react-icons/si';
-import { BsGraphUpArrow } from 'react-icons/bs';
-import { Bitcoin, Brain, Globe, Network } from 'lucide-react';
+import React from "react";
+import {
+  FiBarChart2,
+  FiChevronRight,
+  FiSearch,
+  FiTrendingUp,
+  FiZap,
+} from "react-icons/fi";
+import { FaWallet } from "react-icons/fa";
+import { BiBot } from "react-icons/bi";
+import { HiUsers } from "react-icons/hi";
+import { SiBitcoinsv } from "react-icons/si";
+import { BsGraphUpArrow } from "react-icons/bs";
+import { Bitcoin, Brain, Globe, Network } from "lucide-react";
 
-import Image from '../assets/Images/logo.png';
-import Coin from '../assets/Images/coin.png';
-import Image1 from '../assets/Images/i10.png';
-import Image2 from '../assets/Images/home2.png';
-import I1 from '../assets/Images/i1.png';
-import I2 from '../assets/Images/i2.png';
-import I3 from '../assets/Images/i3.png';
-import I4 from '../assets/Images/i4.png';
-import Profile from '../assets/Images/p.png';
-import Image3 from '../assets/Images/panel3.png';
-import Footer from '../Footer/Footer.jsx';
-import R1 from '../assets/Images/homer1.png';
-import Header from '../Header/header.jsx';
+import Image from "../assets/Images/logo.png";
+import Coin from "../assets/Images/coin.png";
+import Image1 from "../assets/Images/i10.png";
+import Image2 from "../assets/Images/home2.png";
+import I1 from "../assets/Images/i1.png";
+import I2 from "../assets/Images/i2.png";
+import I3 from "../assets/Images/i3.png";
+import I4 from "../assets/Images/i4.png";
+import Profile from "../assets/Images/p.png";
+import Image3 from "../assets/Images/panel3.png";
+import Footer from "../Footer/Footer.jsx";
+import R1 from "../assets/Images/homer1.png";
+import Header from "../Header/header.jsx";
+import { useContext } from "react";
 const Homescreen = () => {
+ 
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
       {/* Blur circles - fixed in background */}
@@ -31,7 +39,7 @@ const Homescreen = () => {
       {/* Scrollable content */}
       <div className="w-full max-w-4xl flex flex-col gap-2">
 
-        <Header/>
+      <Header/>
         {/* Logo */}
         {/* <div className="w-full flex justify-center">
           <img src={Image} alt="Logo" className="h-15 w-auto" />
@@ -54,16 +62,15 @@ const Homescreen = () => {
 
         {/* First Tab Row */}
         <div className="w-full flex overflow-hidden shadow-md rounded-xl bg-[#1f1f1f]">
-          <button className="flex-1 flex items-center justify-center gap-2 py-3 font-semibold text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90 transition-opacity rounded-r-xl">
+          <div className="flex-1 flex items-center justify-center gap-2 py-3 font-semibold text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90 transition-opacity rounded-r-xl cursor-pointer">
             <FaWallet className="text-white text-lg" />
-            Connect Wallet
-          </button>
+            Register
+          </div>
           <button className="flex-1 flex items-center justify-center gap-2 py-3 font-semibold text-white bg-[#1f1f1f] hover:bg-[#2a2a2a] transition-colors">
             <BiBot className="text-white/70 text-lg" />
             Ask A.I
           </button>
         </div>
-
 
         {/* Second row with Quick State and See More */}
         <div className="w-full flex justify-between text-white font-semibold text-lg cursor-pointer mt-4 mb-4">
@@ -126,18 +133,31 @@ const Homescreen = () => {
 
         {/* Your AI Agent Section */}
         <div className="w-full max-w-4xl mx-auto flex flex-nowrap items-center justify-center gap-4 sm:gap-6 p-4 sm:p-6 text-xl font-bold text-center">
-          <span className="text-purple-600 text-lg whitespace-nowrap">Your AI Agent</span>
-          <img src={Profile} alt="AI Robot" className="w-16 h-16 sm:w-20 sm:h-20" />
-          <span className="text-purple-300 text-lg whitespace-nowrap">Is Live Now</span>
+          <span className="text-purple-600 text-lg whitespace-nowrap">
+            Your AI Agent
+          </span>
+          <img
+            src={Profile}
+            alt="AI Robot"
+            className="w-16 h-16 sm:w-20 sm:h-20"
+          />
+          <span className="text-purple-300 text-lg whitespace-nowrap">
+            Is Live Now
+          </span>
         </div>
 
-
         {/* Token Info Card */}
-        <div className="w-full bg-gray-900 text-white rounded-2xl shadow-lg p-6 sm:p-8"> 
+        <div className="w-full bg-gray-900 text-white rounded-2xl shadow-lg p-6 sm:p-8">
           <div className="text-center mb-6">
-            <img src={Coin} alt="AI Robot" className="w-20 h-20 sm:w-20 sm:h-20 mx-auto" />
+            <img
+              src={Coin}
+              alt="AI Robot"
+              className="w-20 h-20 sm:w-20 sm:h-20 mx-auto"
+            />
             <div className="text-2xl font-bold mt-4 mb-2">$ DAIR TOKEN</div>
-            <div className="text-lg">TOTAL SUPPLY : <span className="font-mono">0001203948</span></div>
+            <div className="text-lg">
+              TOTAL SUPPLY : <span className="font-mono">0001203948</span>
+            </div>
           </div>
 
           <div className="flex justify-around items-center gap-4 sm:gap-6">
@@ -163,7 +183,6 @@ const Homescreen = () => {
           </div>
         </div>
 
-
         {/* AI Powered Suggestion */}
         <div className="w-full flex justify-between text-white font-semibold text-lg cursor-pointer mt-4 mb-4">
           <span className="flex items-center gap-2">
@@ -185,7 +204,8 @@ const Homescreen = () => {
               </div>
               <h3 className="text-lg font-bold mb-2">AI-Powered Learning</h3>
               <p className="text-sm text-white/80">
-                Access cutting-edge AI tools for personalized learning experiences and business growth insights.
+                Access cutting-edge AI tools for personalized learning
+                experiences and business growth insights.
               </p>
             </div>
 
@@ -196,7 +216,8 @@ const Homescreen = () => {
               </div>
               <h3 className="text-lg font-bold mb-2">Smart MLM Structure</h3>
               <p className="text-sm text-white/80">
-                Join our blockchain-verified MLM community with transparent tracking and automated rewards.
+                Join our blockchain-verified MLM community with transparent
+                tracking and automated rewards.
               </p>
             </div>
 
@@ -207,7 +228,8 @@ const Homescreen = () => {
               </div>
               <h3 className="text-lg font-bold mb-2">Crypto Integration</h3>
               <p className="text-sm text-white/80">
-                Seamless cryptocurrency transactions with real-time conversion and secure wallets.
+                Seamless cryptocurrency transactions with real-time conversion
+                and secure wallets.
               </p>
             </div>
 
@@ -218,12 +240,12 @@ const Homescreen = () => {
               </div>
               <h3 className="text-lg font-bold mb-2">Global Community</h3>
               <p className="text-sm text-white/80">
-                Connect with like-minded entrepreneurs worldwide through our exclusive network.
+                Connect with like-minded entrepreneurs worldwide through our
+                exclusive network.
               </p>
             </div>
           </div>
         </div>
-
 
         {/* Second Panel Image */}
         <div className="w-full flex justify-center">
@@ -251,8 +273,12 @@ const Homescreen = () => {
               <span className="font-medium">20,000,000,000 DAIR</span>
             </div>
             <div className="flex justify-between border-b border-white/10 pb-1">
-              <span className="text-white/70">Projected Value for Early Buyers</span>
-              <span className="font-medium text-right">$200+ (for first ~300,000)</span>
+              <span className="text-white/70">
+                Projected Value for Early Buyers
+              </span>
+              <span className="font-medium text-right">
+                $200+ (for first ~300,000)
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-white/70">Expected Price Growth</span>
@@ -271,8 +297,12 @@ const Homescreen = () => {
         <div className="flex items-center justify-between w-full p-4 rounded-xl bg-gradient-to-r from-[#130628] to-[#2c0054] shadow-md mb-20">
           <img src={R1} alt="Robot" className="w-18 h-18 object-contain" />
           <div className="flex flex-col text-white ml-4 flex-1">
-            <span className="font-semibold text-sm sm:text-base">Thrive with AI.</span>
-            <span className="font-semibold text-sm sm:text-base">Grow with Community.</span>
+            <span className="font-semibold text-sm sm:text-base">
+              Thrive with AI.
+            </span>
+            <span className="font-semibold text-sm sm:text-base">
+              Grow with Community.
+            </span>
           </div>
           <button className="bg-gradient-to-r from-[#AC68FF] to-[#994EFF] text-white px-4 py-1.5 text-sm rounded-full shadow">
             Join Now

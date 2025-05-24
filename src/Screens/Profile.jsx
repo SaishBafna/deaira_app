@@ -227,14 +227,16 @@ const Profile = () => {
             </button>
 
             {/* Report */}
-            <button className="p-4  h-30 text-center transition-all duration-300 hover:bg-gray-100/10 rounded-lg">
-              <div className="bg-black/50 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
-                <img src={book} alt="AI Bot" className="w-10 h-10 object-contain" />
+
+
+            {/* Team Analysis */}
+            <button className="p-4   h-30 text-center transition-all duration-300 hover:bg-gray-100/10 rounded-lg">
+              <div className="bg-black/50 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-2">
+                <img src={book} alt="AI Bot" className="w-12 h-12 object-contain" />
               </div>
               <p className="text-sm font-medium">Report</p>
             </button>
 
-            {/* Team Analysis */}
             <button className="p-4   h-30 text-center transition-all duration-300 hover:bg-gray-100/10 rounded-lg">
               <div className="bg-black/50 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
                 <img src={di} alt="AI Bot" className="w-10 h-10 object-contain" />
@@ -258,6 +260,19 @@ const Profile = () => {
             Bonanza Business <img src={Ellipse15} alt="AI Bot" className="w-10 h-10  mx-2 object-contain" />
 
           </h2>
+
+          <div
+            className="w-full max-w-[327px] h-px mx-auto my-2"
+            style={{
+              borderWidth: "1px",
+              borderStyle: "solid",
+              borderImageSource:
+                "linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #270251 50%, rgba(253, 253, 253, 0) 100%)",
+              borderImageSlice: 1,
+              transform: "rotate(0.35deg)",
+            }}
+          ></div>
+
 
           {/* Target & Progress */}
           <div className="rounded-2xl p-2 ">

@@ -8,6 +8,7 @@ import Footer from '../src/Footer/Footer.jsx';
 import UpdateProfile from './Screens/Updateprofile.jsx';
 import Deposit from './Screens/Deposit.jsx';
 import DepositHistory from './Screens/DepositHistory.jsx';
+import Register from './Screens/RegistionPage.jsx';
 function App() {
   return (
     <Router>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/UpdateProfile" element={<UpdateProfile />} />
           <Route path="/Deposit" element={<Deposit/>} />
            <Route path="/DepositHistory" element={<DepositHistory/>} />
+           <Route path="/Register" element={<Register/>} />
         </Routes>
       </div>
     </Router>
