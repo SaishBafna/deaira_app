@@ -1,5 +1,6 @@
 import { Home, Grid, User } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { HiOutlineHome } from "react-icons/hi";
 
 const Footer = () => {
   const location = useLocation(); // to show active tab
@@ -15,7 +16,7 @@ const Footer = () => {
             currentPath === "/" ? "text-purple-500" : "text-zinc-400 hover:text-white"
           } transition-colors`}
         >
-          <Home size={24} fill={currentPath === "/" ? "currentColor" : "none"} />
+          <HiOutlineHome size={24} fill={currentPath === "/" ? "currentColor" : "none"} />
           <span className="text-sm font-semibold mt-1">Home</span>
         </Link>
 
