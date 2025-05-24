@@ -19,7 +19,7 @@ import Profile from '../assets/Images/p.png';
 import Image3 from '../assets/Images/panel3.png';
 import Footer from '../Footer/Footer.jsx';
 import R1 from '../assets/Images/homer1.png';
-
+import Header from '../Header/header.jsx';
 const Homescreen = () => {
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
@@ -30,20 +30,22 @@ const Homescreen = () => {
 
       {/* Scrollable content */}
       <div className="w-full max-w-4xl flex flex-col gap-2">
+
+      <Header/>
         {/* Logo */}
-        <div className="w-full flex justify-center">
+        {/* <div className="w-full flex justify-center">
           <img src={Image} alt="Logo" className="h-15 w-auto" />
-        </div>
+        </div> */}
 
         {/* Search Bar */}
-        <div className="relative">
+        {/* <div className="relative">
           <input
             type="text"
             placeholder="Search..."
             className="w-full pl-5 pr-12 py-3 rounded-xl bg-[#2b2828] text-white placeholder-white/60 border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
           <FiSearch className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/70 text-xl" />
-        </div>
+        </div> */}
 
         {/* Panel Image */}
         <div className="w-full flex justify-center">
@@ -131,39 +133,32 @@ const Homescreen = () => {
 
 
         {/* Token Info Card */}
-        <div className="relative w-full bg-gray-900 text-white rounded-2xl shadow-lg p-6 sm:p-8 overflow-hidden">
-          {/* Transparent black gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 rounded-2xl pointer-events-none"></div>
+        <div className="w-full bg-gray-900 text-white rounded-2xl shadow-lg p-6 sm:p-8"> 
+          <div className="text-center mb-6">
+            <img src={Coin} alt="AI Robot" className="w-20 h-20 sm:w-20 sm:h-20 mx-auto" />
+            <div className="text-2xl font-bold mt-4 mb-2">$ DAIR TOKEN</div>
+            <div className="text-lg">TOTAL SUPPLY : <span className="font-mono">0001203948</span></div>
+          </div>
 
-          <div className="relative z-10">
-            <div className="text-center mb-6">
-              <img src={Coin} alt="AI Robot" className="w-20 h-20 sm:w-20 sm:h-20 mx-auto" />
-              <div className="text-2xl font-bold mt-4 mb-2">$ DAIR TOKEN</div>
-              <div className="text-lg">
-                TOTAL SUPPLY : <span className="font-mono">0001203948</span>
+          <div className="flex justify-around items-center gap-4 sm:gap-6">
+            <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg min-w-[120px] sm:min-w-[400px]">
+              <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
+                <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
+                  <FiTrendingUp className="text-[#310060]  w-5 h-5" />
+                </div>
+                Initial Price
               </div>
+              <div className="text-1xl font-semibold">$00.13/Token</div>
             </div>
 
-            <div className="flex justify-around items-center gap-4 sm:gap-6">
-              <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg min-w-[120px] sm:min-w-[400px]">
-                <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
-                  <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
-                    <FiTrendingUp className="text-[#310060]  w-5 h-5" />
-                  </div>
-                  Initial Price
+            <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg min-w-[120px] sm:min-w-[400px]">
+              <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
+                <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
+                  <FiBarChart2 className="text-[#310060] w-5 h-5" />
                 </div>
-                <div className="text-1xl font-semibold text-[#A8FFD1]">$00.13/Token</div>
+                Project Growth
               </div>
-
-              <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg min-w-[120px] sm:min-w-[400px]">
-                <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
-                  <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
-                    <FiBarChart2 className="text-[#310060] w-5 h-5" />
-                  </div>
-                  Project Growth
-                </div>
-                <div className="text-1xl font-semibold text-blue-500">$00.45/Token</div>
-              </div>
+              <div className="text-1xl font-semibold">$00.45/Token</div>
             </div>
           </div>
         </div>

@@ -12,6 +12,7 @@ import I1 from '../assets/Images/i6.png';
 import I2 from '../assets/Images/i7.png'; 
 import I3 from '../assets/Images/i8.png'; 
 import I4 from '../assets/Images/i9.png'; 
+import Header1 from '../Header/header1.jsx';
 const Dashboard = () => {
   return (
     <div className="w-full min-h-screen overflow-y-auto bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-6 py-4 gap-4">
@@ -21,11 +22,11 @@ const Dashboard = () => {
       <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none"></div>
       <div className="fixed w-36 h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none"></div>
 
-      <div className="w-full flex justify-center">
+      {/* <div className="w-full flex justify-center">
         <h1 className="text-white text-2xl font-bold">Dashboard</h1>
-      </div>
+      </div> */}
 
-      <div className="w-full max-w-xl lg:max-w-4xl">
+      {/* <div className="w-full max-w-xl lg:max-w-4xl">
         <div className="relative">
           <input
             type="text"
@@ -34,7 +35,9 @@ const Dashboard = () => {
           />
           <FiSearch className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/70 text-xl" />
         </div>
-      </div>
+      </div> */}
+
+     <Header1 title="Dashboard" />
 
       <div className="flex items-center justify-between p-1 rounded-xl w-full max-w-xl lg:max-w-4xl">
         {/* Left side: Image + Text group */}
