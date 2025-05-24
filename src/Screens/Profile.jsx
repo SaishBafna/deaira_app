@@ -39,6 +39,7 @@ import whatapp from '../assets/Images/whatapp.png';
 import tele from '../assets/Images/tele.png';
 
 import { useNavigate } from 'react-router-dom';
+import { FiChevronLeft } from 'react-icons/fi';
 const Profile = () => {
   const navigate = useNavigate();
   return (
@@ -86,12 +87,17 @@ const Profile = () => {
       {/* Main Content */}
       <div className="w-full max-w-4xl pb-24 z-10">
         {/* Header */}
-        <div className="text-center mb-8 pt-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">Profile</h1>
+        <div className="w-full max-w-4xl flex items-center justify-between mb-2 md:mb-4">
+          <button className="flex items-center gap-2 text-white/80 hover:text-white" onClick={() => navigate(-1)}>
+            <FiChevronLeft size={20} />
+            <span className="hidden sm:inline">Back</span>
+          </button>
+          <h1 className=" text-2xl font-bold text-center text-white">Profile</h1>
+          <div className="w-10"></div> {/* Spacer for alignment */}
         </div>
 
         {/* Welcome Section */}
-        <div className=" mb-6">
+        <div className=" mb-6 mt-8">
           {/* Top Row: Avatar + Welcome and ID */}
           <div className="flex justify-between items-center">
             {/* Left Side: Avatar + Welcome Message */}
