@@ -2,7 +2,7 @@ import { Plus } from 'lucide-react';
 import React from 'react';
 import { FiEdit, FiUpload, FiChevronLeft, FiUser, FiPhone, FiMail, FiLock, FiCreditCard, FiFileText } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import Group344 from '../assets/Images/Group344.png';
+import Group305 from '../assets/Images/Group305.png';
 const UpdateProfile = () => {
   const navigate = useNavigate();
   return (
@@ -36,7 +36,7 @@ const UpdateProfile = () => {
               {/* Image on the left side (replaces FiUser) */}
               <div className="mr-3">
                 <img
-                  src={Group344}
+                  src={Group305}
                   alt="Profile"
                   className="w-10 h-10 rounded-full object-cover border border-[#5B00F7]"
                 />
@@ -212,7 +212,7 @@ const UpdateProfile = () => {
         </div>
 
         {/* Update Button */}
-        <div className="mt-4 md:mt-6 flex justify-center mb-2 mb-7">
+        <div className="mt-4 md:mt-6 flex justify-center mb-2 ">
           <button
             className="font-medium transition-colors shadow-lg hover:opacity-90 active:translate-x-[-4px] active:duration-300 active:ease-out text-sm md:text-base"
             style={{
