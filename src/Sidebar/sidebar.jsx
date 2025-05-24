@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { WalletContext } from "../context/walletcontext";
 import { FiSettings, FiX } from 'react-icons/fi';
 import Image from '../assets/Images/logo.png';
 import chevron from '../assets/Images/ca.png';
@@ -20,11 +21,11 @@ import {
     LogOut,
     ChevronDown
 } from "lucide-react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const Sidebar = ({ onClose }) => {
-
+    const { walletAddress, connectWallet, disconnectWallet } = useContext(WalletContext);
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -89,12 +90,37 @@ const Sidebar = ({ onClose }) => {
 
                 {/* Activation */}
                 <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
-                    <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
-                            <Info className="w-4 h-4 text-[#A8FFD1]" />
+                    <Link to="/Deposit">
+                        <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
+                                <Info className="w-4 h-4 text-[#A8FFD1]" />
+                            </div>
+                            <span className="font-medium">Deposit</span>
                         </div>
-                        <span className="font-medium">Activation</span>
-                    </div>
+                    </Link>
+                    <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+                </button>
+                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
+                    <Link to="/ActivationPackage">
+                        <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
+                                <Info className="w-4 h-4 text-[#A8FFD1]" />
+                            </div>
+                            <span className="font-medium">Activation</span>
+                        </div>
+                    </Link>
+                    <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+                </button>
+                {/* Withdraw */}
+                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
+                    <Link to="/Withdraw">
+                        <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
+                                <DollarSign className="w-4 h-4 text-[#A8FFD1]" />
+                            </div>
+                            <span className="font-medium">Withdraw</span>
+                        </div>
+                    </Link>
                     <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
                 </button>
 
@@ -120,30 +146,26 @@ const Sidebar = ({ onClose }) => {
                                 onClick={goToDepositReport}
                                 className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
                             >
-                                Deposit Report
+                                Deposit History
                             </button>
-
-                            {/* You can add more submenu items here */}
-                            {/* <button className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm">
-            Another Option
-          </button> */}
+                            <button
+                                onClick={goToDepositReport}
+                                className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
+                            >
+                                Withdraw History
+                            </button>
+                            <button
+                                onClick={goToDepositReport}
+                                className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
+                            >
+                                Activation History
+                            </button>
                         </div>
                     )}
                 </div>
 
-                {/* Withdraw */}
-                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
-                    <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
-                            <DollarSign className="w-4 h-4 text-[#A8FFD1]" />
-                        </div>
-                        <span className="font-medium">Withdraw</span>
-                    </div>
-                    <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
-                </button>
-
                 {/* Activation History */}
-                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
+                {/* <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
                     <div className="flex items-center gap-3">
                         <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
                             <Clock className="w-4 h-4 text-[#A8FFD1]" />
@@ -151,10 +173,10 @@ const Sidebar = ({ onClose }) => {
                         <span className="font-medium">Activation History</span>
                     </div>
                     <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
-                </button>
+                </button> */}
 
                 {/* Withdraw History */}
-                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
+                {/* <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
                     <div className="flex items-center gap-3">
                         <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
                             <History className="w-4 h-4 text-[#A8FFD1]" />
@@ -162,48 +184,54 @@ const Sidebar = ({ onClose }) => {
                         <span className="font-medium">Withdraw History</span>
                     </div>
                     <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
-                </button>
+                </button> */}
 
                 {/* Terms and Conditions */}
                 <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
-                    <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
-                            <FileText className="w-4 h-4 text-[#A8FFD1]" />
+                    <Link to="/TermsAndConditions">
+                        <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
+                                <FileText className="w-4 h-4 text-[#A8FFD1]" />
+                            </div>
+                            <span className="font-medium">Terms And Conditions</span>
                         </div>
-                        <span className="font-medium">Terms And Conditions</span>
-                    </div>
+                    </Link>
                     <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
                 </button>
 
                 {/* Privacy Policy */}
                 <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
-                    <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
-                            <Shield className="w-4 h-4 text-[#A8FFD1]" />
+                    <Link to="/PrivacyPolicy">
+                        <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
+                                <Shield className="w-4 h-4 text-[#A8FFD1]" />
+                            </div>
+                            <span className="font-medium">Privacy Policy</span>
                         </div>
-                        <span className="font-medium">Privacy Policy</span>
-                    </div>
+                    </Link>
                     <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
                 </button>
 
                 {/* FAQs */}
                 <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
-                    <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
-                            <HelpCircle className="w-4 h-4 text-[#A8FFD1]" />
+                    <Link to="/FAQ">
+                        <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
+                                <HelpCircle className="w-4 h-4 text-[#A8FFD1]" />
+                            </div>
+                            <span className="font-medium">FAQs</span>
                         </div>
-                        <span className="font-medium">FAQs</span>
-                    </div>
+                    </Link>
                     <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
                 </button>
 
                 {/* Logout */}
                 <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3" onClick={disconnectWallet}>
                         <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 border-2 border-black rounded-full text-white">
                             <LogOut className="w-4 h-4 text-[#A8FFD1]" />
                         </div>
-                        <span className="font-medium">Logout</span>
+                        <span className="font-medium">Disconnect Wallet</span>
                     </div>
                     <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
                 </button>

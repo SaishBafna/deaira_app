@@ -7,8 +7,13 @@ import Profile from '../src/Screens/Profile';
 import Footer from '../src/Footer/Footer.jsx';
 import UpdateProfile from './Screens/Updateprofile.jsx';
 import Deposit from './Screens/Deposit.jsx';
+import Withdraw from './Screens/Withdraw.jsx';
+import ActivationPackage from './Screens/ActivationPackage.jsx';
 import DepositHistory from './Screens/DepositHistory.jsx';
 import Register from './Screens/RegistionPage.jsx';
+import TermsAndConditions from './Screens/TermsAndConditions.jsx';
+import PrivacyPolicy from './Screens/PrivacyPolicy.jsx';
+import FAQ from './Screens/FAQ.jsx';
 import OtpVerifictaion from './Screens/Otpverifictaion.jsx';
 import Kyc from './Screens/Kyc.jsx';
 function App() {
@@ -22,8 +27,13 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/UpdateProfile" element={<UpdateProfile />} />
           <Route path="/Deposit" element={<Deposit/>} />
+          <Route path="/Withdraw" element={<Withdraw/>} />
+          <Route path="/ActivationPackage" element={<ActivationPackage/>} />
            <Route path="/DepositReport" element={<DepositHistory/>} />
            <Route path="/Register" element={<Register/>} />
+           <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
+           <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>} />
+           <Route path="/FAQ" element={<FAQ/>} />
            <Route path="/OtpVerifictaion" element={<OtpVerifictaion/>} />
            <Route path="/Kyc" element={<Kyc/>} />
         </Routes>

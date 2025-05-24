@@ -1,11 +1,6 @@
-import React from "react";
-import {
-  FiBarChart2,
-  FiChevronRight,
-  FiSearch,
-  FiTrendingUp,
-  FiZap,
-} from "react-icons/fi";
+import React, { useContext } from 'react'
+import axios from 'axios';
+import { FiBarChart2, FiChevronRight, FiSearch, FiTrendingUp, FiZap } from "react-icons/fi";
 import { FaWallet } from "react-icons/fa";
 import { BiBot } from "react-icons/bi";
 import { HiUsers } from "react-icons/hi";
@@ -26,9 +21,51 @@ import Image3 from "../assets/Images/panel3.png";
 import Footer from "../Footer/Footer.jsx";
 import R1 from "../assets/Images/homer1.png";
 import Header from "../Header/header.jsx";
-import { useContext } from "react";
+import { WalletContext } from "../context/walletcontext";
+import { MdLogout } from "react-icons/md";
+
 const Homescreen = () => {
- 
+  const { walletAddress, connectWallet, disconnectWallet } = useContext(WalletContext);
+  const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
+  console.log('encryptedWalletAddress:', encryptedWalletAddress);
+  const handleWalletAction = () => {
+    if (walletAddress) {
+      disconnectWallet();
+    } else {
+      handleGenerateToken();
+    }
+  };
+
+  // Handle connect wallet and generate token
+  const handleGenerateToken = async () => {
+    try {
+      let addressToUse = walletAddress;
+
+      // If no wallet is connected, connect first
+      if (!addressToUse) {
+        console.log("No wallet connected, connecting...");
+        addressToUse = await connectWallet();
+      }
+
+      if (!addressToUse) {
+        console.error("Failed to get wallet address");
+        return;
+      }
+
+      console.log("Using address for token generation:", addressToUse);
+
+      // Generate token using the connected address
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/generateToken`, {
+        email: addressToUse
+      });
+
+      localStorage.setItem("jwt_token", response.data.token);
+      console.log('Token Response:', response.data.token);
+    } catch (error) {
+      console.error('Token generation failed:', error);
+    }
+  };
+
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
       {/* Blur circles - fixed in background */}
@@ -39,7 +76,7 @@ const Homescreen = () => {
       {/* Scrollable content */}
       <div className="w-full max-w-4xl flex flex-col gap-2">
 
-      <Header/>
+        <Header />
         {/* Logo */}
         {/* <div className="w-full flex justify-center">
           <img src={Image} alt="Logo" className="h-15 w-auto" />
@@ -62,10 +99,33 @@ const Homescreen = () => {
 
         {/* First Tab Row */}
         <div className="w-full flex overflow-hidden shadow-md rounded-xl bg-[#1f1f1f]">
-          <div className="flex-1 flex items-center justify-center gap-2 py-3 font-semibold text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90 transition-opacity rounded-r-xl cursor-pointer">
+          <div
+            onClick={handleWalletAction}
+            className={`flex-1 flex items-center justify-center gap-2 py-3 font-semibold text-white hover:opacity-90 transition-opacity rounded-l-xl rounded-r-xl cursor-pointer ${walletAddress
+              ? 'bg-gradient-to-r from-red-500 to-red-600'
+              : 'bg-gradient-to-r from-cyan-400 to-fuchsia-500'
+              }`}
+          >
+            {walletAddress ? (
+              <MdLogout className="text-white text-lg" />
+            ) : (
+              <FaWallet className="text-white text-lg" />
+            )}
+            {walletAddress ? 'Disconnect Wallet' : 'Connect Wallet'}
+          </div>
+          {/* <div 
+            onClick={handleWalletAction}
+            className="flex-1 flex items-center justify-center gap-2 py-3 font-semibold text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90 transition-opacity rounded-r-xl cursor-pointer"
+          >
+            <FaWallet className="text-white text-lg" />
+            {walletAddress ? 'Disconnect Wallet' : 'Connect Wallet'}
+          </div> */}
+          {/* <div 
+          onClick={connectWallet}
+          className="flex-1 flex items-center justify-center gap-2 py-3 font-semibold text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90 transition-opacity rounded-r-xl cursor-pointer">
             <FaWallet className="text-white text-lg" />
             Connect Wallet
-          </div>
+          </div> */}
           <button className="flex-1 flex items-center justify-center gap-2 py-3 font-semibold text-white bg-[#1f1f1f] hover:bg-[#2a2a2a] transition-colors">
             <BiBot className="text-white/70 text-lg" />
             Ask A.I
@@ -148,40 +208,40 @@ const Homescreen = () => {
 
         {/* Token Info Card */}
         <div className="w-full bg-gray-900 text-white rounded-2xl shadow-lg p-6 sm:p-8">
-  <div className="text-center mb-6">
-    <img
-      src={Coin}
-      alt="AI Robot"
-      className="w-20 h-20 sm:w-20 sm:h-20 mx-auto"
-    />
-    <div className="text-2xl font-bold mt-4 mb-2">$ DAIR TOKEN</div>
-    <div className="text-lg">
-      TOTAL SUPPLY : <span className="font-mono">0001203948</span>
-    </div>
-  </div>
+          <div className="text-center mb-6">
+            <img
+              src={Coin}
+              alt="AI Robot"
+              className="w-20 h-20 sm:w-20 sm:h-20 mx-auto"
+            />
+            <div className="text-2xl font-bold mt-4 mb-2">$ DAIR TOKEN</div>
+            <div className="text-lg">
+              TOTAL SUPPLY : <span className="font-mono">0001203948</span>
+            </div>
+          </div>
 
-  <div className="flex flex-row gap-4">
-    <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg w-1/2">
-      <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
-        <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
-          <FiTrendingUp className="text-[#310060] w-5 h-5" />
-        </div>
-        Initial Price
-      </div>
-      <div className="text-1xl font-semibold">$00.13/Token</div>
-    </div>
+          <div className="flex flex-row gap-4">
+            <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg w-1/2">
+              <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
+                <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
+                  <FiTrendingUp className="text-[#310060] w-5 h-5" />
+                </div>
+                Initial Price
+              </div>
+              <div className="text-1xl font-semibold">$00.13/Token</div>
+            </div>
 
-    <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg w-1/2">
-      <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
-        <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
-          <FiBarChart2 className="text-[#310060] w-5 h-5" />
+            <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg w-1/2">
+              <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
+                <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
+                  <FiBarChart2 className="text-[#310060] w-5 h-5" />
+                </div>
+                Project Growth
+              </div>
+              <div className="text-1xl font-semibold">$00.45/Token</div>
+            </div>
+          </div>
         </div>
-        Project Growth
-      </div>
-      <div className="text-1xl font-semibold">$00.45/Token</div>
-    </div>
-  </div>
-</div>
 
 
         {/* AI Powered Suggestion */}
@@ -291,7 +351,7 @@ const Homescreen = () => {
         <div className="w-full flex justify-between text-white font-semibold text-lg cursor-pointer mt-4 mb-4">
           <span className="flex items-center gap-2">
             Join Our AI-Powered Community
-            <img src={I4} alt="icon" className="w-8 h-8 mt-1"/>
+            <img src={I4} alt="icon" className="w-8 h-8 mt-1" />
           </span>
         </div>
 

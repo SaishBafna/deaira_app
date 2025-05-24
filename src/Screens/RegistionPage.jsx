@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
   const { walletAddress, connectWallet } = useContext(WalletContext);
   const navigate = useNavigate(); // Initialize navigate
-
+  const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL;
   const [sponsorId, setSponsorId] = useState("");
   const [email, setemail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -18,13 +18,13 @@ const Register = () => {
 
     setIsLoading(true);
     try {
-      const response = await axios.post(`https://web.deaira.io/api/register`, {
+      const response = await axios.post(`${API_BASE_URL}/register`, {
         email: email,
         sponcer_id: sponsorId,
         walletAddress: walletAddress,
       });
       if (response.data.message == "User created successfully") {
-        await axios.post(`https://web.deaira.io/api/SendMailOtp`, {
+        await axios.post(`${API_BASE_URL}/SendMailOtp`, {
           email: walletAddress,
         });
         navigate("/OtpVerifictaion");

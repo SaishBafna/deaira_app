@@ -266,8 +266,9 @@ const Profile = () => {
         </div>
 
         {/* Bonanza Business */}
-        <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 mb-6 border border-white/10 text-white">
-          <h2 className="text-xl font-bold mb-4 flex items-center justify-center">
+        <div>
+        {/* <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 mb-6 border border-white/10 text-white"> */}
+          {/* <h2 className="text-xl font-bold mb-4 flex items-center justify-center">
             Bonanza Business <img src={Ellipse15} alt="AI Bot" className="w-10 h-10  mx-2 object-contain" />
 
           </h2>
@@ -282,20 +283,20 @@ const Profile = () => {
               borderImageSlice: 1,
               transform: "rotate(0.35deg)",
             }}
-          ></div>
+          ></div> */}
 
 
           {/* Target & Progress */}
-          <div className="rounded-2xl p-2 ">
-            <div className="flex items-center justify-between mb-2 rounded-2xl text-center bg-[#5D0093] border border-[#A800F7]">
+          {/* <div className="rounded-2xl p-2 "> */}
+            {/* <div className="flex items-center justify-between mb-2 rounded-2xl text-center bg-[#5D0093] border border-[#A800F7]">
               <div className="flex items-center gap-2 rounded-full p-2 w-full justify-center text-[#0EF479] font-bold">
                 <ChevronDown size={20} className="text-[#0EF479]" />
                 <h2>Target $25,000</h2>
               </div>
-            </div>
+            </div> */}
 
-            <div className="flex items-center gap-3 mb-4">
-              {/* Progress bar */}
+            {/* <div className="flex items-center gap-3 mb-4">
+
               <div className="w-full bg-[#4C00AD] rounded-full h-2 relative">
                 <div
                   className="bg-white h-2 rounded-full absolute top-0 left-0"
@@ -303,16 +304,15 @@ const Profile = () => {
                 ></div>
               </div>
 
-              {/* Percentage */}
               <div className="text-xs opacity-70 w-10 text-right">15%</div>
-            </div>
+            </div> */}
 
-            <div className="text-center w-full mb-4">
+            {/* <div className="text-center w-full mb-4">
               <div className="border border-dashed border-purple-900/60 rounded-[24px] py-3 inline-block px-8 w-[237px] h-[46px] bg-[#5D0093] border-[1px] flex items-center justify-center">
                 <p className="text-2xl font-bold text-white m-0">$54</p>
               </div>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
 
           {/* Action Buttons */}
           <div className="grid grid-cols-2 gap-4 mb-2">
@@ -328,14 +328,14 @@ const Profile = () => {
         </div>
 
         {/* Settings Menu */}
-        <div className="space-y-3 w-full border  border-white/35 rounded-xl
+        {/* <div className="space-y-3 w-full border  border-white/35 rounded-xl
                 bg-gradient-to-b from-[#02010B]/[0.43] to-[#353E3D]/[0.43] 
                 p-5 backdrop-blur-md shadow-lg shadow-black/10
                 "
-        >
+        > */}
 
           {/* Change Password */}
-          <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
+          {/* <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
               <img
@@ -346,10 +346,10 @@ const Profile = () => {
               <span className="font-medium">Change Password</span>
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
-          </button>
+          </button> */}
 
           {/* Downline Team */}
-          <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
+          {/* <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
               <img src={dow} alt="AI Bot" className="w-5 h-5 object-contain bg-black bg-opacity-50 rounded-full"
@@ -357,10 +357,10 @@ const Profile = () => {
               <span className="font-medium">Downline Team</span>
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
-          </button>
+          </button> */}
 
           {/* Terms And Conditions */}
-          <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
+          {/* <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
               <img src={war} alt="AI Bot" className="w-5 h-5 object-contain bg-black bg-opacity-50 rounded-full"
@@ -368,10 +368,10 @@ const Profile = () => {
               <span className="font-medium">Terms And Conditions</span>
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
-          </button>
+          </button> */}
 
           {/* Privacy Policy */}
-          <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
+          {/* <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
               <img src={pr} alt="AI Bot" className="w-5 h-5 object-contain bg-black bg-opacity-50 rounded-full"
@@ -379,10 +379,10 @@ const Profile = () => {
               <span className="font-medium">Privacy Policy</span>
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
-          </button>
+          </button> */}
 
           {/* FAQs */}
-          <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
+          {/* <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
               <img src={Group} alt="AI Bot" className="w-5 h-5 object-contain bg-black bg-opacity-50 rounded-full"
@@ -390,10 +390,10 @@ const Profile = () => {
               <span className="font-medium">FAQs</span>
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
-          </button>
+          </button> */}
 
           {/* Logout */}
-          <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
+          {/* <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
               <img src={lo} alt="AI Bot" className="w-5 h-5 object-contain bg-black bg-opacity-50 border-2 border-black rounded-full"
@@ -402,7 +402,7 @@ const Profile = () => {
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
           </button>
-        </div>
+        </div> */}
 
         {/* Bottom Navigation */}
         <div className="fixed bottom-0 left-0 right-0 bg-black/80 backdrop-blur-lg border-t border-white/10">

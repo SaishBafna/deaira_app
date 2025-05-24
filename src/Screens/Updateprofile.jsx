@@ -14,6 +14,8 @@ const UpdateProfile = () => {
   
   // Get token and jwt_token from localStorage or context
   const walletAddress = localStorage.getItem('walletAddress');
+  const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
+  console.log("Encrypted wallet address:", encryptedWalletAddress)
   console.log('Wallet Address:', walletAddress);
   const jwt_token = localStorage.getItem('jwt_token');
 
@@ -57,7 +59,7 @@ const UpdateProfile = () => {
   const fetchUserData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${API_BASE_URL}/homepageapi/${walletAddress}`, {
+      const response = await axios.get(`${API_BASE_URL}/homepageapi/${encryptedWalletAddress}`, {
         headers: {
           Authorization: `Bearer ${jwt_token}`,
           'Content-Type': 'application/json'
@@ -99,7 +101,7 @@ const UpdateProfile = () => {
 
     try {
       setLoading(true);
-      const response = await fetch(`${API_BASE_URL}/generate_otp/${formData.email}`, {
+      const response = await fetch(`${API_BASE_URL}/generate_otp/${walletAddress}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
