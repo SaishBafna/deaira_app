@@ -64,7 +64,7 @@ const Homescreen = () => {
         <div className="w-full flex overflow-hidden shadow-md rounded-xl bg-[#1f1f1f]">
           <div className="flex-1 flex items-center justify-center gap-2 py-3 font-semibold text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90 transition-opacity rounded-r-xl cursor-pointer">
             <FaWallet className="text-white text-lg" />
-            Register
+            Connect Wallet
           </div>
           <button className="flex-1 flex items-center justify-center gap-2 py-3 font-semibold text-white bg-[#1f1f1f] hover:bg-[#2a2a2a] transition-colors">
             <BiBot className="text-white/70 text-lg" />
@@ -76,7 +76,7 @@ const Homescreen = () => {
         <div className="w-full flex justify-between text-white font-semibold text-lg cursor-pointer mt-4 mb-4">
           <span className="flex items-center gap-2">
             Quick Stats
-            <img src={I1} alt="icon" className="w-5 h-5" />
+            <img src={I1} alt="icon" className="w-6 h-6" />
           </span>
           {/* <span className="text-xs inline-flex items-center gap-1 text-sm text-white hover:text-purple-200 transition-colors cursor-pointer">
             See More
@@ -187,7 +187,7 @@ const Homescreen = () => {
         <div className="w-full flex justify-between text-white font-semibold text-lg cursor-pointer mt-4 mb-4">
           <span className="flex items-center gap-2">
             AI - Powered Suggestions
-            <img src={I2} alt="icon" className="w-5 h-5" />
+            <img src={I2} alt="icon" className="w-8 h-8" />
           </span>
           {/* <span className="text-xs inline-flex items-center gap-1 text-sm text-white hover:text-purple-200 transition-colors cursor-pointer">
             See More
@@ -262,11 +262,11 @@ const Homescreen = () => {
           <div className="text-sm space-y-3">
             <div className="flex justify-between border-b border-white/10 pb-1">
               <span className="text-white/70">Total Supply</span>
-              <span className="font-medium">40,000,000,000 DAIR</span>
+              <span className="font-medium text-left">40,000,000,000 DAIR</span>
             </div>
             <div className="flex justify-between border-b border-white/10 pb-1">
               <span className="text-white/70">Initial Price</span>
-              <span className="font-medium">$0.001 / token</span>
+              <span className="font-medium text-left">$0.001 / token</span>
             </div>
             <div className="flex justify-between border-b border-white/10 pb-1">
               <span className="text-white/70">Public Sale Allocation</span>
@@ -290,7 +290,7 @@ const Homescreen = () => {
         <div className="w-full flex justify-between text-white font-semibold text-lg cursor-pointer mt-4 mb-4">
           <span className="flex items-center gap-2">
             Join Our AI-Powered Community
-            <img src={I4} alt="icon" className="w-5 h-5" />
+            <img src={I4} alt="icon" className="w-8 h-8 mt-1"/>
           </span>
         </div>
 
