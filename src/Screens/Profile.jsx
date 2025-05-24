@@ -91,12 +91,12 @@ const Profile = () => {
         </div>
 
         {/* Welcome Section */}
-        <div className="p-6 mb-6">
+        <div className=" mb-6">
           {/* Top Row: Avatar + Welcome and ID */}
           <div className="flex justify-between items-center">
             {/* Left Side: Avatar + Welcome Message */}
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center">
+              <div className=" rounded-full flex items-center justify-center">
                 <img
                   src={Group305}
                   alt="AI Bot"
@@ -104,7 +104,7 @@ const Profile = () => {
               </div>
               <div>
                 <p className="text-lg opacity-90">Welcome back,</p>
-                <h2 className="text-2xl md:text-3xl font-bold">Radhika</h2>
+                <p className="text-2xl md:text-xl font-bold">Radhika</p>
               </div>
             </div>
 
@@ -260,7 +260,7 @@ const Profile = () => {
           </h2>
 
           {/* Target & Progress */}
-          <div className="rounded-2xl p-4 mb-4">
+          <div className="rounded-2xl p-2 ">
             <div className="flex items-center justify-between mb-2 rounded-2xl text-center bg-[#5D0093] border border-[#A800F7]">
               <div className="flex items-center gap-2 rounded-full p-2 w-full justify-center text-[#0EF479] font-bold">
                 <ChevronDown size={20} className="text-[#0EF479]" />
@@ -302,16 +302,21 @@ const Profile = () => {
         </div>
 
         {/* Settings Menu */}
-        <div className="space-y-3 w-full border border-transparent 
+        <div className="space-y-3 w-full border  border-white/35 rounded-xl
                 bg-gradient-to-b from-[#02010B]/[0.43] to-[#353E3D]/[0.43] 
                 p-5 backdrop-blur-md shadow-lg shadow-black/10
-                [border-image:linear-gradient(261.7deg,rgba(255,255,255,0.54)_5.39%,rgba(0,0,0,0)_19.41%)_1]">
+                "
+        >
 
           {/* Change Password */}
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={ch} alt="AI Bot" className="w-5 h-5 object-contain" />
+              <img
+                src={ch}
+                alt="AI Bot"
+                className="w-5 h-5 object-contain bg-black bg-opacity-50 rounded-full"
+              />
               <span className="font-medium">Change Password</span>
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
@@ -321,7 +326,8 @@ const Profile = () => {
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={dow} alt="AI Bot" className="w-5 h-5 object-contain" />
+              <img src={dow} alt="AI Bot" className="w-5 h-5 object-contain bg-black bg-opacity-50 rounded-full"
+              />
               <span className="font-medium">Downline Team</span>
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
@@ -331,7 +337,8 @@ const Profile = () => {
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={war} alt="AI Bot" className="w-5 h-5 object-contain" />
+              <img src={war} alt="AI Bot" className="w-5 h-5 object-contain bg-black bg-opacity-50 rounded-full"
+              />
               <span className="font-medium">Terms And Conditions</span>
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
@@ -341,7 +348,8 @@ const Profile = () => {
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={pr} alt="AI Bot" className="w-5 h-5 object-contain" />
+              <img src={pr} alt="AI Bot" className="w-5 h-5 object-contain bg-black bg-opacity-50 rounded-full"
+              />
               <span className="font-medium">Privacy Policy</span>
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
@@ -351,7 +359,8 @@ const Profile = () => {
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={Group} alt="AI Bot" className="w-5 h-5 object-contain" />
+              <img src={Group} alt="AI Bot" className="w-5 h-5 object-contain bg-black bg-opacity-50 rounded-full"
+              />
               <span className="font-medium">FAQs</span>
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
@@ -361,7 +370,8 @@ const Profile = () => {
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={lo} alt="AI Bot" className="w-5 h-5 object-contain" />
+              <img src={lo} alt="AI Bot" className="w-5 h-5 object-contain bg-black bg-opacity-50 border-2 border-black rounded-full"
+              />
               <span className="font-medium">Logout</span>
             </div>
             <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
