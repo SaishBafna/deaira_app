@@ -163,7 +163,7 @@ const Profile = () => {
 
             {/* Stats Items */}
             <div className="text-center flex flex-col items-center z-10">
-              <div className="flex items-center gap-1 mb-1  h-20">
+              <div className="flex items-center gap-1 mb-2  h-20">
                 <img src={Group344} alt="AI Bot" className="w-6 h-6 object-contain" />
                 <p className="text-sm opacity-70">Direct Team</p>
               </div>
@@ -217,7 +217,7 @@ const Profile = () => {
                 <p className="text-sm font-bold">3</p>
               </div>
             </div>
-            <p className="text-purple-400 text-sm">Invite. Invest. Grow with Smart Trades.</p>
+            <p className="text-purple-400 text-sm mb-2">Invite. Invest. Grow with Smart Trades.</p>
           </div>
         </div>
 
