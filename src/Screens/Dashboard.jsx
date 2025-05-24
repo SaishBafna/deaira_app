@@ -8,16 +8,16 @@ import Image1 from '../assets/Images/i5.png';
 import { Banknote, Wallet, Users, Trophy } from "lucide-react";
 import { Calendar, Search, BarChart3, Share2, } from 'lucide-react';
 import Footer from '../Footer/Footer';
-import I1 from '../assets/Images/i6.png'; 
-import I2 from '../assets/Images/i7.png'; 
-import I3 from '../assets/Images/i8.png'; 
-import I4 from '../assets/Images/i9.png'; 
+import I1 from '../assets/Images/i6.png';
+import I2 from '../assets/Images/i7.png';
+import I3 from '../assets/Images/i8.png';
+import I4 from '../assets/Images/i9.png';
 import Header1 from '../Header/header1.jsx';
 import { useNavigate } from 'react-router-dom';
 const Dashboard = () => {
-   const navigate = useNavigate();
-   const handleClick = () => {
-    navigate('/Deposit'); 
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/Deposit');
   };
   return (
     <div className="w-full min-h-screen overflow-y-auto bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-6 py-4 gap-4">
@@ -42,7 +42,7 @@ const Dashboard = () => {
         </div>
       </div> */}
 
-     <Header1 title="Dashboard" />
+      <Header1 title="Dashboard" />
 
       <div className="flex items-center justify-between p-1 rounded-xl w-full max-w-xl lg:max-w-4xl mt-15">
         {/* Left side: Image + Text group */}
@@ -107,23 +107,24 @@ const Dashboard = () => {
 
           <div className="relative z-10">
             <div className="text-center mb-6">
-              <h3 className="text-gray-200 text-lg font-medium mb-3">
+              <h3 className="text-gray-200 text-2xl font-medium mb-3">
                 Principal <span className="text-white font-semibold">Balance</span>
               </h3>
 
               <div className="mb-4">
-                <span className="text-white text-5xl font-bold tracking-tight">$203</span>
+                <span className="text-white text-3xl font-bold tracking-tight">$203</span>
               </div>
 
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-200 flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl transform hover:scale-105">
+              <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-1.5 rounded-full font-semibold transition-all duration-200 flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl transform hover:scale-105 border border-white">
                 <Plus className="w-4 h-4" />
                 Add
               </button>
+
             </div>
 
             {/* Earning Balance Section */}
             <div className="border-t border-purple-600/50 pt-4">
-              <h4 className="text-gray-200 text-base font-medium mb-2 text-center">
+              <h4 className="text-gray-200 text-2xl font-medium mb-2 text-center">
                 Earning Balance
               </h4>
               <div className="text-center">
@@ -206,7 +207,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-     <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
+      <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-white font-medium text-lg">Quick Action</span>
           <img src={I2} alt="Lock" className="w-5 h-5" />
@@ -217,7 +218,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-4 gap-6">
           {/* Deposit */}
           <div className="flex flex-col items-center justify-center"
-          onClick={handleClick}>
+            onClick={handleClick}>
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-green-600">
               <Banknote className="text-white w-6 h-6" />
             </div>
@@ -254,7 +255,7 @@ const Dashboard = () => {
         <img src={Image1} alt="Panel" className="w-full" />
       </div>
 
-     <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
+      <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-white font-medium text-lg">Your Income</span>
           <img src={I3} alt="Lock" className="w-5 h-5" />
@@ -365,7 +366,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-    <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
+      <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-white font-medium text-lg">Investment Opportunity</span>
           <img src={I4} alt="Lock" className="w-5 h-5" />
