@@ -3,28 +3,56 @@ import React, { useState } from "react";
 import { WalletContext } from "../context/walletcontext";
 import { useContext } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const OtpVerifictaion = () => {
   const { walletAddress, connectWallet } = useContext(WalletContext);
-
+  const navigate = useNavigate();
   const [otp, setotp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [resendDisabled, setResendDisabled] = useState(false);
+  const [resendTimer, setResendTimer] = useState(30);
 
   const handleverify = async () => {
-    if (!walletAddress || !email || isLoading) return;
+    if (!walletAddress || !otp || isLoading) return;
     
     setIsLoading(true);
     try {
-      const response = await axios.post(`https://web.deaira.io/api/register`, {
-        walletAddress: walletAddress,
+      const response = await axios.post(`https://web.deaira.io/api/verifyMailOtp`, {
+        email: walletAddress,
         otp: otp
       });
       console.log(response.data);
-      navigation.navigate('OtpVerifictaion')
+      navigate('/')
     } catch (error) {
       console.log(error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleResendOtp = async () => {
+    if (resendDisabled) return;
+    
+    setResendDisabled(true);
+    // Start countdown timer
+    const timer = setInterval(() => {
+      setResendTimer((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          setResendDisabled(false);
+          return 30;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    try {
+      // Call your API to resend OTP here
+      await axios.post(`https://web.deaira.io/api/SendMailOtp`, { email: walletAddress });
+      console.log("OTP resent successfully");
+    } catch (error) {
+      console.log("Error resending OTP:", error);
     }
   };
 
@@ -53,13 +81,6 @@ const OtpVerifictaion = () => {
       <div className="w-full max-w-md relative z-10">
         {/* Logo Section */}
         <div className="flex items-center justify-between mb-8">
-          {/* <button className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group">
-            <ChevronLeft
-              size={20}
-              className="group-hover:-translate-x-1 transition-transform"
-            />
-            <span className="font-medium">Back</span>
-          </button> */}
           <h2 className="text-xl font-semibold text-white">Verify OTP</h2>
           <div className="w-16"></div>
         </div>
@@ -79,9 +100,18 @@ const OtpVerifictaion = () => {
           {/* Form Fields */}
           <div className="space-y-6">
             <div>
-              <label className="block text-white/80 text-sm font-medium mb-2">
-                Enter OTP{" "}
-              </label>
+              <div className="flex justify-between items-center mb-2">
+                <label className="block text-white/80 text-sm font-medium">
+                  Enter OTP
+                </label>
+                <button 
+                  onClick={handleResendOtp}
+                  disabled={resendDisabled}
+                  className={`text-sm ${resendDisabled ? 'text-white/50' : 'text-purple-300 hover:text-purple-400'} transition-colors`}
+                >
+                  {resendDisabled ? `Resend in ${resendTimer}s` : 'Resend OTP'}
+                </button>
+              </div>
               <div className="relative">
                 <User
                   className="absolute left-4 top-1/2 transform -translate-y-1/2 text-purple-400"
