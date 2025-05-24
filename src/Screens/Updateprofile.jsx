@@ -103,7 +103,7 @@ const UpdateProfile = () => {
 
               <div>
                 <div className="relative">
-                  <FiMail className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
+                  <FiLock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
                   <input
                     type="ChangePassword"
                     className="w-full bg-[#00000040] border border-[#DDCDE575] rounded-[10px] px-4 md:px-10 py-2 md:py-3 focus:outline-none focus:ring-1 focus:ring-[#5B00F7]"
@@ -125,8 +125,8 @@ const UpdateProfile = () => {
                     placeholder="Enter OTP"
                     style={{ height: '44px', minHeight: '44px' }}
                   />
-                  <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent text-white hover:text-[#4A00D1] p-1 md:p-2 text-xs md:text-sm font-medium transition-colors whitespace-nowrap">
-                    GET OTP <img src={otp} alt="OTP Icon" className="inline-block ml-1 w-4 h-4" />
+                  <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent text-white hover:text-[#4A00D1] p-1 md:p-2 text-l md:text-sm font-medium transition-colors whitespace-nowrap">
+                    GET OTP 
                   </button>
                 </div>
               </div>
