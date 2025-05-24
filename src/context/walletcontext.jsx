@@ -18,20 +18,24 @@ export const WalletProvider = ({ children }) => {
 
       try {
         setIsConnecting(true);
-        const provider = new ethers.BrowserProvider(window.ethereum);
-        const accounts = await provider.listAccounts();
+
+        // Trigger MetaMask popup
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+
         if (accounts.length > 0) {
-          const address = accounts[0].address;
+          const address = accounts[0];
           setWalletAddress(address);
           localStorage.setItem("walletAddress", address);
+          console.log("wallet connected", accounts);
         }
-        console.log('wallet connected', accounts)
       } catch (error) {
-        console.log(error);
+        console.error(error);
         if (error.code === -32002) {
           alert("Connection request is already in progress. Please wait.");
         } else {
-          alert("Error connecting");
+          alert("Error connecting to wallet.");
         }
       } finally {
         setIsConnecting(false);

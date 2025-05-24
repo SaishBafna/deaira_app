@@ -27,13 +27,8 @@ import Footer from "../Footer/Footer.jsx";
 import R1 from "../assets/Images/homer1.png";
 import Header from "../Header/header.jsx";
 import { useContext } from "react";
-import { WalletContext } from "../context/walletcontext.jsx";
 const Homescreen = () => {
-  const {
-    walletAddress,
-    connectWallet
-  } = useContext(WalletContext);
-
+ 
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
       {/* Blur circles - fixed in background */}
