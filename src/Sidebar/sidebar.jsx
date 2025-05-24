@@ -1,5 +1,5 @@
-import React, { useEffect ,useState} from 'react';
-import { FiX } from 'react-icons/fi';
+import React, { useEffect, useState } from 'react';
+import { FiSettings, FiX } from 'react-icons/fi';
 import Image from '../assets/Images/logo.png';
 import chevron from '../assets/Images/ca.png';
 import Group from '../assets/Images/Group.png';
@@ -60,7 +60,7 @@ const Sidebar = ({ onClose }) => {
             {/* Avatar */}
             <div className="relative flex flex-col items-center mb-4">
                 <div className="p-0">
-                    <img src={Image2} alt="Avatar" className="w-25 h-25 object-contain" />
+                    <img src={Image2} alt="Avatar" className="w-35 h-35 object-contain" />
                 </div>
                 <div className="absolute bottom-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="#000" viewBox="0 0 24 24" width="18" height="18">
@@ -77,7 +77,15 @@ const Sidebar = ({ onClose }) => {
                 ID: CA120609
             </div>
 
-            <div className="space-y-3 w-full border border-white/35 rounded-xl bg-gradient-to-b from-[#02010B]/[0.43] to-[#353E3D]/[0.43] p-5 backdrop-blur-md shadow-lg shadow-black/10 mt-10">
+
+            <div className="text-left w-full mt-8 max-w-xl lg:max-w-4xl">
+                <div className="flex items-center gap-2 mb-0">
+                    <span className="text-white font-medium text-lg">General Setting</span>
+                    <FiSettings className="w-5 h-5 text-white" />
+                </div>
+            </div>
+
+            <div className="space-y-3 w-full border border-white/35 rounded-xl bg-gradient-to-b from-[#02010B]/[0.43] to-[#353E3D]/[0.43] p-5 backdrop-blur-md shadow-lg shadow-black/10 mt-4">
 
                 {/* Activation */}
                 <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
@@ -91,37 +99,37 @@ const Sidebar = ({ onClose }) => {
                 </button>
 
                 <div className="space-y-2 w-full">
-      {/* Main Button */}
-      <button
-        onClick={toggleMenu}
-        className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm"
-      >
-        <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
-            <Info className="w-4 h-4 text-[#A8FFD1]" />
-          </div>
-          <span className="font-medium text-white">Report</span>
-        </div>
-        <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
-      </button>
+                    {/* Main Button */}
+                    <button
+                        onClick={toggleMenu}
+                        className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm"
+                    >
+                        <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
+                                <Info className="w-4 h-4 text-[#A8FFD1]" />
+                            </div>
+                            <span className="font-medium text-white">Report</span>
+                        </div>
+                        <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+                    </button>
 
-      {/* Submenu */}
-      {isOpen && (
-        <div className="w-full bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-inner">
-          <button
-            onClick={goToDepositReport}
-            className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
-          >
-            Deposit Report
-          </button>
+                    {/* Submenu */}
+                    {isOpen && (
+                        <div className="w-full bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-inner">
+                            <button
+                                onClick={goToDepositReport}
+                                className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
+                            >
+                                Deposit Report
+                            </button>
 
-          {/* You can add more submenu items here */}
-          {/* <button className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm">
+                            {/* You can add more submenu items here */}
+                            {/* <button className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm">
             Another Option
           </button> */}
-        </div>
-      )}
-    </div>
+                        </div>
+                    )}
+                </div>
 
                 {/* Withdraw */}
                 <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">

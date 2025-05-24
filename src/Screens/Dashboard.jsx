@@ -73,7 +73,7 @@ const Dashboard = () => {
           <h2 className="text-lg font-semibold leading-tight">
             Power Up with Our AI based Community
           </h2>
-          <p className="text-sm mt-1 text-pink-300">
+          <p className="text-sm mt-1 text-pink-500">
             Be part of DeAlra's AI investor network.
           </p>
           <button className="mt-3 self-start bg-purple-600 border border-white text-white text-sm font-semibold py-1.5 px-4 rounded-full shadow hover:bg-purple-700 transition">
@@ -111,12 +111,12 @@ const Dashboard = () => {
                 Principal <span className="text-white font-semibold">Balance</span>
               </h3>
 
-              <div className="mb-4">
+              <div className="mb-4 bg-gray-600 px-8 py-2 rounded-lg inline-block">
                 <span className="text-white text-3xl font-bold tracking-tight">$203</span>
               </div>
 
               <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-1.5 rounded-full font-semibold transition-all duration-200 flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl transform hover:scale-105 border border-white">
-                <Plus className="w-4 h-4" />
+                {/* <Plus className="w-4 h-4" /> */}
                 Add
               </button>
 
@@ -128,8 +128,11 @@ const Dashboard = () => {
                 Earning Balance
               </h4>
               <div className="text-center">
-                <span className="text-white text-3xl font-bold">$5.5</span>
+                <div className="bg-gray-600 inline-block px-8 py-2 rounded-lg">
+                  <span className="text-white text-3xl font-bold">$5.5</span>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -209,7 +212,7 @@ const Dashboard = () => {
 
       <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-white font-medium text-lg">Quick Action</span>
+          <span className="text-white font-medium text-lg">Quick Actions</span>
           <img src={I2} alt="Lock" className="w-5 h-5" />
         </div>
       </div>
@@ -368,8 +371,8 @@ const Dashboard = () => {
 
       <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-white font-medium text-lg">Investment Opportunity</span>
-          <img src={I4} alt="Lock" className="w-5 h-5" />
+          <span className="text-white font-medium text-lg">Investment Opportunities</span>
+          <img src={I4} alt="Lock" className="w-8 h-8" />
         </div>
       </div>
 
@@ -447,15 +450,17 @@ const Dashboard = () => {
       <div className="w-full max-w-xl lg:max-w-4xl mx-auto mb-20">
         <div className="bg-gradient-to-r from-[#27064ae7] to-purple-800 rounded-lg p-6 text-white">
           {/* Header Section */}
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-center gap-3 mb-2 justify-center">
             <Smartphone className="w-6 h-6 text-white" />
-            <h2 className="text-xl font-bold">Download Our App</h2>
+            <h2 className="text-2xl font-bold">Download Our App</h2>
           </div>
 
           {/* Subtitle */}
-          <p className="text-purple-100 text-sm mb-6">
-            Get the best trading experience on mobile
-          </p>
+          <div className="flex justify-center items-center mb-6">
+            <p className="text-purple-100 text-sm">
+              Get the best trading experience on mobile
+            </p>
+          </div>
 
           {/* Buttons Section */}
           <div className="flex gap-4">

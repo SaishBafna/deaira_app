@@ -148,40 +148,41 @@ const Homescreen = () => {
 
         {/* Token Info Card */}
         <div className="w-full bg-gray-900 text-white rounded-2xl shadow-lg p-6 sm:p-8">
-          <div className="text-center mb-6">
-            <img
-              src={Coin}
-              alt="AI Robot"
-              className="w-20 h-20 sm:w-20 sm:h-20 mx-auto"
-            />
-            <div className="text-2xl font-bold mt-4 mb-2">$ DAIR TOKEN</div>
-            <div className="text-lg">
-              TOTAL SUPPLY : <span className="font-mono">0001203948</span>
-            </div>
-          </div>
+  <div className="text-center mb-6">
+    <img
+      src={Coin}
+      alt="AI Robot"
+      className="w-20 h-20 sm:w-20 sm:h-20 mx-auto"
+    />
+    <div className="text-2xl font-bold mt-4 mb-2">$ DAIR TOKEN</div>
+    <div className="text-lg">
+      TOTAL SUPPLY : <span className="font-mono">0001203948</span>
+    </div>
+  </div>
 
-          <div className="flex justify-around items-center gap-4 sm:gap-6">
-            <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg min-w-[120px] sm:min-w-[400px]">
-              <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
-                <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
-                  <FiTrendingUp className="text-[#310060]  w-5 h-5" />
-                </div>
-                Initial Price
-              </div>
-              <div className="text-1xl font-semibold">$00.13/Token</div>
-            </div>
-
-            <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg min-w-[120px] sm:min-w-[400px]">
-              <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
-                <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
-                  <FiBarChart2 className="text-[#310060] w-5 h-5" />
-                </div>
-                Project Growth
-              </div>
-              <div className="text-1xl font-semibold">$00.45/Token</div>
-            </div>
-          </div>
+  <div className="flex flex-row gap-4">
+    <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg w-1/2">
+      <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
+        <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
+          <FiTrendingUp className="text-[#310060] w-5 h-5" />
         </div>
+        Initial Price
+      </div>
+      <div className="text-1xl font-semibold">$00.13/Token</div>
+    </div>
+
+    <div className="flex flex-col items-center bg-gray-800 p-3 sm:p-6 rounded-lg w-1/2">
+      <div className="flex items-center gap-3 text-sm font-medium text-gray-400">
+        <div className="bg-[#A8FFD1] rounded-full p-2 flex items-center justify-center">
+          <FiBarChart2 className="text-[#310060] w-5 h-5" />
+        </div>
+        Project Growth
+      </div>
+      <div className="text-1xl font-semibold">$00.45/Token</div>
+    </div>
+  </div>
+</div>
+
 
         {/* AI Powered Suggestion */}
         <div className="w-full flex justify-between text-white font-semibold text-lg cursor-pointer mt-4 mb-4">
