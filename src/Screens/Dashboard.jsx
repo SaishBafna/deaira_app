@@ -13,7 +13,12 @@ import I2 from '../assets/Images/i7.png';
 import I3 from '../assets/Images/i8.png'; 
 import I4 from '../assets/Images/i9.png'; 
 import Header1 from '../Header/header1.jsx';
+import { useNavigate } from 'react-router-dom';
 const Dashboard = () => {
+   const navigate = useNavigate();
+   const handleClick = () => {
+    navigate('/Deposit'); 
+  };
   return (
     <div className="w-full min-h-screen overflow-y-auto bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-6 py-4 gap-4">
 
@@ -39,7 +44,7 @@ const Dashboard = () => {
 
      <Header1 title="Dashboard" />
 
-      <div className="flex items-center justify-between p-1 rounded-xl w-full max-w-xl lg:max-w-4xl">
+      <div className="flex items-center justify-between p-1 rounded-xl w-full max-w-xl lg:max-w-4xl mt-15">
         {/* Left side: Image + Text group */}
         <div className="flex items-center">
           <img src={Image2} alt="Panel" className="w-16 h-16 rounded-lg" />
@@ -211,7 +216,8 @@ const Dashboard = () => {
       <div className="mb-5 w-full max-w-xl lg:max-w-4xl">
         <div className="grid grid-cols-4 gap-6">
           {/* Deposit */}
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center"
+          onClick={handleClick}>
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-green-600">
               <Banknote className="text-white w-6 h-6" />
             </div>

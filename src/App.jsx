@@ -21,7 +21,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/UpdateProfile" element={<UpdateProfile />} />
           <Route path="/Deposit" element={<Deposit/>} />
-           <Route path="/DepositHistory" element={<DepositHistory/>} />
+           <Route path="/DepositReport" element={<DepositHistory/>} />
            <Route path="/Register" element={<Register/>} />
            <Route path="/OtpVerifictaion" element={<OtpVerifictaion/>} />
         </Routes>

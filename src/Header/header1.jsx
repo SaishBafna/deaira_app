@@ -10,19 +10,23 @@ const Header1 = ({ title }) => {
   };
 
   return (
-    <div className="relative w-full flex items-center justify-between px-0 py-3 text-white">
-      <div className="text-2xl font-semibold">
-        {title}
-      </div>
+    <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-3 bg-gray-900 text-white shadow-md">
+      <div className="text-2xl font-semibold">{title}</div>
 
       <div className="text-2xl cursor-pointer" onClick={toggleSidebar}>
         <FiMenu />
       </div>
 
       {sidebarOpen && (
-        <div className="fixed top-0 left-0 w-full h-full  text-white p-6 z-50">
-          <Sidebar onClose={toggleSidebar} />
-        </div>
+        <>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-40 z-40"
+            onClick={toggleSidebar}
+          />
+          <div className="fixed inset-0 z-50">
+            <Sidebar onClose={toggleSidebar} />
+          </div>
+        </>
       )}
     </div>
   );

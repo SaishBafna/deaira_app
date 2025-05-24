@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect ,useState} from 'react';
 import { FiX } from 'react-icons/fi';
 import Image from '../assets/Images/logo.png';
 import chevron from '../assets/Images/ca.png';
@@ -20,7 +20,16 @@ import {
     LogOut,
     ChevronDown
 } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
+
+
 const Sidebar = ({ onClose }) => {
+
+    const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const toggleMenu = () => setIsOpen(!isOpen);
+    const goToDepositReport = () => navigate('/DepositReport'); // change as needed
     useEffect(() => {
         // Disable body scroll
         document.body.style.overflow = 'hidden';
@@ -80,6 +89,39 @@ const Sidebar = ({ onClose }) => {
                     </div>
                     <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
                 </button>
+
+                <div className="space-y-2 w-full">
+      {/* Main Button */}
+      <button
+        onClick={toggleMenu}
+        className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm"
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
+            <Info className="w-4 h-4 text-[#A8FFD1]" />
+          </div>
+          <span className="font-medium text-white">Report</span>
+        </div>
+        <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+      </button>
+
+      {/* Submenu */}
+      {isOpen && (
+        <div className="w-full bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-inner">
+          <button
+            onClick={goToDepositReport}
+            className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
+          >
+            Deposit Report
+          </button>
+
+          {/* You can add more submenu items here */}
+          {/* <button className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm">
+            Another Option
+          </button> */}
+        </div>
+      )}
+    </div>
 
                 {/* Withdraw */}
                 <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
