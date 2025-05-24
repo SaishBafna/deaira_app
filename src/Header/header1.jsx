@@ -20,7 +20,7 @@ const Header1 = ({ title }) => {
       </div>
 
       {sidebarOpen && (
-        <div className="fixed top-0 left-0 w-full h-full  text-white p-0 z-50">
+        <div className="fixed top-0 left-0 w-full h-full  text-white p-6 z-50">
           <Sidebar onClose={toggleSidebar} />
         </div>
       )}
