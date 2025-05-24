@@ -10,6 +10,7 @@ import Deposit from './Screens/Deposit.jsx';
 import DepositHistory from './Screens/DepositHistory.jsx';
 import Register from './Screens/RegistionPage.jsx';
 import OtpVerifictaion from './Screens/Otpverifictaion.jsx';
+import Kyc from './Screens/Kyc.jsx';
 function App() {
   return (
     <Router>
@@ -24,6 +25,7 @@ function App() {
            <Route path="/DepositReport" element={<DepositHistory/>} />
            <Route path="/Register" element={<Register/>} />
            <Route path="/OtpVerifictaion" element={<OtpVerifictaion/>} />
+           <Route path="/Kyc" element={<Kyc/>} />
         </Routes>
       </div>
     </Router>
