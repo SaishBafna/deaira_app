@@ -19,7 +19,7 @@ import {
   Bot
 } from 'lucide-react';
 import Footer from '../Footer/Footer';
-import chevron from '../assets/Images/chevron-down-circle-line_svgrepo.png';
+import chevron from '../assets/Images/ca.png';
 import probo from '../assets/Images/probo.png';
 import Group305 from '../assets/Images/Group305.png';
 import Group344 from '../assets/Images/Group344.png';
@@ -35,7 +35,12 @@ import pr from '../assets/Images/pr.png';
 import dow from '../assets/Images/dow.png';
 import ch from '../assets/Images/ch.png';
 import fast from '../assets/Images/fast.png';
+import whatapp from '../assets/Images/whatapp.png';
+import tele from '../assets/Images/tele.png';
+
+import { useNavigate } from 'react-router-dom';
 const Profile = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-screen h-screen bg-[#100036] relative overflow-y-auto flex flex-col items-center p-6 gap-6 text-white font-sans">
       {/* Blur elements matching the design */}
@@ -147,7 +152,7 @@ const Profile = () => {
 
             {/* Stats Items */}
             <div className="text-center flex flex-col items-center z-10">
-             <div className="flex items-center gap-1 mb-1  h-20">
+              <div className="flex items-center gap-1 mb-1  h-20">
                 <img src={Group344} alt="AI Bot" className="w-6 h-6 object-contain" />
                 <p className="text-sm opacity-70">Direct Team</p>
               </div>
@@ -214,15 +219,15 @@ const Profile = () => {
 
           <div className="grid grid-cols-4 sm:grid-cols-4 gap-4">
             {/* Update Profile */}
-            <button className="p-4 text-center transition-all duration-300 hover:bg-gray-100/10 rounded-lg">
+            <button className="p-4  h-30 text-center transition-all duration-300 hover:bg-gray-100/10 rounded-lg" onClick={() => { navigate('/Updateprofile') }} >
               <div className="bg-black/50 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
-                <img src={avatarpeople} alt="AI Bot" className="w-10 h-10 object-contain" />
+                <img src={avatarpeople} alt="AI Bot" className="w-5 h-5 object-contain" />
               </div>
               <p className="text-sm font-medium">Update Profile</p>
             </button>
 
             {/* Report */}
-            <button className="p-4 text-center transition-all duration-300 hover:bg-gray-100/10 rounded-lg">
+            <button className="p-4  h-30 text-center transition-all duration-300 hover:bg-gray-100/10 rounded-lg">
               <div className="bg-black/50 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
                 <img src={book} alt="AI Bot" className="w-10 h-10 object-contain" />
               </div>
@@ -230,7 +235,7 @@ const Profile = () => {
             </button>
 
             {/* Team Analysis */}
-            <button className="p-4 text-center transition-all duration-300 hover:bg-gray-100/10 rounded-lg">
+            <button className="p-4   h-30 text-center transition-all duration-300 hover:bg-gray-100/10 rounded-lg">
               <div className="bg-black/50 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
                 <img src={di} alt="AI Bot" className="w-10 h-10 object-contain" />
               </div>
@@ -238,7 +243,7 @@ const Profile = () => {
             </button>
 
             {/* Direct Teams */}
-            <button className="p-4 text-center transition-all duration-300 hover:bg-gray-100/10 rounded-lg">
+            <button className="p-4  h-30 text-center transition-all duration-300 hover:bg-gray-100/10 rounded-lg">
               <div className="bg-black/50 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
                 <img src={fi} alt="AI Bot" className="w-10 h-10 object-contain" />
               </div>
@@ -286,11 +291,11 @@ const Profile = () => {
           {/* Action Buttons */}
           <div className="grid grid-cols-2 gap-4 mb-2">
             <button className="bg-gradient-to-br from-purple-700 to-purple-900 hover:from-purple-600 hover:to-purple-800 text-white rounded-2xl py-3 font-semibold flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-lg hover:shadow-purple-700/30 active:scale-95">
-              <MessageCircle size={18} className="text-purple-200" />
+              <img src={whatapp} alt="AI Bot" className="w-5 h-5 object-contain" />
               WhatsApp
             </button>
             <button className="bg-gradient-to-br from-purple-700 to-purple-900 hover:from-purple-600 hover:to-purple-800 text-white rounded-2xl py-3 font-semibold flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-lg hover:shadow-purple-700/30 active:scale-95">
-              <MessageCircle size={18} className="text-purple-200" />
+              <img src={tele} alt="AI Bot" className="w-5 h-5 object-contain" />
               Telegram
             </button>
           </div>
@@ -306,60 +311,60 @@ const Profile = () => {
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={ch} alt="AI Bot" className="w-8 h-8 object-contain" />
+              <img src={ch} alt="AI Bot" className="w-5 h-5 object-contain" />
               <span className="font-medium">Change Password</span>
             </div>
-            <img src={chevron} alt="AI Bot" className="w-8 h-8 object-contain" />
+            <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
           </button>
 
           {/* Downline Team */}
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={dow} alt="AI Bot" className="w-8 h-8 object-contain" />
+              <img src={dow} alt="AI Bot" className="w-5 h-5 object-contain" />
               <span className="font-medium">Downline Team</span>
             </div>
-            <img src={chevron} alt="AI Bot" className="w-8 h-8 object-contain" />
+            <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
           </button>
 
           {/* Terms And Conditions */}
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={war} alt="AI Bot" className="w-8 h-8 object-contain" />
+              <img src={war} alt="AI Bot" className="w-5 h-5 object-contain" />
               <span className="font-medium">Terms And Conditions</span>
             </div>
-            <img src={chevron} alt="AI Bot" className="w-8 h-8 object-contain" />
+            <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
           </button>
 
           {/* Privacy Policy */}
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={pr} alt="AI Bot" className="w-8 h-8 object-contain" />
+              <img src={pr} alt="AI Bot" className="w-5 h-5 object-contain" />
               <span className="font-medium">Privacy Policy</span>
             </div>
-            <img src={chevron} alt="AI Bot" className="w-8 h-8 object-contain" />
+            <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
           </button>
 
           {/* FAQs */}
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={Group} alt="AI Bot" className="w-8 h-8 object-contain" />
+              <img src={Group} alt="AI Bot" className="w-5 h-5 object-contain" />
               <span className="font-medium">FAQs</span>
             </div>
-            <img src={chevron} alt="AI Bot" className="w-8 h-8 object-contain" />
+            <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
           </button>
 
           {/* Logout */}
           <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between 
                     border border-white/10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <img src={lo} alt="AI Bot" className="w-8 h-8 object-contain" />
+              <img src={lo} alt="AI Bot" className="w-5 h-5 object-contain" />
               <span className="font-medium">Logout</span>
             </div>
-            <img src={chevron} alt="AI Bot" className="w-8 h-8 object-contain" />
+            <img src={chevron} alt="AI Bot" className="w-5 h-5 object-contain" />
           </button>
         </div>
 
