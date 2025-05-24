@@ -3,6 +3,8 @@ import React from 'react';
 import { FiEdit, FiUpload, FiChevronLeft, FiUser, FiPhone, FiMail, FiLock, FiCreditCard, FiFileText } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import Group305 from '../assets/Images/Group305.png';
+import acc from '../assets/Images/acc.png';
+import otp from '../assets/Images/otp.png';
 const UpdateProfile = () => {
   const navigate = useNavigate();
   return (
@@ -21,42 +23,43 @@ const UpdateProfile = () => {
 
       {/* Profile Card */}
       <div className="w-full max-w-4xl rounded-2xl p-4 md:p-6 shadow-lg">
+        <div
+          className="flex items-center p-4 w-full h-[88px] mx-auto mb-4 md:mb-6"
+          style={{
+            background: 'linear-gradient(0deg, #130027 0%, #350C5E 100%)',
+            border: '0.5px solid linear-gradient(180deg, #DDCDE5 0%, #A600F4 100%)',
+            // borderImage: 'linear-gradient(180deg, #DDCDE5 0%, #A600F4 100%) 1',
+            borderRadius: '10px',
+          }}
+        >
+          {/* Image on the left side (replaces FiUser) */}
+          <div className="mr-3">
+            <img
+              src={Group305}
+              alt="Profile"
+              className="w-15 h-15 rounded-full object-cover border border-[#5B00F7]"
+            />
+          </div>
+
+          {/* Text content on the right side */}
+          <div className="flex-1">
+            <h2 className="text-lg md:text-xl font-semibold text-white">Radhika</h2>
+            <div className="flex items-center space-x-2 mt-1 text-white/80 text-xs md:text-sm">
+              <FiPhone size={15} />
+              <p>+911234567890</p>
+            </div>
+
+          </div>
+        </div>
         <div className="flex flex-col lg:flex-row gap-4 md:gap-6">
           {/* Left Section */}
           <div className="flex-1 flex flex-col gap-4 md:gap-6">
-            <div
-              className="flex items-center p-4 w-full h-[88px] mx-auto"
-              style={{
-                background: 'linear-gradient(0deg, #130027 0%, #350C5E 100%)',
-                border: '0.5px solid linear-gradient(180deg, #DDCDE5 0%, #A600F4 100%)',
-                // borderImage: 'linear-gradient(180deg, #DDCDE5 0%, #A600F4 100%) 1',
-                borderRadius: '10px',
-              }}
-            >
-              {/* Image on the left side (replaces FiUser) */}
-              <div className="mr-3">
-                <img
-                  src={Group305}
-                  alt="Profile"
-                  className="w-15 h-15 rounded-full object-cover border border-[#5B00F7]"
-                />
-              </div>
 
-              {/* Text content on the right side */}
-              <div className="flex-1">
-                <h2 className="text-lg md:text-xl font-semibold text-white">Radhika</h2>
-                <div className="flex items-center space-x-2 mt-1 text-white/80 text-xs md:text-sm">
-                  <FiPhone size={15} />
-                  <p>+911234567890</p>
-                </div>
-
-              </div>
-            </div>
 
             {/* Personal Details Form */}
             <div className="space-y-4 md:space-y-6">
               <button className="text-blue-400 hover:text-blue-300 text-xs md:text-sm font-medium flex items-center gap-1">
-                <p className='text-white'>Edit Profile</p>
+                <p className='text-bold bold text-white'>Edit Profile</p>
                 <FiEdit size={14} />
 
               </button>
@@ -112,7 +115,8 @@ const UpdateProfile = () => {
             </div>
 
             <div className="p-2 rounded-xl">
-              <h3 className="font-medium mb-2 md:mb-3">OTP Verification</h3>
+
+              <h3 className="font-medium mb-2 md:mb-3">OTP Verification  <img src={otp} alt="OTP Icon" className="inline-block ml-1 w-5 h-5" /> </h3>
               <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
                 <div className="relative flex-grow">
                   <input
@@ -122,7 +126,7 @@ const UpdateProfile = () => {
                     style={{ height: '44px', minHeight: '44px' }}
                   />
                   <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent text-white hover:text-[#4A00D1] p-1 md:p-2 text-xs md:text-sm font-medium transition-colors whitespace-nowrap">
-                    GET OTP
+                    GET OTP <img src={otp} alt="OTP Icon" className="inline-block ml-1 w-4 h-4" />
                   </button>
                 </div>
               </div>
@@ -130,13 +134,12 @@ const UpdateProfile = () => {
           </div>
 
           {/* Right Section */}
-          <div className="flex-1 flex flex-col gap-4 md:gap-6 ">
-            {/* OTP Verification */}
+          <div className="flex-1 flex flex-col gap-4 md:gap-6  ">
 
 
             {/* Account Details */}
             <div className="space-y-4 md:space-y-6">
-              <h3 className="font-medium">Account Details</h3>
+              <h3 className="font-medium">Account Details <img src={acc} alt="OTP Icon" className="inline-block ml-1 w-5 h-5" /></h3>
 
               <div>
                 <div className="relative">
