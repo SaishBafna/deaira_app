@@ -1,3 +1,7 @@
+
+
+
+
 import { ChevronLeft, User, Wallet } from "lucide-react";
 import React, { useState, useContext, useEffect } from "react";
 import { WalletContext } from "../context/walletcontext";
@@ -101,9 +105,7 @@ const Register = () => {
         toast.success("Registration successful! Sending OTP...");
         await axios.post(`${API_BASE_URL}/SendMailOtp`, { email: walletAddress });
 
-        navigate("/OtpVerifictaion", {
-          state: { email, walletAddress }
-        });
+        navigate("/OtpVerifictaion");
       }
     } catch (error) {
       console.error("Registration error:", error);
