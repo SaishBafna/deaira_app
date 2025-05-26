@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { use, useContext, useEffect } from 'react'
 import axios from 'axios';
 import { FiBarChart2, FiChevronRight, FiSearch, FiTrendingUp, FiZap } from "react-icons/fi";
 import { FaWallet } from "react-icons/fa";
@@ -23,14 +23,28 @@ import R1 from "../assets/Images/homer1.png";
 import Header from "../Header/header.jsx";
 import { WalletContext } from "../context/walletcontext";
 import { MdLogout } from "react-icons/md";
-
+import { useNavigate } from 'react-router-dom';
 const Homescreen = () => {
   const { walletAddress, connectWallet, disconnectWallet } = useContext(WalletContext);
+
   const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
+  const navigate = useNavigate();
+
   console.log('encryptedWalletAddress:', encryptedWalletAddress);
+  useEffect(() => {
+    const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
+    console.log('encryptedWalletAddress useEffect:', encryptedWalletAddress);
+
+    if (!encryptedWalletAddress) {
+      navigate('/register');
+    }
+
+  }, [navigate])
+
   const handleWalletAction = () => {
     if (walletAddress) {
       disconnectWallet();
+      window.location.reload();
     } else {
       handleGenerateToken();
     }

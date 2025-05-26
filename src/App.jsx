@@ -16,26 +16,30 @@ import PrivacyPolicy from './Screens/PrivacyPolicy.jsx';
 import FAQ from './Screens/FAQ.jsx';
 import OtpVerifictaion from './Screens/Otpverifictaion.jsx';
 import Kyc from './Screens/Kyc.jsx';
+import { ToastContainer } from 'react-toastify';
+
 function App() {
   return (
     <Router>
       <div className="app">
+        <ToastContainer />
+
         {/* Your header here if any */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/UpdateProfile" element={<UpdateProfile />} />
-          <Route path="/Deposit" element={<Deposit/>} />
-          <Route path="/Withdraw" element={<Withdraw/>} />
-          <Route path="/ActivationPackage" element={<ActivationPackage/>} />
-           <Route path="/DepositReport" element={<DepositHistory/>} />
-           <Route path="/Register" element={<Register/>} />
-           <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
-           <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>} />
-           <Route path="/FAQ" element={<FAQ/>} />
-           <Route path="/OtpVerifictaion" element={<OtpVerifictaion/>} />
-           <Route path="/Kyc" element={<Kyc/>} />
+          <Route path="/Deposit" element={<Deposit />} />
+          <Route path="/Withdraw" element={<Withdraw />} />
+          <Route path="/ActivationPackage" element={<ActivationPackage />} />
+          <Route path="/DepositReport" element={<DepositHistory />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
+          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+          <Route path="/FAQ" element={<FAQ />} />
+          <Route path="/OtpVerifictaion" element={<OtpVerifictaion />} />
+          <Route path="/Kyc" element={<Kyc />} />
         </Routes>
       </div>
     </Router>

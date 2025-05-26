@@ -4,7 +4,6 @@ import { Plus } from 'lucide-react';
 import { FiEdit, FiUpload, FiChevronLeft, FiUser, FiPhone, FiMail, FiLock, FiCreditCard, FiFileText } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import Group305 from '../assets/Images/Group305.png';
-import acc from '../assets/Images/acc.png';
 import otp from '../assets/Images/otp.png';
 
 const UpdateProfile = () => {
@@ -68,6 +67,7 @@ const UpdateProfile = () => {
 
       if (response.data && response.data.user && response.data.user.user) {
         const user = response.data.user.user;
+        console.log('Fetched User Data:', user);
         setUserData(user);
         
         // Set form data with user data
@@ -101,7 +101,7 @@ const UpdateProfile = () => {
 
     try {
       setLoading(true);
-      const response = await fetch(`${API_BASE_URL}/generate_otp/${walletAddress}`, {
+      const response = await fetch(`${API_BASE_URL}/generate_otp/${encryptedWalletAddress}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -149,18 +149,20 @@ const UpdateProfile = () => {
       setUpdateLoading(true);
       
       const updateData = {
-        first_name: formData.name,
+        name: formData.name,
         mobile: formData.phone,
-        email1: formData.email,
-        otp: formData.otp
+        email: formData.email,
+        otp: formData.otp,
+        id:encryptedWalletAddress
       };
+      console.log('Update Data:', updateData);
 
       // Add password to update data if provided
       if (formData.password) {
         updateData.password = formData.password;
       }
 
-      const response = await axios.put(`${API_BASE_URL}/update_profile/${walletAddress}`, updateData, {
+      const response = await axios.post(`${API_BASE_URL}/update`, updateData, {
         headers: {
           Authorization: `Bearer ${jwt_token}`,
           'Content-Type': 'application/json'
@@ -260,7 +262,7 @@ const UpdateProfile = () => {
                   <input
                     type="text"
                     name="name"
-                    value={formData.name}
+                    value={formData.name || ''}
                     onChange={handleInputChange}
                     className="w-full bg-[#00000040] border border-[#DDCDE575] rounded-[10px] px-4 md:px-10 py-2 md:py-3 focus:outline-none focus:ring-1 focus:ring-[#5B00F7] text-white"
                     placeholder="Enter Your Name"
