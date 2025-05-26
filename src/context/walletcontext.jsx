@@ -9,7 +9,8 @@ export const WalletProvider = ({ children }) => {
   const [isConnecting, setIsConnecting] = useState(false);
 
   // USDT Contract Address (BSC Mainnet)
-  const USDTContractAddress = "0x55d398326f99059fF775485246999027B3197955"; // BSC USDT
+  // const USDTContractAddress = "0x55d398326f99059fF775485246999027B3197955"; // BSC USDT
+  const USDTContractAddress = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd"; // BSC USDT
 
   // Minimal ABI for ERC20 token operations
   const minimalABI = [
@@ -163,53 +164,48 @@ export const WalletProvider = ({ children }) => {
   };
 
   // Fixed Transfer USDT function for ethers.js v6
-  const transferUSDT = async (receiverAddress, amount) => {
+ const transferUSDT = async (receiverAddress, amount) => {
     if (!window.ethereum) {
       alert('BSC Network Wallet dApp not found!');
-      return false;
+      return { success: false, txHash: null };
     }
 
     if (!walletAddress) {
       alert('Please connect your wallet first!');
-      return false;
+      return { success: false, txHash: null };
     }
 
-    // Fix for ethers.js v6 - use ethers.isAddress instead of ethers.utils.isAddress
     if (!receiverAddress || !ethers.isAddress(receiverAddress)) {
       alert('Please enter a valid receiver address!');
-      return false;
+      return { success: false, txHash: null };
     }
 
     if (!amount || parseFloat(amount) <= 0) {
       alert('Please enter a valid amount!');
-      return false;
+      return { success: false, txHash: null };
     }
 
     try {
       // Check network first
       const networkOk = await checkNetwork();
       if (!networkOk) {
-        return false;
+        return { success: false, txHash: null };
       }
 
-      // For ethers.js v6, use BrowserProvider instead of Web3Provider
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
 
       // Set up USDT contract instance
       const usdtContract = new ethers.Contract(USDTContractAddress, minimalABI, signer);
 
-      // USDT on BSC has 18 decimals (hardcoded to avoid decimals() call issues)
       const decimals = 18;
-
-      // Fix for ethers.js v6 - use ethers.parseUnits instead of ethers.utils.parseUnits
       const amountInWei = ethers.parseUnits(amount.toString(), decimals);
 
       // Check balance before transfer
       const balance = await usdtContract.balanceOf(walletAddress);
       if (balance < amountInWei) {
         alert('Insufficient USDT balance!');
-        return false;
+        return { success: false, txHash: null };
       }
 
       console.log(`Transferring ${amount} USDT to ${receiverAddress}`);
@@ -226,21 +222,16 @@ export const WalletProvider = ({ children }) => {
 
       if (receipt.status === 1) {
         console.log("Transfer successful!");
-        alert("USDT transfer successful!");
-
-        // Update balance after successful transfer
-        await getUSDTBalance();
-        return true;
+        return { success: true, txHash: transferTx.hash };
       } else {
         console.log("Transfer failed!");
         alert("USDT transfer failed!");
-        return false;
+        return { success: false, txHash: transferTx.hash };
       }
 
     } catch (error) {
       console.error('USDT Transfer Error:', error);
 
-      // Handle specific error types
       if (error.code === 'ACTION_REJECTED') {
         alert('Transaction rejected by user');
       } else if (error.code === -32603) {
@@ -255,7 +246,7 @@ export const WalletProvider = ({ children }) => {
         alert(`Transfer failed: ${error.message || 'Unknown error'}`);
       }
 
-      return false;
+      return { success: false, txHash: null };
     }
   };
 

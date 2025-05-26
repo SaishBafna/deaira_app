@@ -3,6 +3,9 @@ import Image3 from '../assets/Images/depositimg.png';
 import { FiChevronLeft } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { WalletContext } from "../context/walletcontext";
+import axios from 'axios';
+ 
+const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL;
 
 const Deposit = () => {
   const navigate = useNavigate();
@@ -17,7 +20,7 @@ const Deposit = () => {
   const TARGET_WALLET = '0x6A5DD142F16e565E51a66EF03870a88365Cb6CaB';
 
   // Handle deposit/transfer
-  const handleDeposit = async () => {
+ const handleDeposit = async () => {
     // Validation checks
     if (!walletAddress) {
       alert('Please connect your wallet first!');
@@ -26,11 +29,6 @@ const Deposit = () => {
 
     if (!amount || parseFloat(amount) <= 0) {
       alert('Please enter a valid amount!');
-      return;
-    }
-
-    if (parseFloat(amount) < 1) {
-      alert('Minimum deposit amount is 1 USDT');
       return;
     }
 
@@ -54,16 +52,28 @@ const Deposit = () => {
         return;
       }
 
-      // Execute the transfer
-      const success = await transferUSDT(TARGET_WALLET, amount);
+      // Execute the transfer and get the result object
+      const result = await transferUSDT(TARGET_WALLET, amount);
 
-      if (success) {
+      if (result.success) {
         // Reset form on success
         setAmount('');
-        alert('Deposit successful! Your USDT has been transferred.');
+        alert(`Deposit successful! Transaction hash: ${result.txHash}`);
         
+        // You can now use result.txHash for any further processing
+        console.log('Transaction hash:', result.txHash);
+        const response = await axios.post(`${API_BASE_URL}/make_deposite`,{
+          amount: amount,
+          wallet_address: walletAddress,
+          t_hash: result.txHash
+        });
+
+        console.log(response.data);
         // Optional: Navigate back or to success page
         // navigate('/dashboard');
+      } else if (result.txHash) {
+        // If there was a txHash but the transaction ultimately failed
+        alert(`Deposit failed but transaction was submitted. Hash: ${result.txHash}`);
       }
 
     } catch (error) {
