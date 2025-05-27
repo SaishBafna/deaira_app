@@ -201,6 +201,18 @@ const Sidebar = ({ onClose }) => {
 
                 {/* Privacy Policy */}
                 <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
+                    <Link to="/kyc">
+                        <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">
+                                <Shield className="w-4 h-4 text-[#A8FFD1]" />
+                            </div>
+                            <span className="font-medium">Kyc</span>
+                        </div>
+                    </Link>
+                    <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+                </button>
+
+                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
                     <Link to="/PrivacyPolicy">
                         <div className="flex items-center gap-3">
                             <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-black bg-opacity-50 rounded-full text-white">

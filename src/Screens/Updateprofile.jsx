@@ -10,7 +10,7 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
   const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL;
   const API_IMG_BASE_URL = import.meta.env?.VITE_API_IMG_BASE_URL;
-  
+
   // Get token and jwt_token from localStorage or context
   const walletAddress = localStorage.getItem('walletAddress');
   const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
@@ -38,7 +38,8 @@ const UpdateProfile = () => {
     phone: '',
     email: '',
     password: '',
-    otp: ''
+    otp: '',
+    usdt_address: ''
   });
 
   const [otpSent, setOtpSent] = useState(false);
@@ -69,14 +70,15 @@ const UpdateProfile = () => {
         const user = response.data.user.user;
         console.log('Fetched User Data:', user);
         setUserData(user);
-        
+
         // Set form data with user data
         setFormData({
           name: user.first_name || '',
           phone: user.mobile || '',
           email: user.email1 || '',
           password: '',
-          otp: ''
+          otp: '',
+          usdt_address: ''
         });
       } else {
         console.error('Invalid user data structure:', response.data);
@@ -147,13 +149,13 @@ const UpdateProfile = () => {
 
     try {
       setUpdateLoading(true);
-      
+
       const updateData = {
         name: formData.name,
         mobile: formData.phone,
         email: formData.email,
         otp: formData.otp,
-        id:encryptedWalletAddress
+        id: encryptedWalletAddress
       };
       console.log('Update Data:', updateData);
 
@@ -304,6 +306,28 @@ const UpdateProfile = () => {
 
               <div>
                 <div className="relative">
+                  <label htmlFor="usdt_address" className="block mb-2 text-white font-medium">
+                    Your USDT BEP20 Address
+                  </label>
+                  <FiMail className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
+
+                  <input
+                    id="usdt_address"
+                    type="text"
+                    name="usdt_address"
+                    value={formData.usdt_address}
+                    onChange={handleInputChange}
+                    className="w-full bg-[#00000040] border border-[#DDCDE575] rounded-[10px] px-4 md:px-10 py-2 md:py-3 focus:outline-none focus:ring-1 focus:ring-[#5B00F7] text-white"
+                    placeholder="Enter your USDT (BEP20) address"
+                    style={{ height: '44px', minHeight: '44px' }}
+                  />
+                </div>
+              </div>
+
+
+
+              <div>
+                <div className="relative">
                   <FiLock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
                   <input
                     type="password"
@@ -320,7 +344,7 @@ const UpdateProfile = () => {
 
             <div className="p-2 rounded-xl">
               <h3 className="text-lg font-medium mb-2 md:mb-3">
-                OTP Verification  
+                OTP Verification
                 <img src={otp} alt="OTP Icon" className="inline-block ml-1 w-5 h-5" />
               </h3>
               <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
@@ -335,7 +359,7 @@ const UpdateProfile = () => {
                     style={{ height: '44px', minHeight: '44px' }}
                     disabled={!otpSent}
                   />
-                  <button 
+                  <button
                     onClick={generateOTP}
                     disabled={loading || otpSent}
                     className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent text-white hover:text-[#4A00D1] p-1 md:p-2 text-l md:text-sm font-medium transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
