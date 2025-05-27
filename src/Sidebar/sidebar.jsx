@@ -30,7 +30,27 @@ const Sidebar = ({ onClose }) => {
     const navigate = useNavigate();
 
     const toggleMenu = () => setIsOpen(!isOpen);
-    const goToDepositReport = () => navigate('/DepositReport'); // change as needed
+    const goToDepositReport = () => {
+        navigate('/DepositReport', {
+            state: {
+                reason: 'deposit',          // Replace with actual value                // Replace with actual value
+            }
+        });
+    };
+    const goToActivateReport = () => {
+        navigate('/DepositReport', {
+            state: {
+                reason: 'activate_pacakage',          // Replace with actual value                // Replace with actual value
+            }
+        });
+    };
+    const goToWithdrawReport = () => {
+        navigate('/DepositReport', {
+            state: {
+                reason: 'payment_withdraw',          // Replace with actual value                // Replace with actual value
+            }
+        });
+    };
     useEffect(() => {
         // Disable body scroll
         document.body.style.overflow = 'hidden';
@@ -149,17 +169,18 @@ const Sidebar = ({ onClose }) => {
                                 Deposit History
                             </button>
                             <button
-                                onClick={goToDepositReport}
-                                className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
-                            >
-                                Withdraw History
-                            </button>
-                            <button
-                                onClick={goToDepositReport}
+                                onClick={goToActivateReport}
                                 className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
                             >
                                 Activation History
                             </button>
+                            <button
+                                onClick={goToWithdrawReport}
+                                className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
+                            >
+                                Withdraw History
+                            </button>
+
                         </div>
                     )}
                 </div>

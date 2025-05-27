@@ -17,6 +17,8 @@ import FAQ from './Screens/FAQ.jsx';
 import OtpVerifictaion from './Screens/Otpverifictaion.jsx';
 import Kyc from './Screens/Kyc.jsx';
 import { ToastContainer } from 'react-toastify';
+import DirectTeam from './Screens/DirectTeam.jsx';
+import DownLine from './Screens/Downline.jsx';
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/OtpVerifictaion" element={<OtpVerifictaion />} />
           <Route path="/Kyc" element={<Kyc />} />
+          <Route path="/DirectTeam" element={<DirectTeam />} />
+          <Route path="/DownLine" element={<DownLine />} />
         </Routes>
       </div>
     </Router>

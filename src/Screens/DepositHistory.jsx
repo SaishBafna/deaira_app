@@ -1,10 +1,55 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FiChevronLeft } from 'react-icons/fi';
-import { ChevronDownIcon, FunnelIcon, RotateCcw, ArrowDownIcon, UserIcon } from 'lucide-react';
+import {
+  ChevronDownIcon,
+  FunnelIcon,
+  RotateCcw,
+  ArrowDownIcon,
+  UserIcon,
+} from 'lucide-react';
+import axios from 'axios';
 
-const DipositHistory = () => {
+const DepositHistory = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const state = location.state;
+
+  const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
+  const jwt_token = localStorage.getItem('jwt_token');
+
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  console.log('State:', state);
+  console.log('Encrypted Wallet Address:', encryptedWalletAddress);
+  console.log('JWT Token:', jwt_token);
+  console.log('Base URL:', `${BASE_URL}/Transaction/${encryptedWalletAddress}/${state.reason}`);
+ 
+  const fetchData = async () => {
+    if (!encryptedWalletAddress || !state?.reason) return;
+
+    try {
+      setLoading(true);
+      const res = await axios.get(`${BASE_URL}/Transaction/${encryptedWalletAddress}/${state.reason}`, {
+        headers: {
+          Authorization: `Bearer ${jwt_token}`,
+        },
+      });
+      setData(res.data.transaction || []);
+      console.log('Transaction data:', res.data);
+    } catch (err) {
+      console.error('Error fetching transaction data:', err);
+      setError('Failed to fetch transactions');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [encryptedWalletAddress, state?.reason]);
 
   return (
     <div className="w-screen h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center">
@@ -40,29 +85,38 @@ const DipositHistory = () => {
 
       {/* List Container */}
       <div className="w-full max-w-4xl px-6 space-y-3 mb-10">
-        {[
-          { id: "CA123456", amount: "$20.00" },
-          { id: "CA789012", amount: "$50.00" },
-          { id: "CA345678", amount: "$100.00" },
-          { id: "CA901234", amount: "$75.00" },
-          { id: "CA567890", amount: "$30.00" },
-        ].map((item, index) => (
-          <div key={index} className="w-full flex items-center justify-between bg-gradient-to-r from-[#0f0f11] to-[#101115] rounded-xl px-4 py-3 border border-[#2c2d31] shadow-sm">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center border border-[#2c2d31]">
-                <UserIcon className="w-4 h-4 text-green-400" />
+        { error ? (
+          <p className="text-red-500 text-center">{error}</p>
+        ) : data.length === 0 ? (
+          <p className="text-white text-center">No transactions found.</p>
+        ) : (
+          data.map((item, index) => (
+            <div
+              key={index}
+              className="w-full flex items-center justify-between bg-gradient-to-r from-[#0f0f11] to-[#101115] rounded-xl px-4 py-3 border border-[#2c2d31] shadow-sm"
+            >
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center border border-[#2c2d31]">
+                  <UserIcon className="w-4 h-4 text-green-400" />
+                </div>
+                <span className="text-white text-sm font-semibold">{item.id}</span>
               </div>
-              <span className="text-white text-sm font-semibold">{item.id}</span>
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center border border-[#2c2d31]">
+                  <UserIcon className="w-4 h-4 text-green-400" />
+                </div>
+                <span className="text-white text-sm font-semibold">{item.date}</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <ArrowDownIcon className="w-4 h-4 text-green-500" />
+                <span className="text-green-500 font-bold text-sm">{item.amount}</span>
+              </div>
             </div>
-            <div className="flex items-center space-x-1">
-              <ArrowDownIcon className="w-4 h-4 text-green-500" />
-              <span className="text-green-500 font-bold text-sm">{item.amount}</span>
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
 };
 
-export default DipositHistory;
+export default DepositHistory;

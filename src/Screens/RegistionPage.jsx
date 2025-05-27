@@ -28,6 +28,7 @@ const Register = () => {
   useEffect(() => {
     if (walletAddress) {
       checkWalletStatus();
+      handleLogoClick(); 
     }
   }, [walletAddress]);
 
@@ -114,6 +115,25 @@ const Register = () => {
       setIsLoading(false);
     }
   };
+
+
+  
+
+  // Handle logo click and send API request
+  const handleLogoClick = async () => {
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/generateToken`, {
+        email: walletAddress
+      });
+      console.log('Token Response:', response.data);
+      localStorage.setItem("jwt_token", response.data.token);
+      console.log('Token Response:', response.data.token);
+      // You can store it in localStorage or context as needed
+    } catch (error) {
+      console.error('Token generation failed:', error);
+    }
+  };
+  
 
   return (
     <div className="min-h-screen bgw-screen h-screen bg-[#100036] relative overflow-y-auto flex flex-col items-center p-6 gap-6 text-white font-sans">
