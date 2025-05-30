@@ -225,7 +225,7 @@ const Profile = () => {
                 <p className="text-sm opacity-70 whitespace-nowrap">Total Team Business</p>
               </div>
               <div className="w-[95px] h-[34px] rounded-[5px] border border-white bg-[#6B37FF5C] flex items-center justify-center mx-auto sm:mx-0">
-                <p className="text-sm font-bold">3</p>
+                <p className="text-sm font-bold">{data?.getTotalActiveDownlineBusiness}</p>
               </div>
             </div>
             <p className="text-purple-400 text-sm mb-2">Invite. Invest. Grow with Smart Trades.</p>

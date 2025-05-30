@@ -26,11 +26,65 @@ import { MdLogout } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 const Homescreen = () => {
   const { walletAddress, connectWallet, disconnectWallet } = useContext(WalletContext);
-
-  const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
   const navigate = useNavigate();
+  const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
+  const jwt_token = localStorage.getItem('jwt_token');
+  const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL;
+  const [data, setData] = React.useState(null);
+  const [wallet, setWallet] = React.useState(null);
 
-  console.log('encryptedWalletAddress:', encryptedWalletAddress);
+
+
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get(
+        `${API_BASE_URL}/homepageapi/${encryptedWalletAddress}`,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt_token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      if (!response.data?.user?.user) {
+        throw new Error('Failed to fetch user data');
+      }
+      console.log('User Data:', response.data);
+      setData(response?.data);
+    } catch (err) {
+      console.error('User data fetch error:', err);
+      throw err;
+    }
+  };
+
+
+  const FetchWalletData = async () => {
+    try {
+      const walletResponse = await axios.get(
+        `${API_BASE_URL}/Walletpageapi/${encryptedWalletAddress}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${jwt_token}`
+          }
+        }
+      );
+      console.log('Wallet Data:', walletResponse?.data);
+      setWallet(walletResponse?.data?.wallet);
+    }
+    catch (error) {
+      console.error('Error fetching wallet data:', error);
+    }
+  };
+
+  useEffect(() => {
+
+    FetchWalletData();
+    fetchUserData();
+  }, []);
+
+
+
   useEffect(() => {
     const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
     console.log('encryptedWalletAddress useEffect:', encryptedWalletAddress);
@@ -167,7 +221,7 @@ const Homescreen = () => {
             </div>
             <div>
               <p className="text-sm text-white/70">Total Earnings</p>
-              <h3 className="text-xl font-bold">$4050</h3>
+              <h3 className="text-xl font-bold">${wallet?.total_income}</h3>
             </div>
           </div>
 
@@ -178,7 +232,7 @@ const Homescreen = () => {
             </div>
             <div>
               <p className="text-sm text-white/70">Active Members</p>
-              <h3 className="text-xl font-bold">500+</h3>
+              <h3 className="text-xl font-bold">{data?.my_activedownlineCount}+</h3>
             </div>
           </div>
 

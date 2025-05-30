@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FiSearch } from 'react-icons/fi'
 import Image2 from '../assets/Images/dash.png';
 import Image3 from '../assets/Images/robot.png';
@@ -14,8 +14,39 @@ import I3 from '../assets/Images/i8.png';
 import I4 from '../assets/Images/i9.png';
 import Header1 from '../Header/header1.jsx';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 const Dashboard = () => {
   const navigate = useNavigate();
+  const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
+  const jwt_token = localStorage.getItem('jwt_token');
+  const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL;
+  const [wallet, setWallet] = React.useState(null);
+
+  const FetchWalletData = async () => {
+    try {
+      const walletResponse = await axios.get(
+        `${API_BASE_URL}/Walletpageapi/${encryptedWalletAddress}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${jwt_token}`
+          }
+        }
+      );
+      console.log('Wallet Data:', walletResponse?.data);
+      setWallet(walletResponse?.data?.wallet);
+    }
+    catch (error) {
+      console.error('Error fetching wallet data:', error);
+    }
+  };
+
+  useEffect(() => {
+
+    FetchWalletData();
+
+  }, []);
+
   const handleClick = () => {
     navigate('/Deposit');
   };
@@ -108,11 +139,11 @@ const Dashboard = () => {
           <div className="relative z-10">
             <div className="text-center mb-6">
               <h3 className="text-gray-200 text-2xl font-medium mb-3">
-                Principal <span className="text-white font-semibold">Balance</span>
+                Wallet <span className="text-white font-semibold">Balance</span>
               </h3>
 
               <div className="mb-4 bg-gray-600 px-8 py-2 rounded-lg inline-block">
-                <span className="text-white text-3xl font-bold tracking-tight">$203</span>
+                <span className="text-white text-3xl font-bold tracking-tight">${wallet?.activation_wallet}</span>
               </div>
 
               <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-1.5 rounded-full font-semibold transition-all duration-200 flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl transform hover:scale-105 border border-white">
@@ -125,11 +156,11 @@ const Dashboard = () => {
             {/* Earning Balance Section */}
             <div className="border-t border-purple-600/50 pt-4">
               <h4 className="text-gray-200 text-2xl font-medium mb-2 text-center">
-                Earning Balance
+                Income Wallet
               </h4>
               <div className="text-center">
                 <div className="bg-gray-600 inline-block px-8 py-2 rounded-lg">
-                  <span className="text-white text-3xl font-bold">$5.5</span>
+                  <span className="text-white text-3xl font-bold">${wallet?.wallet_balance}</span>
                 </div>
               </div>
 
@@ -145,9 +176,9 @@ const Dashboard = () => {
               <TrendingUp className="w-4 h-4 text-white" />
             </div>
             <div>
-              <div className="text-green-400 text-xs font-medium">Earning</div>
-              <div className="text-green-400 text-xs font-medium">Withdraw</div>
-              <div className="text-white text-sm font-semibold">$23.00/Token</div>
+              <div className="text-green-400 text-xs font-medium">Total</div>
+              <div className="text-green-400 text-xs font-medium">Income</div>
+              <div className="text-white text-sm font-semibold">${wallet?.total_income}/Token</div>
             </div>
           </div>
 
@@ -156,9 +187,9 @@ const Dashboard = () => {
               <DollarSign className="w-4 h-4 text-white" />
             </div>
             <div>
-              <div className="text-blue-400 text-xs font-medium">Principal</div>
+              <div className="text-blue-400 text-xs font-medium">Total</div>
               <div className="text-blue-400 text-xs font-medium">Withdraw</div>
-              <div className="text-white text-sm font-semibold">$97/Token</div>
+              <div className="text-white text-sm font-semibold">${wallet?.total_withdrawal}/Token</div>
             </div>
           </div>
 
@@ -168,9 +199,9 @@ const Dashboard = () => {
               <ArrowUpRight className="w-4 h-4 text-white" />
             </div>
             <div>
-              <div className="text-orange-400 text-xs font-medium">Trade</div>
-              <div className="text-orange-400 text-xs font-medium">Profit</div>
-              <div className="text-white text-sm font-semibold">$340/Token</div>
+              <div className="text-orange-400 text-xs font-medium">Direct</div>
+              <div className="text-orange-400 text-xs font-medium">Income</div>
+              <div className="text-white text-sm font-semibold">${wallet?.direct_income}/Token</div>
             </div>
           </div>
 
@@ -179,14 +210,14 @@ const Dashboard = () => {
               <Calculator className="w-4 h-4 text-white" />
             </div>
             <div>
-              <div className="text-purple-400 text-xs font-medium">Total</div>
-              <div className="text-purple-400 text-xs font-medium">Withdraw</div>
-              <div className="text-white text-sm font-semibold">$297/Token</div>
+              <div className="text-purple-400 text-xs font-medium">Level</div>
+              <div className="text-purple-400 text-xs font-medium">Income</div>
+              <div className="text-white text-sm font-semibold">${wallet?.level_income}/Token</div>
             </div>
           </div>
 
           {/* Third Row */}
-          <div className="bg-[#262424] rounded-xl p-3 flex items-center gap-2">
+          {/* <div className="bg-[#262424] rounded-xl p-3 flex items-center gap-2">
             <div className="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center">
               <RotateCcw className="w-4 h-4 text-white" />
             </div>
@@ -206,7 +237,7 @@ const Dashboard = () => {
               <div className="text-emerald-400 text-xs font-medium">Trade</div>
               <div className="text-white text-sm font-semibold">$96/Token</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -258,116 +289,6 @@ const Dashboard = () => {
         <img src={Image1} alt="Panel" className="w-full" />
       </div>
 
-      <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-white font-medium text-lg">Your Income</span>
-          <img src={I3} alt="Lock" className="w-5 h-5" />
-        </div>
-      </div>
-
-      <div className="w-full max-w-xl lg:max-w-4xl space-y-4">
-        {/* Top Section with Weekly Bonus and ID Free */}
-        <div className="flex gap-4">
-          {/* Weekly Bonus Card */}
-          <div className="flex-1 bg-slate-800 rounded-lg p-4 text-white">
-            <div className="flex items-center gap-2 mb-1">
-              <Calendar className="w-5 h-5 text-green-400" />
-              <span className="text-sm font-medium">Weekly Bonus</span>
-            </div>
-            <div className="text-green-400 text-xl font-bold">$0.00</div>
-          </div>
-
-          {/* ID Free Card */}
-          <div className="flex-1 bg-slate-800 rounded-lg p-4 text-white">
-            <div className="flex items-center gap-2 mb-1">
-              <FiSearch className="w-5 h-5 text-purple-400" />
-              <span className="text-sm font-medium">$10 ID Free</span>
-            </div>
-            <div className="text-purple-400 text-sm">$0.045/Token</div>
-          </div>
-        </div>
-
-        {/* Individual Earning Cards */}
-        <div className="space-y-4">
-          {/* Trading Profit */}
-          <div className="bg-slate-800 rounded-lg p-4 text-white">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-                  <TrendingUp className="w-4 h-4 text-white" />
-                </div>
-                <span className="font-medium">Trading Profit</span>
-              </div>
-              <span className="font-semibold">$0.4</span>
-            </div>
-          </div>
-
-          {/* Sponsor Income */}
-          <div className="bg-slate-800 rounded-lg p-4 text-white">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-                  <BarChart3 className="w-4 h-4 text-white" />
-                </div>
-                <span className="font-medium">Sponsor Income</span>
-              </div>
-              <span className="font-semibold">$30.00</span>
-            </div>
-          </div>
-
-          {/* Unique Referral */}
-          <div className="bg-slate-800 rounded-lg p-4 text-white">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-                  <Users className="w-4 h-4 text-white" />
-                </div>
-                <span className="font-medium">Unique Referral</span>
-              </div>
-              <span className="font-semibold">$0.00</span>
-            </div>
-          </div>
-
-          {/* Team Level */}
-          <div className="bg-slate-800 rounded-lg p-4 text-white">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-                  <Share2 className="w-4 h-4 text-white" />
-                </div>
-                <span className="font-medium">Team Level</span>
-              </div>
-              <span className="font-semibold">$0.44</span>
-            </div>
-          </div>
-
-          {/* Monthly Salary */}
-          <div className="bg-slate-800 rounded-lg p-4 text-white">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-                  <Calendar className="w-4 h-4 text-white" />
-                </div>
-                <span className="font-medium">Monthly Salary</span>
-              </div>
-              <span className="font-semibold">$0.54</span>
-            </div>
-          </div>
-
-          {/* AMB Reward */}
-          <div className="bg-slate-800 rounded-lg p-4 text-white">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-                  <Trophy className="w-4 h-4 text-white" />
-                </div>
-                <span className="font-medium">AMB Reward</span>
-              </div>
-              <span className="font-semibold">$0.05</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
         <div className="flex items-center gap-2 mb-2">
@@ -398,7 +319,7 @@ const Dashboard = () => {
                     <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <span className="text-white font-medium">Principal</span>
+                <span className="text-white font-medium"> Joining Token Value </span>
               </div>
               <div className="text-2xl font-bold text-[#A8FFD1] mb-3">$20.000</div>
               <div className="text-sm text-purple-200">
@@ -418,9 +339,9 @@ const Dashboard = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                   </svg>
                 </div>
-                <span className="text-white font-medium">Earning</span>
+                <span className="text-white font-medium">Current Day Token Value</span>
               </div>
-              <div className="text-2xl font-bold text-[#A8FFD1] mb-3">$3.4077</div>
+              <div className="text-2xl font-bold text-[#A8FFD1] mb-3">$0.001</div>
               <div className="text-sm text-purple-200">
                 <div className="mb-1">Second Trade</div>
                 <div>18:00 - 23:00</div>
@@ -495,3 +416,123 @@ const Dashboard = () => {
 }
 
 export default Dashboard
+
+
+
+
+
+
+
+
+
+
+    //   <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
+    //     <div className="flex items-center gap-2 mb-2">
+    //       <span className="text-white font-medium text-lg">Your Income</span>
+    //       <img src={I3} alt="Lock" className="w-5 h-5" />
+    //     </div>
+    //   </div> 
+
+    //    <div className="w-full max-w-xl lg:max-w-4xl space-y-4">
+    //     {/* Top Section with Weekly Bonus and ID Free */}
+    //     <div className="flex gap-4">
+    //       {/* Weekly Bonus Card */}
+    //       <div className="flex-1 bg-slate-800 rounded-lg p-4 text-white">
+    //         <div className="flex items-center gap-2 mb-1">
+    //           <Calendar className="w-5 h-5 text-green-400" />
+    //           <span className="text-sm font-medium">Weekly Bonus</span>
+    //         </div>
+    //         <div className="text-green-400 text-xl font-bold">$0.00</div>
+    //       </div>
+
+    //       {/* ID Free Card */}
+    //       <div className="flex-1 bg-slate-800 rounded-lg p-4 text-white">
+    //         <div className="flex items-center gap-2 mb-1">
+    //           <FiSearch className="w-5 h-5 text-purple-400" />
+    //           <span className="text-sm font-medium">$10 ID Free</span>
+    //         </div>
+    //         <div className="text-purple-400 text-sm">$0.045/Token</div>
+    //       </div>
+    //     </div>
+
+    //     {/* Individual Earning Cards */}
+    //     <div className="space-y-4">
+    //       {/* Trading Profit */}
+    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
+    //         <div className="flex items-center justify-between">
+    //           <div className="flex items-center gap-3">
+    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
+    //               <TrendingUp className="w-4 h-4 text-white" />
+    //             </div>
+    //             <span className="font-medium">Trading Profit</span>
+    //           </div>
+    //           <span className="font-semibold">$0.4</span>
+    //         </div>
+    //       </div>
+
+    //       {/* Sponsor Income */}
+    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
+    //         <div className="flex items-center justify-between">
+    //           <div className="flex items-center gap-3">
+    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
+    //               <BarChart3 className="w-4 h-4 text-white" />
+    //             </div>
+    //             <span className="font-medium">Sponsor Income</span>
+    //           </div>
+    //           <span className="font-semibold">$30.00</span>
+    //         </div>
+    //       </div>
+
+    //       {/* Unique Referral */}
+    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
+    //         <div className="flex items-center justify-between">
+    //           <div className="flex items-center gap-3">
+    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
+    //               <Users className="w-4 h-4 text-white" />
+    //             </div>
+    //             <span className="font-medium">Unique Referral</span>
+    //           </div>
+    //           <span className="font-semibold">$0.00</span>
+    //         </div>
+    //       </div>
+
+    //       {/* Team Level */}
+    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
+    //         <div className="flex items-center justify-between">
+    //           <div className="flex items-center gap-3">
+    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
+    //               <Share2 className="w-4 h-4 text-white" />
+    //             </div>
+    //             <span className="font-medium">Team Level</span>
+    //           </div>
+    //           <span className="font-semibold">$0.44</span>
+    //         </div>
+    //       </div>
+
+    //       {/* Monthly Salary */}
+    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
+    //         <div className="flex items-center justify-between">
+    //           <div className="flex items-center gap-3">
+    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
+    //               <Calendar className="w-4 h-4 text-white" />
+    //             </div>
+    //             <span className="font-medium">Monthly Salary</span>
+    //           </div>
+    //           <span className="font-semibold">$0.54</span>
+    //         </div>
+    //       </div>
+
+    //       {/* AMB Reward */}
+    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
+    //         <div className="flex items-center justify-between">
+    //           <div className="flex items-center gap-3">
+    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
+    //               <Trophy className="w-4 h-4 text-white" />
+    //             </div>
+    //             <span className="font-medium">AMB Reward</span>
+    //           </div>
+    //           <span className="font-semibold">$0.05</span>
+    //         </div>
+    //       </div>
+    //     </div>
+    //  </div> 
