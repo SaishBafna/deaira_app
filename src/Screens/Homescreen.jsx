@@ -232,7 +232,7 @@ const Homescreen = () => {
             </div>
             <div>
               <p className="text-sm text-white/70">Active Members</p>
-              <h3 className="text-xl font-bold">{data?.my_activedownlineCount}+</h3>
+              <h3 className="text-xl font-bold">{data?.my_activedownlineCount}</h3>
             </div>
           </div>
 

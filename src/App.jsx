@@ -10,6 +10,7 @@ import Deposit from './Screens/Deposit.jsx';
 import Withdraw from './Screens/Withdraw.jsx';
 import ActivationPackage from './Screens/ActivationPackage.jsx';
 import DepositHistory from './Screens/DepositHistory.jsx';
+import TeamReport from './Screens/TeamReport.jsx';
 import Register from './Screens/RegistionPage.jsx';
 import TermsAndConditions from './Screens/TermsAndConditions.jsx';
 import PrivacyPolicy from './Screens/PrivacyPolicy.jsx';
@@ -36,6 +37,7 @@ function App() {
           <Route path="/Withdraw" element={<Withdraw />} />
           <Route path="/ActivationPackage" element={<ActivationPackage />} />
           <Route path="/DepositReport" element={<DepositHistory />} />
+          <Route path="/TeamReport" element={<TeamReport />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
           <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
