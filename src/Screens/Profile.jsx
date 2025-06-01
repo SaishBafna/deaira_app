@@ -30,6 +30,7 @@ const Profile = () => {
   const [loading, setLoading] = React.useState(true);
   const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
   const [data, Setdata] = React.useState([]);
+  const [user, setUser] = React.useState([]);
   const jwt_token = localStorage.getItem('jwt_token');
   console.log('Encrypted Wallet Address:', encryptedWalletAddress);
   console.log('JWT Token:', jwt_token); 
@@ -50,6 +51,7 @@ const Profile = () => {
       });
       console.log('User Data:', response.data);
       Setdata(response.data)
+      setUser(response.data.user.user);
 
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -126,13 +128,13 @@ const Profile = () => {
               </div>
               <div>
                 <p className="text-lg ">Welcome back,</p>
-                <p className="text-lg  ">Radhika</p>
+                <p className="text-lg  ">{user?.first_name || "Not Updated"}</p>
               </div>
             </div>
 
             {/* Right Side: ID Display */}
             <div className="w-[120px] h-[33px] rounded-[12px] border border-[#5401BD] bg-gradient-to-r from-[#E0B9F2] to-[#4E10FF] backdrop-blur-sm">
-              <p className="text-sm font-medium text-white text-center leading-[33px]">ID: CA120609</p>
+              <p className="text-sm font-medium text-white text-center leading-[33px]">ID: DA{user?.id || "0"}</p>
             </div>
           </div>
         </div>

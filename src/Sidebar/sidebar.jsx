@@ -33,21 +33,21 @@ const Sidebar = ({ onClose }) => {
     const goToDepositReport = () => {
         navigate('/DepositReport', {
             state: {
-                reason: 'deposit',          // Replace with actual value                // Replace with actual value
+                reason: 'deposit',
             }
         });
     };
     const goToActivateReport = () => {
         navigate('/DepositReport', {
             state: {
-                reason: 'activate_pacakage',          // Replace with actual value                // Replace with actual value
+                reason: 'activate_pacakage',
             }
         });
     };
     const goToWithdrawReport = () => {
         navigate('/DepositReport', {
             state: {
-                reason: 'payment_withdraw',          // Replace with actual value                // Replace with actual value
+                reason: 'payment_withdraw',
             }
         });
     };

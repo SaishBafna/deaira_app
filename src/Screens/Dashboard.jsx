@@ -13,7 +13,7 @@ import I2 from '../assets/Images/i7.png';
 import I3 from '../assets/Images/i8.png';
 import I4 from '../assets/Images/i9.png';
 import Header1 from '../Header/header1.jsx';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Dashboard = () => {
@@ -21,6 +21,7 @@ const Dashboard = () => {
   const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
   const jwt_token = localStorage.getItem('jwt_token');
   const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL;
+  const [user, setUser] = React.useState(null);
   const [wallet, setWallet] = React.useState(null);
 
   const FetchWalletData = async () => {
@@ -33,7 +34,9 @@ const Dashboard = () => {
           }
         }
       );
+      
       console.log('Wallet Data:', walletResponse?.data);
+      setUser(walletResponse?.data?.user?.user);
       setWallet(walletResponse?.data?.wallet);
     }
     catch (error) {
@@ -81,7 +84,7 @@ const Dashboard = () => {
           <img src={Image2} alt="Panel" className="w-16 h-16 rounded-lg" />
           <div className="flex flex-col ml-4">
             <p className="text-white text-sm">Welcome back,</p>
-            <p className="text-white font-semibold text-lg">abcd</p>
+            <p className="text-white font-semibold text-lg">{user?.first_name || 'Not Updated'}</p>
           </div>
         </div>
 
@@ -93,7 +96,7 @@ const Dashboard = () => {
               backgroundImage: "linear-gradient(to right, #E0B9F2, #4E10FF)"
             }}
           >
-            ID:CA121234
+            ID: DA{user?.id || '0'}
           </button>
         </div>
       </div>
@@ -215,29 +218,6 @@ const Dashboard = () => {
               <div className="text-white text-sm font-semibold">${wallet?.level_income}/Token</div>
             </div>
           </div>
-
-          {/* Third Row */}
-          {/* <div className="bg-[#262424] rounded-xl p-3 flex items-center gap-2">
-            <div className="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center">
-              <RotateCcw className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <div className="text-cyan-400 text-xs font-medium">Principal</div>
-              <div className="text-cyan-400 text-xs font-medium">In Trade</div>
-              <div className="text-white text-sm font-semibold">$23.00/Token</div>
-            </div>
-          </div>
-
-          <div className="bg-[#262424] rounded-xl p-3 flex items-center gap-2">
-            <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
-              <ArrowDownLeft className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <div className="text-emerald-400 text-xs font-medium">Earning In</div>
-              <div className="text-emerald-400 text-xs font-medium">Trade</div>
-              <div className="text-white text-sm font-semibold">$96/Token</div>
-            </div>
-          </div> */}
         </div>
       </div>
 
@@ -251,23 +231,28 @@ const Dashboard = () => {
       <div className="mb-5 w-full max-w-xl lg:max-w-4xl">
         <div className="grid grid-cols-4 gap-6">
           {/* Deposit */}
-          <div className="flex flex-col items-center justify-center"
-            onClick={handleClick}>
-            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-green-600">
-              <Banknote className="text-white w-6 h-6" />
+          <Link to="/Deposit">
+            <div className="flex flex-col items-center justify-center">
+              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-green-600">
+                <Banknote className="text-white w-6 h-6" />
+              </div>
+              <span className="text-white text-xs mt-2">Deposit</span>
             </div>
-            <span className="text-white text-xs mt-2">Deposit</span>
-          </div>
+          </Link>
 
           {/* Withdraw */}
-          <div className="flex flex-col items-center justify-center">
-            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-pink-500 to-fuchsia-600">
-              <Wallet className="text-white w-6 h-6" />
+
+          <Link to="/Withdraw">
+            <div className="flex flex-col items-center justify-center">
+              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-pink-500 to-fuchsia-600">
+                <Wallet className="text-white w-6 h-6" />
+              </div>
+              <span className="text-white text-xs mt-2">Withdraw</span>
             </div>
-            <span className="text-white text-xs mt-2">Withdraw</span>
-          </div>
+          </Link>
 
           {/* Team */}
+
           <div className="flex flex-col items-center justify-center">
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-blue-600">
               <Users className="text-white w-6 h-6" />
@@ -297,7 +282,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-xl lg:max-w-4xl mx-auto">
+      <div className="w-full max-w-xl lg:max-w-4xl mx-auto mb-20">
         <div className="bg-gradient-to-br from-[#0c10cc5c] to-indigo-900 rounded-xl p-6 text-white relative">
           {/* Header with Saving and coin icon */}
           <div className="flex items-center justify-center gap-2 mb-8">
@@ -367,172 +352,9 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-
-      <div className="w-full max-w-xl lg:max-w-4xl mx-auto mb-20">
-        <div className="bg-gradient-to-r from-[#27064ae7] to-purple-800 rounded-lg p-6 text-white">
-          {/* Header Section */}
-          <div className="flex items-center gap-3 mb-2 justify-center">
-            <Smartphone className="w-6 h-6 text-white" />
-            <h2 className="text-2xl font-bold">Download Our App</h2>
-          </div>
-
-          {/* Subtitle */}
-          <div className="flex justify-center items-center mb-6">
-            <p className="text-purple-100 text-sm">
-              Get the best trading experience on mobile
-            </p>
-          </div>
-
-          {/* Buttons Section */}
-          <div className="flex gap-4">
-            {/* Android Button */}
-            <button className="flex-1 border border-white rounded-full px-4 py-2 flex items-center gap-3 hover:opacity-90 transition-all bg-gradient-to-r from-[#6B37FF] to-[#116DA1]">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <FaAndroid className="w-5 h-5 text-green-600" />
-              </div>
-              <div className="text-left text-white">
-                <div className="text-xs">Get it on</div>
-                <div className="text-sm font-semibold">Android</div>
-              </div>
-            </button>
-
-            {/* Play Store Button */}
-            <button className="flex-1 border border-white rounded-full px-4 py-2 flex items-center gap-3 hover:opacity-90 transition-all bg-gradient-to-r from-[#6B37FF] to-[#116DA1]">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <FaGooglePlay className="w-5 h-5 text-black" />
-              </div>
-              <div className="text-left text-white">
-                <div className="text-xs">Download from</div>
-                <div className="text-sm font-semibold">Play Store</div>
-              </div>
-            </button>
-          </div>
-
-        </div>
-      </div>
       <Footer />
     </div>
   )
 }
 
 export default Dashboard
-
-
-
-
-
-
-
-
-
-
-    //   <div className="text-left w-full mt-2 max-w-xl lg:max-w-4xl">
-    //     <div className="flex items-center gap-2 mb-2">
-    //       <span className="text-white font-medium text-lg">Your Income</span>
-    //       <img src={I3} alt="Lock" className="w-5 h-5" />
-    //     </div>
-    //   </div> 
-
-    //    <div className="w-full max-w-xl lg:max-w-4xl space-y-4">
-    //     {/* Top Section with Weekly Bonus and ID Free */}
-    //     <div className="flex gap-4">
-    //       {/* Weekly Bonus Card */}
-    //       <div className="flex-1 bg-slate-800 rounded-lg p-4 text-white">
-    //         <div className="flex items-center gap-2 mb-1">
-    //           <Calendar className="w-5 h-5 text-green-400" />
-    //           <span className="text-sm font-medium">Weekly Bonus</span>
-    //         </div>
-    //         <div className="text-green-400 text-xl font-bold">$0.00</div>
-    //       </div>
-
-    //       {/* ID Free Card */}
-    //       <div className="flex-1 bg-slate-800 rounded-lg p-4 text-white">
-    //         <div className="flex items-center gap-2 mb-1">
-    //           <FiSearch className="w-5 h-5 text-purple-400" />
-    //           <span className="text-sm font-medium">$10 ID Free</span>
-    //         </div>
-    //         <div className="text-purple-400 text-sm">$0.045/Token</div>
-    //       </div>
-    //     </div>
-
-    //     {/* Individual Earning Cards */}
-    //     <div className="space-y-4">
-    //       {/* Trading Profit */}
-    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
-    //         <div className="flex items-center justify-between">
-    //           <div className="flex items-center gap-3">
-    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-    //               <TrendingUp className="w-4 h-4 text-white" />
-    //             </div>
-    //             <span className="font-medium">Trading Profit</span>
-    //           </div>
-    //           <span className="font-semibold">$0.4</span>
-    //         </div>
-    //       </div>
-
-    //       {/* Sponsor Income */}
-    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
-    //         <div className="flex items-center justify-between">
-    //           <div className="flex items-center gap-3">
-    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-    //               <BarChart3 className="w-4 h-4 text-white" />
-    //             </div>
-    //             <span className="font-medium">Sponsor Income</span>
-    //           </div>
-    //           <span className="font-semibold">$30.00</span>
-    //         </div>
-    //       </div>
-
-    //       {/* Unique Referral */}
-    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
-    //         <div className="flex items-center justify-between">
-    //           <div className="flex items-center gap-3">
-    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-    //               <Users className="w-4 h-4 text-white" />
-    //             </div>
-    //             <span className="font-medium">Unique Referral</span>
-    //           </div>
-    //           <span className="font-semibold">$0.00</span>
-    //         </div>
-    //       </div>
-
-    //       {/* Team Level */}
-    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
-    //         <div className="flex items-center justify-between">
-    //           <div className="flex items-center gap-3">
-    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-    //               <Share2 className="w-4 h-4 text-white" />
-    //             </div>
-    //             <span className="font-medium">Team Level</span>
-    //           </div>
-    //           <span className="font-semibold">$0.44</span>
-    //         </div>
-    //       </div>
-
-    //       {/* Monthly Salary */}
-    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
-    //         <div className="flex items-center justify-between">
-    //           <div className="flex items-center gap-3">
-    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-    //               <Calendar className="w-4 h-4 text-white" />
-    //             </div>
-    //             <span className="font-medium">Monthly Salary</span>
-    //           </div>
-    //           <span className="font-semibold">$0.54</span>
-    //         </div>
-    //       </div>
-
-    //       {/* AMB Reward */}
-    //       <div className="bg-slate-800 rounded-lg p-4 text-white">
-    //         <div className="flex items-center justify-between">
-    //           <div className="flex items-center gap-3">
-    //             <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-    //               <Trophy className="w-4 h-4 text-white" />
-    //             </div>
-    //             <span className="font-medium">AMB Reward</span>
-    //           </div>
-    //           <span className="font-semibold">$0.05</span>
-    //         </div>
-    //       </div>
-    //     </div>
-    //  </div> 

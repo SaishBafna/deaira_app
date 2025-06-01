@@ -37,7 +37,7 @@ const DepositHistory = () => {
           Authorization: `Bearer ${jwt_token}`,
         },
       });
-      setData(res.data.transaction || []);
+      setData(res.data.transaction.data || []);
       console.log('Transaction data:', res.data);
     } catch (err) {
       console.error('Error fetching transaction data:', err);
