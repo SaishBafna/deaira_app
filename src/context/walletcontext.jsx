@@ -83,6 +83,7 @@ export const WalletProvider = ({ children }) => {
           const encryptedWalletAddress = encryptWalletAddress(address);
           localStorage.setItem("encryptedWalletAddress", encryptedWalletAddress);
           console.log("wallet connected", accounts);
+          alert("Wallet connected successfully!");
           return address;
         }
         return null;

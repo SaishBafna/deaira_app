@@ -116,8 +116,9 @@ const Register = () => {
   const handleConnectWallet = async () => {
     setIsConnectingWallet(true);
     try {
-      await connectWallet();
-      toast.success("Wallet connected successfully!");
+      const connect = await connectWallet();
+      console.log(connect)
+      // toast.success("Wallet connected successfully!");
       // The useEffect will automatically trigger checkWalletStatus
     } catch (error) {
       console.error("Wallet connection error:", error);
