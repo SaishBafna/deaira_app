@@ -274,7 +274,7 @@ const UpdateProfile = () => {
                 </div>
               </div>
 
-              <div>
+              {/* <div>
                 <div className="relative">
                   <FiPhone className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
                   <input
@@ -287,7 +287,7 @@ const UpdateProfile = () => {
                     style={{ height: '44px', minHeight: '44px' }}
                   />
                 </div>
-              </div>
+              </div> */}
 
               <div>
                 <div className="relative">
@@ -303,7 +303,7 @@ const UpdateProfile = () => {
                   />
                 </div>
               </div>
-
+{/* 
               <div>
                 <div className="relative">
                   <label htmlFor="usdt_address" className="block mb-2 text-white font-medium">
@@ -322,11 +322,11 @@ const UpdateProfile = () => {
                     style={{ height: '44px', minHeight: '44px' }}
                   />
                 </div>
-              </div>
+              </div> */}
 
 
 
-              <div>
+              {/* <div>
                 <div className="relative">
                   <FiLock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B00F7]" size={15} />
                   <input
@@ -339,14 +339,17 @@ const UpdateProfile = () => {
                     style={{ height: '44px', minHeight: '44px' }}
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="p-2 rounded-xl">
-              <h3 className="text-lg font-medium mb-2 md:mb-3">
-                OTP Verification
-                <img src={otp} alt="OTP Icon" className="inline-block ml-1 w-5 h-5" />
-              </h3>
+<h3 className="text-lg font-medium mb-2 md:mb-3">
+  <span className="inline-flex items-center">
+    Reset OTP
+    <img src={otp} alt="OTP Icon" className="ml-1 w-5 h-5" />
+    <span className="ml-1 text-white-500 ml-3 font-mono">00:00</span>
+  </span>
+</h3>
               <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
                 <div className="relative flex-grow">
                   <input
@@ -362,9 +365,9 @@ const UpdateProfile = () => {
                   <button
                     onClick={generateOTP}
                     disabled={loading || otpSent}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent text-white hover:text-[#4A00D1] p-1 md:p-2 text-l md:text-sm font-medium transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent text-white hover:text-[#4A00D1] p-1 md:p-2 text-l md:text-xl font-bold font-medium transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {loading ? 'SENDING...' : otpSent ? 'SENT' : 'GET OTP'}
+                    {loading ? 'SENDING...' : otpSent ? 'SENT' : 'Resend OTP'}
                   </button>
                 </div>
               </div>
@@ -374,8 +377,97 @@ const UpdateProfile = () => {
                 </p>
               )}
             </div>
+
+
+            <div className="p-2 rounded-xl">
+  <h3 className="text-lg font-medium mb-2 md:mb-3">
+    <span className="inline-flex items-center">
+      KYC
+    </span>
+  </h3>
+
+  <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
+    <div className="relative flex-grow">
+      <input
+        className="w-full bg-[#00000040] border border-[#DDCDE575] rounded-[10px] pl-4 pr-16 py-2 md:py-3 focus:outline-none focus:ring-1 focus:ring-[#5B00F7] text-white"
+        placeholder="Please Select Your Country"
+        disabled
+        type="text"
+        name="otp"
+        style={{ height: '44px', minHeight: '44px' }}
+      />
+
+        <input
+        className="w-full bg-[#00000040] border border-[#DDCDE575] rounded-[10px] pl-4 mt-[13px] pr-16 py-2 md:py-3 focus:outline-none focus:ring-1 focus:ring-[#5B00F7] text-white"
+        placeholder="Enter Identity Card Name"
+        disabled
+        type="text"
+        name="otp"
+        style={{ height: '44px', minHeight: '44px' }}
+      />
+
+<div className="mt-7 space-y-4">
+  {/* Upload Front Side */}
+  <label className="block">
+    <input type="file" className="hidden"  />
+    <div
+      className="flex items-center justify-center w-full py-3 rounded-xl cursor-pointer"
+      style={{
+        border: '1px dashed #DDCDE575',
+        background: 'linear-gradient(180deg, #1B0F33 0%, #1B0F33 100%)',
+      }}
+    >
+      <svg
+        className="w-5 h-5 mr-2 text-white"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path d="M3 16a1 1 0 001 1h12a1 1 0 001-1v-4h-2v4H5v-4H3v4zM9 3v7.586L6.707 8.293 5.293 9.707 10 14.414l4.707-4.707-1.414-1.414L11 10.586V3H9z" />
+      </svg>
+      <span className="text-white">Upload Front Side</span>
+    </div>
+  </label>
+
+  {/* OR Separator */}
+  <div className="text-center text-white font-semibold">OR</div>
+
+  {/* Upload Back Side (Optional) */}
+  <label className="block">
+    <input type="file" className="hidden"  />
+    <div
+      className="flex items-center justify-center w-full py-3 rounded-xl cursor-pointer"
+      style={{
+        border: '1px dashed #DDCDE575',
+        background: 'linear-gradient(180deg, #1B0F33 0%, #1B0F33 100%)',
+      }}
+    >
+      <svg
+        className="w-5 h-5 mr-2 text-white"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path d="M3 16a1 1 0 001 1h12a1 1 0 001-1v-4h-2v4H5v-4H3v4zM9 3v7.586L6.707 8.293 5.293 9.707 10 14.414l4.707-4.707-1.414-1.414L11 10.586V3H9z" />
+      </svg>
+      <span className="text-white">Upload Back Side (Optional)</span>
+    </div>
+  </label>
+</div>
+
+
+
+   
+    </div>
+  </div>
+</div>
+
           </div>
+
+          
+
+          
         </div>
+
+        
 
         {/* Update Button */}
         <div className="mt-4 md:mt-6 flex justify-center mb-2">
