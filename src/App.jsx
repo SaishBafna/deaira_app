@@ -20,6 +20,7 @@ import Kyc from './Screens/Kyc.jsx';
 import { ToastContainer } from 'react-toastify';
 import DirectTeam from './Screens/DirectTeam.jsx';
 import DownLine from './Screens/Downline.jsx';
+import EarningsScreen from './Screens/Earnings.jsx';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="/Kyc" element={<Kyc />} />
           <Route path="/DirectTeam" element={<DirectTeam />} />
           <Route path="/DownLine" element={<DownLine />} />
+          <Route path="/Earnings" element={<EarningsScreen />} />
         </Routes>
       </div>
     </Router>
