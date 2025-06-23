@@ -232,7 +232,7 @@ const TokenPreSale = () => {
 
 
       {/* image */}
-      <div className="w-[800px] max-w-[95%] mx-auto bg-gradient-to-r from-[#240048] to-[#4a007d] rounded-xl px-8 py-1 flex items-center justify-between border border-[#6a1ab9] shadow-lg mt-4 mb-8">
+      <div className="w-[800px] max-w-[95%] mx-auto bg-gradient-to-r from-[#240048] to-[#4a007d] rounded-xl px-8 py-3 flex items-center justify-between border border-[#6a1ab9] shadow-lg mt-4 mb-8">
         {/* Text Section */}
         <div className="flex-1 pr-2">
           <h3 className="text-white text-lg font-bold leading-snug">
