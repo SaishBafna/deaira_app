@@ -14,8 +14,16 @@ import { SiBitcoinsv } from "react-icons/si";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { Bitcoin, Brain, Globe, Network } from "lucide-react";
 import { IoMdWallet } from "react-icons/io";
+import { BiCoin } from "react-icons/bi";
 
 import Group385 from "../assets/Images/Group385.png";
+
+import ai from "../assets/Images/HomeScreen/ai.png";
+import usdt from "../assets/Images/HomeScreen/usdt.png";
+import dlogo from "../assets/Images/HomeScreen/dlogo.png";
+import peoples from "../assets/Images/HomeScreen/people.png";
+
+import Group416 from "../assets/Images/Group 416.png";
 
 import Image from "../assets/Images/logo.png";
 import Coin from "../assets/Images/coin.png";
@@ -167,7 +175,7 @@ const Homescreen = () => {
           />
           <FiSearch className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/70 text-xl" />
         </div> */}
-        <div className="flex items-center justify-between px-4 pt-4 pb-1 rounded-xl w-full mt-10 max-w-4xl mx-auto">
+        <div className="flex items-center justify-between px-3 pt-4 pb-1 rounded-xl w-full mt-10 max-w-4xl mx-auto">
           {/* Left Section - Profile Info */}
           <div className="flex items-center">
             <img
@@ -176,10 +184,10 @@ const Homescreen = () => {
               src={dash}
             />
             <div className="flex flex-col ml-4 leading-snug">
-              <p className="text-white font-semibold text-sm sm:text-2xl">
+              <p className="text-white font-semibold text-[20px]">
                 Welcome
               </p>
-              <p className="text-white font-semibold text-sm sm:text-2xl">
+              <p className="text-white font-semibold text-[20px]">
                 Radhika
               </p>
             </div>
@@ -187,7 +195,7 @@ const Homescreen = () => {
 
           {/* Right Section - ID Button */}
           <button
-            className="text-black px-6 py-2 sm:px-7 sm:py-2.5 text-sm sm:text-base rounded-2xl font-semibold transition hover:opacity-90 shadow-md"
+            className="text-black px-6 py-2 sm:px-7 sm:py-2.5 text-sm sm:text-base rounded-xl font-semibold transition hover:opacity-90 shadow-md"
             style={{
               backgroundImage: "linear-gradient(to right, #E0B9F2, #4E10FF)",
               minWidth: "120px",
@@ -203,16 +211,15 @@ const Homescreen = () => {
         </div>
 
         {/* First Tab Row */}
-        <div className="w-full flex flex-row gap-2 p-3 justify-center items-center">
+        <div className="w-full flex flex-row gap-2 px-3 py-1 mb-2 justify-center items-center">
           {/* Wallet Button */}
           <div
             onClick={handleWalletAction}
-            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg shadow-md cursor-pointer transition-all h-[45px]
-      ${
-        walletAddress
-          ? "text-red-600 bg-white hover:bg-gray-100"
-          : "text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90"
-      }`}
+            className={`flex-1 flex items-center justify-center px-2 py-1 text-xs font-semibold rounded-lg shadow-md cursor-pointer transition-all h-[40px]
+      ${walletAddress
+                ? "text-red-600 bg-white hover:bg-gray-100"
+                : "text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90"
+              }`}
           >
             {walletAddress ? (
               <MdLogout className="text-lg" />
@@ -223,14 +230,13 @@ const Homescreen = () => {
           </div>
 
           {/* Buy More DAIR Button */}
-          <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-fuchsia-600 rounded-lg shadow-md hover:opacity-90 transition-all h-[45px]">
+          <button className="flex-1 flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-fuchsia-600 rounded-lg shadow-md hover:opacity-90 transition-all h-[40px]">
             <BiBot className="text-lg" />
             Buy More DAIR
           </button>
         </div>
 
-        {/* <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 p-4 flex items-center justify-center"> */}
-        <div className="bg-gradient-to-b from-[#0f0529] to-[#1b0436] text-white p-4 rounded-xl shadow-2xl w-full max-w-4xl mx-auto space-y-6 border border-white/10">
+        <div className="bg-gradient-to-b from-[#0f0529] to-[#1b0436] text-white p-4 rounded-xl shadow-2xl w-full max-w-4xl mx-auto space-y-3 border border-white/10">
           {/* Wallet ID Title & Badge - Horizontally Aligned */}
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-semibold">Wallet ID</h1>
@@ -250,23 +256,25 @@ const Homescreen = () => {
             </div>
           </div>
 
+          <div className="w-full h-px bg-gradient-to-br from-[#06124a00] via-[#3D3E67] to-[#06124a00]"></div>
+
           {/* Wallet Address Section */}
           <div>
             <h2 className="text-sm font-semibold mb-3">Wallet Address</h2>
             <div className="relative">
               <div
-                className="flex justify-between items-center rounded-lg px-5 py-3"
+                className="flex items-center rounded-lg px-3 py-3"
                 style={{
                   background:
                     "linear-gradient(90deg, #0a0a15 0%, #151528 100%)",
                   border: "1px dashed #A15FFF",
                 }}
               >
-                <span className="font-mono text-xs break-all text-white mr-4">
+                <span className="flex-1 font-mono text-[9px] break-all text-white mr-2">
                   0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB
                 </span>
                 <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
-                   <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
+                <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
                   Copy
                 </button>
               </div>
@@ -289,89 +297,21 @@ const Homescreen = () => {
                   https://deaira.pro/register?sponsors
                 </span>
                 <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
-                 <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
+                <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
                   Copy
                 </button>
               </div>
             </div>
           </div>
         </div>
-        {/*    </div>  */}
-
-        {/* wallet segment */}
-        {/* <div className="bg-gradient-to-b from-[#0f0529] to-[#1b0436] text-white p-8 rounded-xl shadow-md w-full max-w-4xl mx-auto mt-2 space-y-6 border border-white/10">
-
-          <div className="flex items-center justify-between ">
-            <h1 className="text-xl font-bold ">Wallet ID</h1>
-            <div
-              className="px-6 py-1 rounded-xl"
-              style={{
-                backgroundColor: '#000',
-                borderWidth: '2px',
-                borderStyle: 'solid',
-                borderImage: 'linear-gradient(to right, #2850ff, #a15fff) 1',
-                
-              }}
-            >
-              <span className="font-bold text-white text-base sm:text-lg tracking-wide">
-                CA120609
-              </span>
-            </div>
-
-          </div>
-
-          <div>
-            <h2 className="text-lg font-semibold mb-3">Wallet Address</h2>
-            <div
-              className="flex justify-between items-center rounded-lg px-5 py-3"
-              style={{
-                background: 'linear-gradient(90deg, #0f0f1c 0%, #1b1c35 100%)',
-                borderWidth: '1px',
-                borderStyle: 'dashed',
-                borderImage: 'repeating-linear-gradient(#A15FFF 0 12px, transparent 12px 24px) 1',
-              }}
-            >
-              <span className="font-mono text-sm break-all text-white">
-                0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB
-              </span>
-              <button className="ml-4 text-sm text-[#A15FFF] hover:opacity-80 px-4 py-1.5 rounded-md transition-colors">
-                Copy
-              </button>
-            </div>
-          </div>
-
-          <div className="mt-6">
-            <h2 className="text-lg font-semibold mb-3">Referral Link</h2>
-            <div
-              className="flex items-center rounded-lg px-5 py-3"
-              style={{
-                background: 'linear-gradient(90deg, #0f0f1c 0%, #1b1c35 100%)',
-                borderWidth: '1px',
-                borderStyle: 'dashed',
-                borderImage: 'repeating-linear-gradient(#A15FFF 0 12px, transparent 12px 24px) 1',
-              }}
-            >
-              <span className="flex-1 text-base break-all text-white">
-                https://deaira.pro/register?sponsors
-              </span>
-              <button className="ml-4 shrink-0 text-sm text-[#A15FFF] hover:opacity-80 px-4 py-1.5 rounded-md transition-all">
-                Copy
-              </button>
-            </div>
-          </div>
-
-
-
-
-        </div> */}
 
         {/* Second row with Quick State and See More */}
         <div className="w-full flex justify-between text-white font-semibold text-lg cursor-pointer mt-4 mb-4">
           <span className="flex items-center gap-2">
             Quick Stats
-            <img src={I1} alt="icon" className="w-6 h-6" />
+            <img src={I1} alt="icon" className="w-4 h-4" />
           </span>
-          <span className="text-xs mr-1 inline-flex items-center gap-1 text-sm text-white hover:text-purple-200 transition-colors cursor-pointer">
+          <span className="text-[10px] mr-1 inline-flex items-center gap-1 text-white hover:text-purple-200 transition-colors cursor-pointer">
             See More
             <FiChevronRight className="text-white" />
           </span>
@@ -380,49 +320,52 @@ const Homescreen = () => {
         {/* Quick Stats Cards */}
         <div className="w-full grid grid-cols-2 gap-4">
           {/* Total Earnings */}
-          <div className="bg-[#310060] rounded-xl p-4 text-white shadow-md flex items-center gap-4 hover:scale-[1.02] transition-transform">
-            <div className="bg-[#A8FFD1] p-3 rounded-full flex items-center justify-center">
-              <FaWallet className="text-[#310060] text-[13px]" />
+          <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
+            <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
+              <img src={dlogo} alt="DLOGO" className="w-7 h-7" />
             </div>
             <div>
               <p className="text-[15px] text-white/70 font-bold">Total DeAIra Token</p>
-              <h3 className="text-xl font-bold">${wallet?.total_income}</h3>
+              <h3 className="text-xl font-bold">${wallet?.total_income || 0}</h3>
             </div>
           </div>
 
           {/* Active Members */}
-          <div className="bg-[#310060] rounded-xl p-4 text-white shadow-md flex items-center gap-4 hover:scale-[1.02] transition-transform">
-            <div className="bg-[#A8FFD1] p-3 rounded-full flex items-center justify-center">
-              <HiUsers className="text-[#310060] text-xl" />
+          <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
+            <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
+              {/* <HiUsers className="text-[#310060] text-xl" /> */}
+              <img src={peoples} alt="People" className="w-7 h-7" />
             </div>
             <div>
-              <p className="text-sm text-white/70 font-bold">Active Members</p>
+              <p className="text-[16px] text-white/70 font-bold">Active Members</p>
               <h3 className="text-xl font-bold">
-                {data?.my_activedownlineCount}
+                {data?.my_activedownlineCount || 0}
               </h3>
             </div>
           </div>
 
           {/* Token Price */}
-          <div className="bg-[#310060] rounded-xl p-4 text-white shadow-md flex items-center gap-4 hover:scale-[1.02] transition-transform">
-            <div className="bg-[#A8FFD1] p-3 rounded-full flex items-center justify-center">
-              <SiBitcoinsv className="text-[#310060] text-xl" />
+          <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
+            <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
+              {/* <SiBitcoinsv className="text-[#310060] text-xl" /> */}
+              <img src={ai} alt="AI" className="w-7 h-7" />
             </div>
             <div>
-              <p className="text-sm text-white/70 font-bold">
-                Token  Price
+              <p className="text-[16px] text-white/70 font-bold">
+                Token Price
               </p>
               <h3 className="text-x font-bold mt-1">$0.001</h3>
             </div>
           </div>
 
           {/* Daily Growth */}
-          <div className="bg-[#310060] rounded-xl p-4 text-white shadow-md flex items-center gap-4 hover:scale-[1.02] transition-transform">
-            <div className="bg-[#A8FFD1] p-3 rounded-full flex items-center justify-center">
-              <BsGraphUpArrow className="text-[#310060] text-xl" />
+          <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
+            <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
+              {/* <BsGraphUpArrow className="text-[#310060] text-xl" /> */}
+              <img src={usdt} alt="USDT" className="w-7 h-7" />
             </div>
             <div>
-              <p className="text-sm text-white/70 font-bold">Value in USDT</p>
+              <p className="text-[16px] text-white/70 font-bold">Value in USDT</p>
               <h3 className="text-xl font-bold">$1303</h3>
             </div>
           </div>
@@ -430,7 +373,7 @@ const Homescreen = () => {
 
         {/* Your AI Agent Section */}
         <div className="w-full max-w-4xl mx-auto flex flex-nowrap items-center justify-center gap-4 sm:gap-6 p-4 sm:p-6 text-xl font-bold text-center">
-          <span className="text-purple-600 text-lg whitespace-nowrap">
+          <span className="text-lg whitespace-nowrap bg-gradient-to-r from-[#FFFFFF] via-purple-500 to-[#A800F7] bg-clip-text text-transparent">
             Your AI Agent
           </span>
           <img
@@ -438,47 +381,61 @@ const Homescreen = () => {
             alt="AI Robot"
             className="w-16 h-16 sm:w-20 sm:h-20"
           />
-          <span className="text-purple-300 text-lg whitespace-nowrap">
+          <span className="text-lg whitespace-nowrap bg-gradient-to-r from-[#FFFFFF] to-[#9E7CFF] bg-clip-text text-transparent">
             Is Live Now
           </span>
         </div>
 
         {/* Token Info Card */}
         <div
-          className="w-full text-white rounded-2xl p-6 sm:p-8 shadow-lg"
+          className="w-full text-white rounded-2xl p-4 shadow-lg"
           style={{
-            background: "linear-gradient(180deg, #0E1446 0%, #3B1B68 100%)",
+            background: "linear-gradient(180deg, #0E1446 0%, #255B6C 100%)",
           }}
         >
           {/* Centered Token Section */}
-          <div className="text-center mb-6">
+          <div className="text-center mb-3">
             <img
               src={Coin}
               alt="AI Robot"
-              className="w-20 h-20 sm:w-20 sm:h-20 mx-auto"
+              className="w-28 h-28 mx-auto"
             />
-            <div className="text-2xl font-bold mt-4 mb-2">$ DAIR TOKEN</div>
-            <div className="text-lg">
+            <div className="text-2xl font-bold mt-2 mb-2">$ DAIR TOKEN</div>
+            <div className="text-[19px">
               TOTAL SUPPLY : <span className="font-mono">0001203948</span>
             </div>
           </div>
 
           {/* Initial Price Box */}
+
           <div className="w-full flex justify-center">
-            <div className="flex flex-row gap-4">
-              <div className="flex flex-col items-center bg-white/5 p-4 sm:p-6 rounded-xl w-52 shadow-lg border border-white/10">
+            <div className="flex flex-col gap-4">
+
+            </div>
+          </div>
+          <div className="w-full flex justify-center">
+            <div className="flex flex-row">
+              <div className="flex flex-row gap-2 items-center bg-white/5 px-4 py-2 rounded-xl shadow-lg border border-white/10">
                 {/* Icon and label */}
-                <div className="flex items-center gap-3 text-sm font-semibold text-white mb-2">
+                <div>
+                  <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
+                    <BiCoin className="text-[#A8FFD1] w-7 h-7" />
+                  </div>
+                </div>
+                <div>
+                  <div className="text-[12px] text-white">Initial Price</div>
+                  <div className="text-[12px] text-[#00F798]">$00.13/Token</div>
+                </div>
+                {/* <div className="flex items-center gap-3 text-sm font-semibold text-white mb-2">
                   <div className="bg-[#1E2A3A] rounded-full p-3 flex items-center justify-center">
                     <FiTrendingUp className="text-[#31FFB1] w-5 h-5" />
                   </div>
                   Initial Price
                 </div>
 
-                {/* Price */}
                 <div className="text-lg font-semibold text-[#31FFB1]">
                   $00.13<span className="text-base">/Token</span>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -490,16 +447,16 @@ const Homescreen = () => {
             AI - Powered Suggestions
             <img src={I2} alt="icon" className="w-8 h-8" />
           </span>
-          <span className="text-xs inline-flex items-center gap-1 text-sm text-white hover:text-purple-200 transition-colors cursor-pointer">
+          <span className="text-[10px] inline-flex items-center gap-1 text-sm text-white hover:text-purple-200 transition-colors cursor-pointer">
             See More
             <FiChevronRight className="text-white" />
           </span>
         </div>
 
-<div className="w-full px-0">        
-  <div className="flex gap-4 overflow-x-auto scrollbar-hide sm:overflow-x-visible sm:flex-wrap sm:justify-center">
+        <div className="w-full px-0">
+          <div className="flex gap-4 overflow-x-auto scrollbar-hide sm:overflow-x-visible sm:flex-wrap sm:justify-center">
             {/* Card 1 */}
-            <div className="w-56 h-60 flex-shrink-0 bg-gradient-to-br from-[#1a1a40] to-[#3b007d] rounded-xl p-5 text-white shadow-lg flex flex-col">
+            <div className="w-56 h-60 flex-shrink-0 bg-gradient-to-b from-[#7B00FF80] to-[#353E3D80] rounded-xl p-5 text-white shadow-lg flex flex-col">
               <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Brain className="w-5 h-5 text-white" />
               </div>
@@ -513,7 +470,7 @@ const Homescreen = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="w-56 h-60 flex-shrink-0 bg-gradient-to-br from-[#1a1a40] to-[#3b007d] rounded-xl p-5 text-white shadow-lg flex flex-col">
+            <div className="w-56 h-60 flex-shrink-0 bg-gradient-to-b from-[#B642E180] to-[#353E3D80] rounded-xl p-5 text-white shadow-lg flex flex-col">
               <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Network className="w-5 h-5 text-white" />
               </div>
@@ -527,7 +484,7 @@ const Homescreen = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="w-56 h-60 flex-shrink-0 bg-gradient-to-br from-[#1a1a40] to-[#3b007d] rounded-xl p-5 text-white shadow-lg flex flex-col">
+            <div className="w-56 h-60 flex-shrink-0 bg-gradient-to-b from-[#9AE5FF80] to-[#353E3D80] rounded-xl p-5 text-white shadow-lg flex flex-col">
               <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Bitcoin className="w-5 h-5 text-white" />
               </div>
@@ -554,20 +511,20 @@ const Homescreen = () => {
             Token Detail
           </div>
 
-<div className="text-sm space-y-3">
-  <div className="flex justify-between items-center border-b border-white/10 pb-1">
-    <span className="text-white whitespace-nowrap">Total Supply</span>
-    <span className="font-medium text-white text-right w-40">40,000,000,000 DAIR</span>
-  </div>
-  <div className="flex justify-between items-center border-b border-white/10 pb-1">
-    <span className="text-white whitespace-nowrap">Initial Price</span>
-    <span className="font-medium text-white text-right w-40 mr-10">$0.001 / token</span>
-  </div>
-  <div className="flex justify-between items-center border-b border-white/10 pb-1">
-    <span className="text-white whitespace-nowrap">Public Sale Allocation</span>
-    <span className="font-medium text-white text-right w-40">20,000,000,000 DAIR</span>
-  </div>
-</div>
+          <div className="text-sm space-y-3">
+            <div className="flex justify-between items-center border-b border-white/10 pb-1">
+              <span className="text-white whitespace-nowrap">Total Supply</span>
+              <span className="font-medium text-white text-right w-40">40,000,000,000 DAIR</span>
+            </div>
+            <div className="flex justify-between items-center border-b border-white/10 pb-1">
+              <span className="text-white whitespace-nowrap">Initial Price</span>
+              <span className="font-medium text-white text-right w-40 mr-10">$0.001 / token</span>
+            </div>
+            <div className="flex justify-between items-center border-b border-white/10 pb-1">
+              <span className="text-white whitespace-nowrap">Public Sale Allocation</span>
+              <span className="font-medium text-white text-right w-40">20,000,000,000 DAIR</span>
+            </div>
+          </div>
 
 
         </div>
@@ -576,7 +533,7 @@ const Homescreen = () => {
 
         <div className="w-full bg-gradient-to-b from-[#43027a] to-[#1b1b3a] text-white rounded-2xl shadow-xl p-4 sm:p-6">
           <div className="flex justify-center items-center gap-2 text-xl font-bold mb-4">
-            <img src={Coin} alt="token icon" className="w-6 h-6" />
+            <img src={dlogo} alt="token icon" className="w-7 h-7" />
             Total DeAIra Holdings
           </div>
 
@@ -589,7 +546,7 @@ const Homescreen = () => {
               <span className="text-white">Total DAIR Air Dropped</span>
               <span className="font-medium text-left mr-10">$0.001 / token</span>
             </div>
-            <div className="flex justify-between border-b border-white/10 pb-1">
+            <div className="flex justify-between pb-1">
               <span className="text-white">Air Dropped Date</span>
               <span className="font-medium mr-14">17/06/2025</span>
             </div>
@@ -599,67 +556,60 @@ const Homescreen = () => {
         {/* box after total deaira holdings */}
         <div className="bg-[#0f0529] text-white rounded-xl p-4 sm:p-6 border border-white/20 w-full max-w-3xl mx-auto space-y-5">
           {/* Top Row - Team Stats */}
-<div className="grid grid-cols-3 text-center relative">
-  {[
-    { label: ["Direct", "Team"], value: "1" },
-    { label: ["Downline", "Team"], value: "3" },
-    { label: ["Total Active", "Team"], value: "0" },
-  ].map((item, i) => (
-    <div key={i} className="space-y-2 px-2 relative">
-      <div className="flex items-center justify-center gap-2">
-        <img src={group} alt="icon" className="w-7 h-7" />
-        <div className="text-left leading-tight text-white/80 text-[10px] sm:text-xs font-normal">
-          {item.label.map((line, idx) => (
-            <div key={idx}>{line}</div>
-          ))}
-        </div>
-      </div>
-      <div
-        className="text-xs sm:text-sm font-semibold border border-white/80 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md w-22 sm:w-26 mx-auto"
-        style={{ backgroundColor: "#2e0b72" }}
-      >
-        {item.value}
-      </div>
+          <div className="grid grid-cols-3 text-center relative">
+            {[
+              { label: ["Direct", "Team"], value: "1" },
+              { label: ["Downline", "Team"], value: "3" },
+              { label: ["Total Active", "Team"], value: "0" },
+            ].map((item, i) => (
+              <div key={i} className="space-y-2 px-2 relative">
+                <div className="flex items-center justify-center gap-2">
+                  <img src={group} alt="icon" className="w-7 h-7" />
+                  <div className="text-left leading-tight text-white/80 text-[10px] sm:text-xs font-normal">
+                    {item.label.map((line, idx) => (
+                      <div key={idx}>{line}</div>
+                    ))}
+                  </div>
+                </div>
+                <div
+                  className="text-[20px] font-semibold border border-white/80 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md w-22 sm:w-26 mx-auto"
+                  style={{ backgroundColor: "#2e0b72" }}
+                >
+                  {item.value}
+                </div>
 
-      {/* Custom vertical gradient divider */}
-      {i < 2 && (
-        <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-[#102442] via-[#4C00AD] to-[#15173A] opacity-70"></div>
-      )}
-    </div>
-  ))}
-</div>
-
-
-
-
-
-
-
+                {/* Custom vertical gradient divider */}
+                {i < 2 && (
+                  <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-[#102442] via-[#4C00AD] to-[#15173A] opacity-70"></div>
+                )}
+              </div>
+            ))}
+          </div>
 
           {/* Referral Link - Improved Responsiveness */}
-                 <div
-                className="flex justify-between items-center rounded-lg px-2 py-3"
-                style={{
-                  background:
-                    "linear-gradient(90deg, #0a0a15 0%, #151528 100%)",
-                  border: "1px dashed #A15FFF",
-                }}
-              >
-                <span className="font-mono text-xs break-all text-white mr-4">
-                  https://cryptoaura.pro/register?sponsors
-                </span>
-                <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
-                   <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
-                  Copy
-                </button>
-              </div>
+          <div
+            className="flex justify-between items-center rounded-lg px-3 py-2"
+            style={{
+              background:
+                "linear-gradient(90deg, #0a0a15 0%, #151528 100%)",
+              border: "1px dashed #A15FFF",
+            }}
+          >
+            <span className="font-mono text-xs break-all text-white mr-4">
+              https://deaira.io/register?id=
+            </span>
+            <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
+            <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
+              Copy
+            </button>
+          </div>
 
           {/* Total Team Business - Better Mobile Layout */}
-          <div className="flex justify-between items-center gap-3 text-xs sm:text-sm font-medium">
+          <div className="flex justify-between items-center text-xs font-medium" style={{marginBottom:'10px'}}>
             {/* Left side: icon + label */}
             <div className="flex items-center gap-2">
-           <img src={group} alt="icon" className="w-7 h-7" />
-            <p className="text-white/70 font-normal text-sm">Total Team Business</p>
+              <img src={group} alt="icon" className="w-7 h-7" />
+              <p className="text-white/70 font-normal text-sm">Total Team Business</p>
             </div>
 
 
@@ -673,41 +623,49 @@ const Homescreen = () => {
           </div>
 
           {/* Bottom Tagline - Responsive Text */}
-          <p className="text-center text-xs sm:text-sm font-medium sm:font-semibold text-fuchsia-500">
+          <p className="text-center text-xs font-medium sm:font-semibold text-fuchsia-500 mb-2">
             Invite. Invest. Grow with Smart Trades.
           </p>
         </div>
 
-   <div className="w-full flex justify-between font-semibold text-lg cursor-pointer mt-2 mb-0">
-  <span className="flex items-center gap-2 ml-3 bg-gradient-to-r from-white to-[#A800F7] bg-clip-text text-transparent">
-    Join Our AI-Powered Community
-    <img src={I4} alt="icon" className="w-8 h-8 mt-1" />
-  </span>
-</div>
+        <div className="w-full flex justify-between font-semibold text-lg cursor-pointer mt-2 mb-0">
+          <span className="flex items-center gap-2 ml-3 bg-gradient-to-r from-white to-[#A800F7] bg-clip-text text-transparent">
+            Join Our AI-Powered Community
+            <img src={I4} alt="icon" className="w-8 h-8 mt-1" />
+          </span>
+        </div>
+
+        <div className="mb-15" >
+          <img
+            src={Group416}
+            alt="Group 416"
+            className="w-full h-auto"
+          />
+        </div>
 
 
-<div
-  className="flex items-center justify-between w-full px-3 py-3 rounded-2xl shadow-lg mb-20 border border-white/10"
-  style={{
-    background: "linear-gradient(to right, #310060 0%, rgba(53, 62, 61, 0.43) 100%)",
-  }}
->
-  <img src={R1} alt="Robot" className="w-12 h-12 object-contain" />
+        {/* <div
+          className="flex items-center justify-between w-full px-3 py-3 rounded-2xl shadow-lg mb-20 border border-white/10"
+          style={{
+            background: "linear-gradient(to right, #310060 0%, rgba(53, 62, 61, 0.43) 100%)",
+          }}
+        >
+          <img src={R1} alt="Robot" className="w-12 h-12 object-contain" />
 
-  <div className="flex flex-col text-white mx-3 flex-1">
-    <span className="font-semibold text-xs sm:text-sm leading-snug">
-      Thrive with AI.
-    </span>
-    <span className="font-semibold text-xs sm:text-sm leading-snug whitespace-nowrap">
-      Grow with Community.
-    </span>
-  </div>
-<button className="bg-gradient-to-r from-[#A800F7] to-[#4C00AD] text-white px-4 py-1.5 text-sm rounded-full shadow-md font-semibold whitespace-nowrap">
-  Join Now
-</button>
+          <div className="flex flex-col text-white mx-3 flex-1">
+            <span className="font-semibold text-xs sm:text-sm leading-snug">
+              Thrive with AI.
+            </span>
+            <span className="font-semibold text-xs sm:text-sm leading-snug whitespace-nowrap">
+              Grow with Community.
+            </span>
+          </div>
+          <button className="bg-gradient-to-r from-[#A800F7] to-[#4C00AD] text-white px-4 py-1.5 text-sm rounded-full shadow-md font-semibold whitespace-nowrap">
+            Join Now
+          </button>
 
 
-</div>
+        </div> */}
 
 
       </div>
