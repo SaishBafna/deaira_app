@@ -27,7 +27,7 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-2 bg-gray-900 text-white shadow-md">
+    <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-2 text-white shadow-md">
       {/* Logo */}
       <div className="text-xl font-bold cursor-pointer" onClick={handleLogoClick}>
         <img src={Image} alt="Logo" className="h-10 w-auto" />
