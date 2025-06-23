@@ -78,7 +78,7 @@ const Sidebar = ({ onClose }) => {
             <div className="fixed w-36 h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none -z-10"></div>
 
             {/* Top Row: Logo + Close */}
-            <div className="w-full flex justify-between items-center mb-6">
+            <div className="w-full flex justify-between items-center mb-1">
                 <img src={Image} alt="DEARA Logo" className="w-28" />
                 <button onClick={onClose}>
                     <div className="w-6 h-6 border-2 border-white rounded-full flex items-center justify-center text-2xl">
@@ -86,7 +86,7 @@ const Sidebar = ({ onClose }) => {
                     </div>
                 </button>
             </div>
-
+            <h2 className="text-[25px] font-bold mb-2">Profile</h2>
             {/* Avatar */}
             <div className="relative flex flex-col items-center mb-4">
                 <div className="p-0">
@@ -100,17 +100,17 @@ const Sidebar = ({ onClose }) => {
             </div>
 
             {/* Name */}
-            <h2 className="text-2xl font-bold mb-2">Radhika</h2>
+            <h2 className="text-[30px] font-bold mb-2">Radhika</h2>
 
             {/* ID Tag */}
-            <div className="px-4 py-2 bg-gradient-to-r from-purple-500 to-blue-600 rounded-xl text-sm font-semibold shadow-md">
+            <div className="text-black px-4 py-2 bg-gradient-to-r from-[#E0B9F2] to-[#4E10FF] border border-[#5401BD] rounded-xl text-sm font-semibold shadow-md">
                 ID: CA120609
             </div>
 
 
-            <div className="text-left w-full mt-8 max-w-xl lg:max-w-4xl">
+            <div className="w-full mt-4 mx-6">
                 <div className="flex items-center gap-2 mb-0">
-                    <span className="text-white font-medium text-lg">General Setting</span>
+                    <span className="text-white font-bold text-lg">General Settings</span>
                     <IoMdSettings className="w-5 h-5 text-[#6B37FF]" />
                 </div>
             </div>
@@ -125,8 +125,10 @@ const Sidebar = ({ onClose }) => {
                                 </div>
                                 <span className="font-medium text-white">Team Members</span>
                             </div>
-                            <div className="w-px h-6 bg-gradient-to-r from-[#3D3E67] to-[#5B00F7] mx-2"></div>
-                            <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+                            <div className="flex items-center gap-4">
+                                <div className="w-px h-6 bg-gradient-to-r from-[#3D3E67] to-[#5B00F7] mx-2"></div>
+                                <ChevronDown className="w-5 h-5 text-white/80 rounded-full  border border-[#FFFFFF] p-1" />
+                            </div>
                         </button>
                     </Link>
                 </div>
@@ -141,8 +143,10 @@ const Sidebar = ({ onClose }) => {
                                 </div>
                                 <span className="font-medium text-white">Withdraw</span>
                             </div>
-                            <div className="w-px h-6 bg-gradient-to-r from-[#3D3E67] to-[#5B00F7] mx-2"></div>
-                            <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+                            <div className="flex items-center gap-4">
+                                <div className="w-px h-6 bg-gradient-to-r from-[#3D3E67] to-[#5B00F7] mx-2"></div>
+                                <ChevronDown className="w-5 h-5 text-white/80 rounded-full  border border-[#FFFFFF] p-1" />
+                            </div>
                         </button>
                     </Link>
                 </div>
@@ -155,8 +159,10 @@ const Sidebar = ({ onClose }) => {
                                 </div>
                                 <span className="font-medium text-white">Earnings</span>
                             </div>
-                            <div className="w-px h-6 bg-gradient-to-r from-[#3D3E67] to-[#5B00F7] mx-2"></div>
-                            <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+                            <div className="flex items-center gap-4">
+                                <div className="w-px h-6 bg-gradient-to-r from-[#3D3E67] to-[#5B00F7] mx-2"></div>
+                                <ChevronDown className="w-5 h-5 text-white/80 rounded-full  border border-[#FFFFFF] p-1" />
+                            </div>
                         </button>
                     </Link>
                 </div>
@@ -184,7 +190,10 @@ const Sidebar = ({ onClose }) => {
                             </div>
                             <span className="font-medium text-white">Report</span>
                         </div>
-                        <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+                        <div className="flex items-center gap-4">
+                            <div className="w-px h-6 bg-gradient-to-r from-[#3D3E67] to-[#5B00F7] mx-2"></div>
+                            <ChevronDown className="w-5 h-5 text-white/80 rounded-full  border border-[#FFFFFF] p-1" />
+                        </div>
                     </button>
 
                     {/* Submenu */}
@@ -245,7 +254,10 @@ const Sidebar = ({ onClose }) => {
                             <span className="font-medium">Terms And Conditions</span>
                         </div>
                     </Link>
-                    <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+                    <div className="flex items-center gap-4">
+                        <div className="w-px h-6 bg-gradient-to-r from-[#3D3E67] to-[#5B00F7] mx-2"></div>
+                        <ChevronDown className="w-5 h-5 text-white/80 rounded-full  border border-[#FFFFFF] p-1" />
+                    </div>
                 </button>
 
                 {/* Privacy Policy */}
@@ -270,7 +282,10 @@ const Sidebar = ({ onClose }) => {
                             <span className="font-medium">Privacy Policy</span>
                         </div>
                     </Link>
-                    <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+                    <div className="flex items-center gap-4">
+                        <div className="w-px h-6 bg-gradient-to-r from-[#3D3E67] to-[#5B00F7] mx-2"></div>
+                        <ChevronDown className="w-5 h-5 text-white/80 rounded-full  border border-[#FFFFFF] p-1" />
+                    </div>
                 </button>
 
                 {/* FAQs */}
@@ -283,7 +298,10 @@ const Sidebar = ({ onClose }) => {
                             <span className="font-medium">FAQs</span>
                         </div>
                     </Link>
-                    <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
+                    <div className="flex items-center gap-4">
+                        <div className="w-px h-6 bg-gradient-to-r from-[#3D3E67] to-[#5B00F7] mx-2"></div>
+                        <ChevronDown className="w-5 h-5 text-white/80 rounded-full  border border-[#FFFFFF] p-1" />
+                    </div>
                 </button>
 
                 {/* Logout */}
