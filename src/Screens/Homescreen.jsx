@@ -554,7 +554,7 @@ const Homescreen = () => {
         </div>
 
         {/* box after total deaira holdings */}
-        <div className="bg-[#0f0529] text-white rounded-xl p-4 sm:p-6 border border-white/20 w-full max-w-3xl mx-auto space-y-5">
+        <div className="bg-[#0f0529] text-white rounded-xl p-4 sm:p-6 border border-white/20 w-full mx-auto space-y-5">
           {/* Top Row - Team Stats */}
           <div className="grid grid-cols-3 text-center relative">
             {[
