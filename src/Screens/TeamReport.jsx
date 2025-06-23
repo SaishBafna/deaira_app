@@ -15,12 +15,7 @@ const TeamReport = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState("team"); // "team" or "direct"
-
-  const formatDate = (dateString) => {
-    const options = { day: '2-digit', month: 'short', year: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-GB', options);
-  };
+  const [activeTab, setActiveTab] = useState("team");
 
   const fetchData = async () => {
     try {
@@ -48,24 +43,21 @@ const TeamReport = () => {
     }
   }, [activeTab]);
 
-  // Static Members for My Team Tab
   const staticTeamMembers = [
     { name: "Kunal", date: "5 June", code: "CAI20609", status: "Active" },
     { name: "Reena", date: "3 June", code: "CAI20639", status: "Active" },
     { name: "Mukesh", date: "2 June", code: "CAI23609", status: "Active" }
   ];
 
-  // Static Members for My Direct Tab (Replaces API data for now as per your request)
   const staticDirectMembers = [
-    { name: "Kunal", date: "5 June", code: "CAI20609", status: "Active" },
-    { name: "Meena", date: "4 June", code: "CAI20699", status: "Active" },
-    { name: "Mukesh", date: "2 June", code: "CAI23609", status: "Active" },
-    { name: "Rahul", date: "2 June", code: "CAI13609", status: "Active" }
+    { name: "Kunal", date: "5 May", code: "CAI20609", status: "Active" },
+    { name: "Meena", date: "4 May", code: "CAI20699", status: "Active" },
+    { name: "Mukesh", date: "2 May", code: "CAI23609", status: "Active" },
+    { name: "Rahul", date: "2 May", code: "CAI13609", status: "Active" }
   ];
 
   return (
-    <div className="w-screen h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center">
-      
+    <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center px-4">
       {/* Background Glow Circles */}
       <div className="fixed w-52 h-52 bg-purple-700 rounded-full blur-3xl top-0 right-10 opacity-50 pointer-events-none"></div>
       <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none"></div>
@@ -76,87 +68,108 @@ const TeamReport = () => {
         <button className="flex items-center gap-2 text-white/80 hover:text-white font-bold" onClick={() => navigate(-1)}>
           <FiChevronLeft size={20} />
         </button>
-        <h1 className="text-3xl font-bold text-white">Team</h1>
+        <h1 className="text-3xl font-bold text-white ml-5">Team</h1>
         <div className="w-10" />
       </div>
 
-      {/* Tabs */}
-      <div className="flex space-x-4 p-4">
-        <button
-          onClick={() => setActiveTab("team")}
-          className={`px-10 py-2 rounded-lg shadow font-semibold ${
-            activeTab === "team"
-              ? "bg-white text-gray-900"
-              : "bg-white/10 text-white hover:bg-white/20"
-          }`}
-        >
-          My Team
-        </button>
-        <button
-          onClick={() => setActiveTab("direct")}
-          className={`px-10 py-2 rounded-lg shadow font-semibold ${
-            activeTab === "direct"
-              ? "bg-gradient-to-r from-teal-400 to-fuchsia-500 text-white"
-              : "bg-white/10 text-white hover:bg-white/20"
-          }`}
-        >
-          My Direct
-        </button>
-      </div>
+      {/* Tabs & Search */}
+   <div className="w-full max-w-4xl flex flex-col gap-4 px-4 mt-2">
+  {/* Tabs */}
+  <div className="flex w-full gap-4">
+    <button
+      onClick={() => setActiveTab("team")}
+      className={`flex-1 py-3 rounded-lg shadow font-semibold ${
+        activeTab === "team"
+          ? "bg-white text-gray-900"
+          : "bg-gradient-to-r from-teal-400 to-fuchsia-500 text-white"
+      }`}
+    >
+      My Team
+    </button>
+    <button
+      onClick={() => setActiveTab("direct")}
+      className={`flex-1 py-3 rounded-lg shadow font-semibold ${
+        activeTab === "direct"
+          ? "bg-white text-gray-900"
+          : "bg-gradient-to-r from-teal-400 to-fuchsia-500 text-white"
+      }`}
+    >
+      My Direct
+    </button>
+  </div>
 
-      {/* Search + Refresh */}
-      <div className="w-full flex justify-center px-6 ml-[10px]">
-        <div className="flex items-center bg-white rounded-lg px-4 py-2 w-full max-w-6xl">
-          <IoSearchOutline className="w-5 h-5 text-purple-900 mr-2" />
-          <input
-            type="text"
-            placeholder="Search Here..."
-            className="w-full bg-transparent focus:outline-none text-gray-700 placeholder-gray-400"
-          />
-        </div>
-        <button
-          className="text-white hover:text-white/90 transition ml-4"
-          onClick={fetchData}
-        >
-          <TbRefresh className="w-6 h-6" />
-        </button>
-      </div>
+  {/* Search & Refresh */}
+  <div className="flex w-full items-center gap-3">
+    <div className="flex items-center bg-white rounded-lg px-4 py-3 flex-1 shadow">
+      <IoSearchOutline className="w-6 h-6 text-purple-900 mr-2" />
+      <input
+        type="text"
+        placeholder="Search Here..."
+        className="w-full bg-transparent focus:outline-none text-gray-700 placeholder-gray-400"
+      />
+    </div>
+    <button
+      className="w-12 h-12 flex items-center justify-center text-white"
+      onClick={fetchData}
+    >
+      <TbRefresh className="w-6 h-6" />
+    </button>
+  </div>
+</div>
+
 
       {/* Date + Level */}
-      <div className="w-full max-w-6xl px-6 mt-4">
-        <div className="flex items-center justify-between px-4 py-2 bg-black-to-r from-black-900 to-purple-900 rounded-md">
-          <div>
-            <p className="text-sm text-white">2025</p>
-            <p className="text-lg font-bold text-white">
-              {activeTab === "team" ? "June" : "May"}
-            </p>
-          </div>
-          {activeTab === "team" && (
-            <div>
-              <select className="bg-black text-white font-small px-5 py-2 rounded-md shadow focus:outline-none">
-                <option>Level : All</option>
-                <option>Level : 1</option>
-                <option>Level : 2</option>
-                <option>Level : 3</option>
-              </select>
-            </div>
-          )}
+<div className="w-full max-w-4xl px-4 mt-5">
+  <div className="flex flex-wrap items-center justify-between px-4 py-2 bg-black/30 rounded-md gap-3">
+    <div>
+      <p className="text-sm text-white">2025</p>
+      <p className="text-lg font-bold text-white">
+        {activeTab === "team" ? "June" : "May"}
+      </p>
+    </div>
+
+    {activeTab === "team" && (
+      <div className="relative inline-block w-[120px]">
+        <select
+          className="appearance-none bg-#100036 text-white text-sm font-semibold px-3 py-2 pr-2 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-400 w-full hover:brightness-110"
+        >
+          <option className="text-black">Level : All</option>
+          <option className="text-black">Level : 1</option>
+          <option className="text-black">Level : 2</option>
+          <option className="text-black">Level : 3</option>
+        </select>
+
+        {/* Custom Dropdown Arrow */}
+        <div className="pointer-events-none absolute inset-y-0 right-1 flex items-center">
+          <svg
+            className="w-4 h-4 text-white"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
       </div>
+    )}
+  </div>
+</div>
+
 
       {/* Member Cards */}
-      <div className="space-y-3 px-4 py-4 w-full max-w-4xl">
+      <div className="space-y-3 px-4 py-5 w-full max-w-4xl">
         {(activeTab === "team" ? staticTeamMembers : staticDirectMembers).map((member, idx) => (
           <div
             key={idx}
-            className="flex items-center rounded-lg px-4 py-2 shadow-sm w-full"
+            className="flex items-center rounded-lg px-4 py-2 shadow-sm bg-white/10 backdrop-blur-sm w-full"
           >
             <div className="w-10 h-10 rounded-full bg-indigo-100 text-indigo-800 font-bold flex items-center justify-center mr-4">
               {member.name.charAt(0)}
             </div>
             <div className="flex-1">
               <p className="text-white font-medium text-base">{member.name}</p>
-              <p className="text-gray-300 text-sm">{member.date}</p>
+              <p className="text-gray-300 text-xs">{member.date}</p>
             </div>
             <div className="text-right">
               <p className="text-white text-sm font-medium">{member.code}</p>

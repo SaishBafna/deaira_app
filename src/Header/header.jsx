@@ -28,7 +28,7 @@ const Header = () => {
 
   return (
     <div
-  className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-7 py-2 text-white shadow-md"
+  className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-2 text-white shadow-md"
   style={{
     background: 'linear-gradient(to right, #0E0021 0%, #29004D 100%)',
   }}
