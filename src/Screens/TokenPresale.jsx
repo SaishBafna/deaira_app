@@ -186,7 +186,7 @@ const TokenPreSale = () => {
 
 
       {/* why buy in presale box */}
-<div className="w-full max-w-[800px] mx-auto px-2 py-8 bg-gradient-to-br from-[#0f1120] to-[#0b0d1a] rounded-lg shadow-md border border-[#2e2e42] mt-6">
+<div className="w-full max-w-[800px] mx-auto px-2 py-6 bg-gradient-to-br from-[#0f1120] to-[#0b0d1a] rounded-lg shadow-md border border-[#2e2e42] mt-6">
   <h2 className="text-center text-white text-xl sm:text-2xl font-bold mb-6">
     Why Buy in Presale?
   </h2>
