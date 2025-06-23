@@ -21,6 +21,8 @@ import { ToastContainer } from 'react-toastify';
 import DirectTeam from './Screens/DirectTeam.jsx';
 import DownLine from './Screens/Downline.jsx';
 import EarningsScreen from './Screens/Earnings.jsx';
+import TokenPresale from './Screens/TokenPreSale.jsx';
+
 
 function App() {
   return (
@@ -48,6 +50,10 @@ function App() {
           <Route path="/DirectTeam" element={<DirectTeam />} />
           <Route path="/DownLine" element={<DownLine />} />
           <Route path="/Earnings" element={<EarningsScreen />} />
+          <Route path="/DownLine" element={<DownLine />} />
+          <Route path="/TokenPresale" element={<TokenPresale/>} />
+
+
         </Routes>
       </div>
     </Router>
