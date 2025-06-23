@@ -1,6 +1,7 @@
 import { Home, Grid, User } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { HiOutlineHome } from "react-icons/hi";
+import { RiCopperCoinFill } from "react-icons/ri";
 
 const Footer = () => {
   const location = useLocation(); // to show active tab
@@ -27,8 +28,8 @@ const Footer = () => {
             currentPath === "/dashboard" ? "text-purple-500" : "text-zinc-400 hover:text-white"
           } transition-colors`}
         >
-          <Grid size={24} />
-          <span className="text-sm mt-1">Dashboard</span>
+          <RiCopperCoinFill size={24} />
+          <span className="text-sm mt-1">Token Presale</span>
         </Link>
 
         {/* Profile */}
