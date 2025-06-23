@@ -230,21 +230,21 @@ const WalletPage = () => {
   }
 
   // Error state
-  if (error) {
-    return (
-      <div className="w-screen h-screen flex items-center justify-center bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d]">
-        <div className="text-white text-xl text-center p-4 bg-red-900/50 rounded-lg">
-          Error: {error}<br />
-          <button
-            onClick={() => window.location.reload()}
-            className="mt-4 px-4 py-2 bg-purple-600 rounded-md hover:bg-purple-700"
-          >
-            Try Again
-          </button>
-        </div>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div className="w-screen h-screen flex items-center justify-center bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d]">
+  //       <div className="text-white text-xl text-center p-4 bg-red-900/50 rounded-lg">
+  //         Error: {error}<br />
+  //         <button
+  //           onClick={() => window.location.reload()}
+  //           className="mt-4 px-4 py-2 bg-purple-600 rounded-md hover:bg-purple-700"
+  //         >
+  //           Try Again
+  //         </button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="w-screen min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center p-6 gap-6">

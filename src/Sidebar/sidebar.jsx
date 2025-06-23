@@ -117,7 +117,7 @@ const Sidebar = ({ onClose }) => {
 
             <div className="space-y-3 w-full bg-gradient-to-r from-[#02010B43] to-[#353E3D43]  border border-[#ffffff10] rounded-xl  p-5 backdrop-blur-md shadow-lg shadow-black/10 mt-4">
                 <div>
-                    <Link to="/Deposit">
+                    <Link to="/TeamReport">
                         <button className="w-full bg-[#ffffff17] hover:from-[#2a0043] hover:via-[#1c1c6f] hover:to-[#10435d] transition-all duration-300 rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm shadow-lg">
                             <div className="flex items-center gap-3">
                                 <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-[#00000042] rounded-full text-white">
@@ -147,7 +147,7 @@ const Sidebar = ({ onClose }) => {
                     </Link>
                 </div>
                 <div>
-                    <Link to="/Deposit">
+                    <Link to="/Earnings">
                         <button className="w-full bg-[#ffffff17] hover:from-[#2a0043] hover:via-[#1c1c6f] hover:to-[#10435d] transition-all duration-300 rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm shadow-lg">
                             <div className="flex items-center gap-3">
                                 <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-[#00000042] rounded-full text-white">
