@@ -27,7 +27,13 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-2 text-white shadow-md">
+    <div
+  className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-7 py-2 text-white shadow-md"
+  style={{
+    background: 'linear-gradient(to right, #0E0021 0%, #29004D 100%)',
+  }}
+>
+
       {/* Logo */}
       <div className="text-xl font-bold cursor-pointer" onClick={handleLogoClick}>
         <img src={Image} alt="Logo" className="h-10 w-auto" />

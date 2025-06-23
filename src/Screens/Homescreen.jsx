@@ -1,6 +1,12 @@
-import React, { use, useContext, useEffect } from 'react'
-import axios from 'axios';
-import { FiBarChart2, FiChevronRight, FiSearch, FiTrendingUp, FiZap } from "react-icons/fi";
+import React, { use, useContext, useEffect } from "react";
+import axios from "axios";
+import {
+  FiBarChart2,
+  FiChevronRight,
+  FiSearch,
+  FiTrendingUp,
+  FiZap,
+} from "react-icons/fi";
 import { FaWallet } from "react-icons/fa";
 import { BiBot } from "react-icons/bi";
 import { HiUsers } from "react-icons/hi";
@@ -9,6 +15,7 @@ import { BsGraphUpArrow } from "react-icons/bs";
 import { Bitcoin, Brain, Globe, Network } from "lucide-react";
 import { IoMdWallet } from "react-icons/io";
 
+import Group385 from "../assets/Images/Group385.png";
 
 import Image from "../assets/Images/logo.png";
 import Coin from "../assets/Images/coin.png";
@@ -27,17 +34,16 @@ import R1 from "../assets/Images/homer1.png";
 import Header from "../Header/header.jsx";
 import { WalletContext } from "../context/walletcontext";
 import { MdLogout } from "react-icons/md";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 const Homescreen = () => {
-  const { walletAddress, connectWallet, disconnectWallet } = useContext(WalletContext);
+  const { walletAddress, connectWallet, disconnectWallet } =
+    useContext(WalletContext);
   const navigate = useNavigate();
-  const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
-  const jwt_token = localStorage.getItem('jwt_token');
+  const encryptedWalletAddress = localStorage.getItem("encryptedWalletAddress");
+  const jwt_token = localStorage.getItem("jwt_token");
   const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL;
   const [data, setData] = React.useState(null);
   const [wallet, setWallet] = React.useState(null);
-
-
 
   const fetchUserData = async () => {
     try {
@@ -46,22 +52,21 @@ const Homescreen = () => {
         {
           headers: {
             Authorization: `Bearer ${jwt_token}`,
-            'Content-Type': 'application/json'
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
 
       if (!response.data?.user?.user) {
-        throw new Error('Failed to fetch user data');
+        throw new Error("Failed to fetch user data");
       }
-      console.log('User Data:', response.data);
+      console.log("User Data:", response.data);
       setData(response?.data);
     } catch (err) {
-      console.error('User data fetch error:', err);
+      console.error("User data fetch error:", err);
       throw err;
     }
   };
-
 
   const FetchWalletData = async () => {
     try {
@@ -69,35 +74,32 @@ const Homescreen = () => {
         `${API_BASE_URL}/Walletpageapi/${encryptedWalletAddress}`,
         {
           headers: {
-            'Authorization': `Bearer ${jwt_token}`
-          }
+            Authorization: `Bearer ${jwt_token}`,
+          },
         }
       );
-      console.log('Wallet Data:', walletResponse?.data);
+      console.log("Wallet Data:", walletResponse?.data);
       setWallet(walletResponse?.data?.wallet);
-    }
-    catch (error) {
-      console.error('Error fetching wallet data:', error);
+    } catch (error) {
+      console.error("Error fetching wallet data:", error);
     }
   };
 
   useEffect(() => {
-
     FetchWalletData();
     fetchUserData();
   }, []);
 
-
-
   useEffect(() => {
-    const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
-    console.log('encryptedWalletAddress useEffect:', encryptedWalletAddress);
+    const encryptedWalletAddress = localStorage.getItem(
+      "encryptedWalletAddress"
+    );
+    console.log("encryptedWalletAddress useEffect:", encryptedWalletAddress);
 
     if (!encryptedWalletAddress) {
-      navigate('/register');
+      navigate("/register");
     }
-
-  }, [navigate])
+  }, [navigate]);
 
   const handleWalletAction = () => {
     if (walletAddress) {
@@ -127,14 +129,17 @@ const Homescreen = () => {
       console.log("Using address for token generation:", addressToUse);
 
       // Generate token using the connected address
-      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/generateToken`, {
-        email: addressToUse
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/generateToken`,
+        {
+          email: addressToUse,
+        }
+      );
 
       localStorage.setItem("jwt_token", response.data.token);
-      console.log('Token Response:', response.data.token);
+      console.log("Token Response:", response.data.token);
     } catch (error) {
-      console.error('Token generation failed:', error);
+      console.error("Token generation failed:", error);
     }
   };
 
@@ -147,7 +152,6 @@ const Homescreen = () => {
 
       {/* Scrollable content */}
       <div className="w-full max-w-4xl flex flex-col gap-2">
-
         <Header />
         {/* Logo */}
         {/* <div className="w-full flex justify-center">
@@ -164,7 +168,6 @@ const Homescreen = () => {
           <FiSearch className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/70 text-xl" />
         </div> */}
         <div className="flex items-center justify-between px-4 pt-4 pb-1 rounded-xl w-full mt-10 max-w-4xl mx-auto">
-
           {/* Left Section - Profile Info */}
           <div className="flex items-center">
             <img
@@ -173,30 +176,30 @@ const Homescreen = () => {
               src={dash}
             />
             <div className="flex flex-col ml-4 leading-snug">
-              <p className="text-white font-semibold text-sm sm:text-xl">Welcome</p>
-              <p className="text-white font-bold text-base sm:text-2xl">Radhika</p>
+              <p className="text-white font-semibold text-sm sm:text-2xl">
+                Welcome
+              </p>
+              <p className="text-white font-semibold text-sm sm:text-2xl">
+                Radhika
+              </p>
             </div>
           </div>
 
           {/* Right Section - ID Button */}
           <button
-            className="text-black px-6 py-2 sm:px-7 sm:py-2.5 text-sm sm:text-base rounded-xl font-semibold transition hover:opacity-90 shadow-md"
+            className="text-black px-6 py-2 sm:px-7 sm:py-2.5 text-sm sm:text-base rounded-2xl font-semibold transition hover:opacity-90 shadow-md"
             style={{
-              backgroundImage: 'linear-gradient(to right, #E0B9F2, #4E10FF)',
-              minWidth: '120px'
+              backgroundImage: "linear-gradient(to right, #E0B9F2, #4E10FF)",
+              minWidth: "120px",
             }}
           >
             ID: CA120609
           </button>
-
         </div>
-
-
-
 
         {/* Panel Image */}
         <div className="w-full flex justify-center ">
-          <img src={Image1} alt="Panel" className="w-full rounded-lg" />
+          <img src={Group385} alt="Panel" className="w-full rounded-lg" />
         </div>
 
         {/* First Tab Row */}
@@ -205,38 +208,101 @@ const Homescreen = () => {
           <div
             onClick={handleWalletAction}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg shadow-md cursor-pointer transition-all h-[45px]
-      ${walletAddress
-                ? 'text-red-600 bg-white hover:bg-gray-100'
-                : 'text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90'
-              }`}
+      ${
+        walletAddress
+          ? "text-red-600 bg-white hover:bg-gray-100"
+          : "text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90"
+      }`}
           >
             {walletAddress ? (
               <MdLogout className="text-lg" />
             ) : (
               <FaWallet className="text-lg" />
             )}
-            {walletAddress ? 'Disconnect Wallet' : 'Connect Wallet'}
+            {walletAddress ? "Disconnect Wallet" : "Connect Wallet"}
           </div>
 
           {/* Buy More DAIR Button */}
-          <button
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-fuchsia-600 rounded-lg shadow-md hover:opacity-90 transition-all h-[45px]"
-          >
+          <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-fuchsia-600 rounded-lg shadow-md hover:opacity-90 transition-all h-[45px]">
             <BiBot className="text-lg" />
             Buy More DAIR
           </button>
         </div>
 
-
-
-
-
-        {/* wallet segment */}
-        <div className="bg-gradient-to-b from-[#0f0529] to-[#1b0436] text-white p-8 rounded-xl shadow-md w-full max-w-4xl mx-auto mt-2 space-y-6 border border-white/10">
-
+        {/* <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 p-4 flex items-center justify-center"> */}
+        <div className="bg-gradient-to-b from-[#0f0529] to-[#1b0436] text-white p-4 rounded-xl shadow-2xl w-full max-w-4xl mx-auto space-y-6 border border-white/10">
           {/* Wallet ID Title & Badge - Horizontally Aligned */}
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold">Wallet ID</h1>
+            <h1 className="text-xl font-semibold">Wallet ID</h1>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#fff] to-[#a15fff] rounded-xl p-0.4">
+                <div className="bg-black rounded-xl px-6 py-2">
+                  <span className="font-bold text-white text-base sm:text-lg tracking-wide">
+                    CA120609
+                  </span>
+                </div>
+              </div>
+              <div className="bg-black rounded-xl px-6 py-2">
+                <span className="font-bold text-white text-base sm:text-lg tracking-wide">
+                  CA120609
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Wallet Address Section */}
+          <div>
+            <h2 className="text-sm font-semibold mb-3">Wallet Address</h2>
+            <div className="relative">
+              <div
+                className="flex justify-between items-center rounded-lg px-5 py-3"
+                style={{
+                  background:
+                    "linear-gradient(90deg, #0a0a15 0%, #151528 100%)",
+                  border: "1px dashed #A15FFF",
+                }}
+              >
+                <span className="font-mono text-xs break-all text-white mr-4">
+                  0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB
+                </span>
+                <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
+                   <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
+                  Copy
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Referral Link Section */}
+          <div>
+            <h2 className="text-sm font-semibold mb-3">Referral Link</h2>
+            <div className="relative">
+              <div
+                className="flex items-center rounded-lg px-5 py-3"
+                style={{
+                  background:
+                    "linear-gradient(90deg, #0a0a15 0%, #151528 100%)",
+                  border: "1px dashed #A15FFF",
+                }}
+              >
+                <span className="flex-1 text-xs break-all text-white mr-4">
+                  https://deaira.pro/register?sponsors
+                </span>
+                <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
+                 <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
+                  Copy
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*    </div>  */}
+
+        {/* wallet segment */}
+        {/* <div className="bg-gradient-to-b from-[#0f0529] to-[#1b0436] text-white p-8 rounded-xl shadow-md w-full max-w-4xl mx-auto mt-2 space-y-6 border border-white/10">
+
+          <div className="flex items-center justify-between ">
+            <h1 className="text-xl font-bold ">Wallet ID</h1>
             <div
               className="px-6 py-1 rounded-xl"
               style={{
@@ -244,6 +310,7 @@ const Homescreen = () => {
                 borderWidth: '2px',
                 borderStyle: 'solid',
                 borderImage: 'linear-gradient(to right, #2850ff, #a15fff) 1',
+                
               }}
             >
               <span className="font-bold text-white text-base sm:text-lg tracking-wide">
@@ -253,7 +320,6 @@ const Homescreen = () => {
 
           </div>
 
-          {/* Wallet Address Section */}
           <div>
             <h2 className="text-lg font-semibold mb-3">Wallet Address</h2>
             <div
@@ -274,7 +340,6 @@ const Homescreen = () => {
             </div>
           </div>
 
-          {/* Referral Link Section */}
           <div className="mt-6">
             <h2 className="text-lg font-semibold mb-3">Referral Link</h2>
             <div
@@ -298,8 +363,7 @@ const Homescreen = () => {
 
 
 
-        </div>
-
+        </div> */}
 
         {/* Second row with Quick State and See More */}
         <div className="w-full flex justify-between text-white font-semibold text-lg cursor-pointer mt-4 mb-4">
@@ -321,7 +385,7 @@ const Homescreen = () => {
               <FaWallet className="text-[#310060] text-[13px]" />
             </div>
             <div>
-              <p className="text-[15px] text-white/70">Total DeAIra Token</p>
+              <p className="text-[15px] text-white/70 font-bold">Total DeAIra Token</p>
               <h3 className="text-xl font-bold">${wallet?.total_income}</h3>
             </div>
           </div>
@@ -332,8 +396,10 @@ const Homescreen = () => {
               <HiUsers className="text-[#310060] text-xl" />
             </div>
             <div>
-              <p className="text-sm text-white/70">Active Members</p>
-              <h3 className="text-xl font-bold">{data?.my_activedownlineCount}</h3>
+              <p className="text-sm text-white/70 font-bold">Active Members</p>
+              <h3 className="text-xl font-bold">
+                {data?.my_activedownlineCount}
+              </h3>
             </div>
           </div>
 
@@ -343,8 +409,10 @@ const Homescreen = () => {
               <SiBitcoinsv className="text-[#310060] text-xl" />
             </div>
             <div>
-              <p className="text-sm text-white/70">Token <br /> Price</p>
-              <h3 className="text-x font-bold">$0.001</h3>
+              <p className="text-sm text-white/70 font-bold">
+                Token  Price
+              </p>
+              <h3 className="text-x font-bold mt-1">$0.001</h3>
             </div>
           </div>
 
@@ -354,7 +422,7 @@ const Homescreen = () => {
               <BsGraphUpArrow className="text-[#310060] text-xl" />
             </div>
             <div>
-              <p className="text-sm text-white/70">Value in USDT</p>
+              <p className="text-sm text-white/70 font-bold">Value in USDT</p>
               <h3 className="text-xl font-bold">$1303</h3>
             </div>
           </div>
@@ -379,7 +447,7 @@ const Homescreen = () => {
         <div
           className="w-full text-white rounded-2xl p-6 sm:p-8 shadow-lg"
           style={{
-            background: 'linear-gradient(180deg, #0E1446 0%, #3B1B68 100%)',
+            background: "linear-gradient(180deg, #0E1446 0%, #3B1B68 100%)",
           }}
         >
           {/* Centered Token Section */}
@@ -399,7 +467,6 @@ const Homescreen = () => {
           <div className="w-full flex justify-center">
             <div className="flex flex-row gap-4">
               <div className="flex flex-col items-center bg-white/5 p-4 sm:p-6 rounded-xl w-52 shadow-lg border border-white/10">
-
                 {/* Icon and label */}
                 <div className="flex items-center gap-3 text-sm font-semibold text-white mb-2">
                   <div className="bg-[#1E2A3A] rounded-full p-3 flex items-center justify-center">
@@ -417,8 +484,6 @@ const Homescreen = () => {
           </div>
         </div>
 
-
-
         {/* AI Powered Suggestion */}
         <div className="w-full flex justify-between text-white font-semibold text-lg cursor-pointer mt-4 mb-4">
           <span className="flex items-center gap-2">
@@ -431,14 +496,16 @@ const Homescreen = () => {
           </span>
         </div>
 
-        <div className="w-full overflow-x-auto scrollbar-hide px-0">
-          <div className="flex gap-4 w-max">
+<div className="w-full px-0">        
+  <div className="flex gap-4 overflow-x-auto scrollbar-hide sm:overflow-x-visible sm:flex-wrap sm:justify-center">
             {/* Card 1 */}
             <div className="w-56 h-60 flex-shrink-0 bg-gradient-to-br from-[#1a1a40] to-[#3b007d] rounded-xl p-5 text-white shadow-lg flex flex-col">
               <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Brain className="w-5 h-5 text-white" />
               </div>
-              <h3 className="text-lg font-bold mb-2">AI-Powered <br /> Learning</h3>
+              <h3 className="text-lg font-bold mb-2">
+                AI-Powered <br /> Learning
+              </h3>
               <p className="text-sm text-white/80">
                 Access cutting-edge AI tools for personalized learning
                 experiences and business growth insights.
@@ -450,9 +517,12 @@ const Homescreen = () => {
               <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Network className="w-5 h-5 text-white" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Community <br /> Support</h3>
+              <h3 className="text-lg font-bold mb-2">
+                Community <br /> Support
+              </h3>
               <p className="text-sm text-white/80">
-                Connect with like-minded individuals in our growing community hub with expert mentorship.
+                Connect with like-minded individuals in our growing community
+                hub with expert mentorship.
               </p>
             </div>
 
@@ -461,13 +531,14 @@ const Homescreen = () => {
               <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Bitcoin className="w-5 h-5 text-white" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Token <br /> Rewards</h3>
+              <h3 className="text-lg font-bold mb-2">
+                Token <br /> Rewards
+              </h3>
               <p className="text-sm text-white/80">
-                Earn $DAIR tokens through community building,referrals, and active participation.
+                Earn $DAIR tokens through community building,referrals, and
+                active participation.
               </p>
             </div>
-
-
           </div>
         </div>
 
@@ -478,122 +549,128 @@ const Homescreen = () => {
 
         {/* Token Detail Table */}
         <div className="w-full bg-gradient-to-b from-[#43027a] to-[#1b1b3a] text-white rounded-2xl shadow-xl p-4 sm:p-6">
-          <div className="flex justify-center items-center gap-2 text-xl font-semibold mb-4">
+          <div className="flex justify-center items-center gap-2 text-xl font-bold mb-4">
             <img src={I3} alt="token icon" className="w-6 h-6" />
             Token Detail
           </div>
 
-          <div className="text-sm space-y-3">
-            <div className="flex justify-between border-b border-white/10 pb-1">
-              <span className="text-white/70">Total Supply</span>
-              <span className="font-medium text-left">40,000,000,000 DAIR</span>
-            </div>
-            <div className="flex justify-between border-b border-white/10 pb-1">
-              <span className="text-white/70">Initial Price</span>
-              <span className="font-medium text-left">$0.001 / token</span>
-            </div>
-            <div className="flex justify-between border-b border-white/10 pb-1">
-              <span className="text-white/70">Public Sale Allocation</span>
-              <span className="font-medium">20,000,000,000 DAIR</span>
-            </div>
+<div className="text-sm space-y-3">
+  <div className="flex justify-between items-center border-b border-white/10 pb-1">
+    <span className="text-white whitespace-nowrap">Total Supply</span>
+    <span className="font-medium text-white text-right w-40">40,000,000,000 DAIR</span>
+  </div>
+  <div className="flex justify-between items-center border-b border-white/10 pb-1">
+    <span className="text-white whitespace-nowrap">Initial Price</span>
+    <span className="font-medium text-white text-right w-40 mr-10">$0.001 / token</span>
+  </div>
+  <div className="flex justify-between items-center border-b border-white/10 pb-1">
+    <span className="text-white whitespace-nowrap">Public Sale Allocation</span>
+    <span className="font-medium text-white text-right w-40">20,000,000,000 DAIR</span>
+  </div>
+</div>
 
 
-          </div>
         </div>
 
         {/* total deaira holdings */}
 
         <div className="w-full bg-gradient-to-b from-[#43027a] to-[#1b1b3a] text-white rounded-2xl shadow-xl p-4 sm:p-6">
-          <div className="flex justify-center items-center gap-2 text-xl font-semibold mb-4">
-            <img src={I3} alt="token icon" className="w-6 h-6" />
+          <div className="flex justify-center items-center gap-2 text-xl font-bold mb-4">
+            <img src={Coin} alt="token icon" className="w-6 h-6" />
             Total DeAIra Holdings
           </div>
 
           <div className="text-sm space-y-3">
             <div className="flex justify-between border-b border-white/10 pb-1">
-              <span className="text-white/70">Total DAIR Purchased</span>
+              <span className="text-white">Total DAIR Purchased</span>
               <span className="font-medium text-left">40,000,000,000 DAIR</span>
             </div>
             <div className="flex justify-between border-b border-white/10 pb-1">
-              <span className="text-white/70">Total DAIR Air Dropped</span>
-              <span className="font-medium text-left">$0.001 / token</span>
+              <span className="text-white">Total DAIR Air Dropped</span>
+              <span className="font-medium text-left mr-10">$0.001 / token</span>
             </div>
             <div className="flex justify-between border-b border-white/10 pb-1">
-              <span className="text-white/70">Air Dropped Date</span>
-              <span className="font-medium">17/06/2025</span>
+              <span className="text-white">Air Dropped Date</span>
+              <span className="font-medium mr-14">17/06/2025</span>
             </div>
-
-
           </div>
         </div>
 
-
         {/* box after total deaira holdings */}
         <div className="bg-[#0f0529] text-white rounded-xl p-4 sm:p-6 border border-white/20 w-full max-w-3xl mx-auto space-y-5">
-
           {/* Top Row - Team Stats */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 text-center">
-            {[
-              { label: "Direct Team", value: "1" },
-              { label: "Downline Team", value: "3" },
-              { label: "Total Active Team", value: "0" },
-            ].map((item, i) => (
-              <div key={i} className="space-y-2">
-                <div className="flex justify-center items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium">
-                  <img
-                    src={group}
-                    alt="icon"
-                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5"
-                  />
-                  <span className="whitespace-nowrap text-[10px]">{item.label}</span>
-                </div>
-                <div
-                  className="text-sm sm:text-base font-bold border border-white/30 px-3 sm:px-4 py-1 sm:py-1.5 rounded-md"
-                  style={{ backgroundColor: '#2e0b72' }}
-                >
-                  {item.value}
-                </div>
-              </div>
-            ))}
-          </div>
+<div className="grid grid-cols-3 text-center relative">
+  {[
+    { label: ["Direct", "Team"], value: "1" },
+    { label: ["Downline", "Team"], value: "3" },
+    { label: ["Total Active", "Team"], value: "0" },
+  ].map((item, i) => (
+    <div key={i} className="space-y-2 px-2 relative">
+      <div className="flex items-center justify-center gap-2">
+        <img src={group} alt="icon" className="w-7 h-7" />
+        <div className="text-left leading-tight text-white/80 text-[10px] sm:text-xs font-normal">
+          {item.label.map((line, idx) => (
+            <div key={idx}>{line}</div>
+          ))}
+        </div>
+      </div>
+      <div
+        className="text-xs sm:text-sm font-semibold border border-white/80 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md w-22 sm:w-26 mx-auto"
+        style={{ backgroundColor: "#2e0b72" }}
+      >
+        {item.value}
+      </div>
+
+      {/* Custom vertical gradient divider */}
+      {i < 2 && (
+        <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-[#102442] via-[#4C00AD] to-[#15173A] opacity-70"></div>
+      )}
+    </div>
+  ))}
+</div>
+
+
+
+
+
+
+
 
           {/* Referral Link - Improved Responsiveness */}
-          <div className="flex flex-row justify-between items-center gap-2 bg-[#1a1a1a] rounded-md px-4 py-3 border border-dashed border-white/20 overflow-x-auto">
-            <span className="break-all text-xs sm:text-sm text-white flex-1 min-w-0">
-              https://cryptoaura.pro/register?sponsors
-            </span>
-            <button
-              className="text-[#A15FFF] font-medium hover:underline text-xs sm:text-sm whitespace-nowrap"
-              onClick={() => navigator.clipboard.writeText("https://cryptoaura.pro/register?sponsors")}
-            >
-              Copy
-            </button>
-          </div>
-
-
+                 <div
+                className="flex justify-between items-center rounded-lg px-2 py-3"
+                style={{
+                  background:
+                    "linear-gradient(90deg, #0a0a15 0%, #151528 100%)",
+                  border: "1px dashed #A15FFF",
+                }}
+              >
+                <span className="font-mono text-xs break-all text-white mr-4">
+                  https://cryptoaura.pro/register?sponsors
+                </span>
+                <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
+                   <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
+                  Copy
+                </button>
+              </div>
 
           {/* Total Team Business - Better Mobile Layout */}
           <div className="flex justify-between items-center gap-3 text-xs sm:text-sm font-medium">
             {/* Left side: icon + label */}
             <div className="flex items-center gap-2">
-              <img
-                src={group}
-                alt="icon"
-                className="w-4 h-4 sm:w-5 sm:h-5"
-              />
-              <span>Total Team Business</span>
+           <img src={group} alt="icon" className="w-7 h-7" />
+            <p className="text-white/70 font-normal text-sm">Total Team Business</p>
             </div>
+
 
             {/* Right side: value box */}
             <div
-              className="text-sm sm:text-base font-bold border border-white/30 px-4 py-1.5 rounded-md text-center"
-              style={{ backgroundColor: '#2e0b72', minWidth: '80px' }} // <- Match width of stat boxes
+              className="text-sm sm:text-base font-bold border border-white/80 px-4 py-1.5 rounded-md text-center"
+              style={{ backgroundColor: "#2e0b72", minWidth: "80px" }} // <- Match width of stat boxes
             >
               1
             </div>
-
           </div>
-
 
           {/* Bottom Tagline - Responsive Text */}
           <p className="text-center text-xs sm:text-sm font-medium sm:font-semibold text-fuchsia-500">
@@ -601,33 +678,38 @@ const Homescreen = () => {
           </p>
         </div>
 
+   <div className="w-full flex justify-between font-semibold text-lg cursor-pointer mt-2 mb-0">
+  <span className="flex items-center gap-2 ml-3 bg-gradient-to-r from-white to-[#A800F7] bg-clip-text text-transparent">
+    Join Our AI-Powered Community
+    <img src={I4} alt="icon" className="w-8 h-8 mt-1" />
+  </span>
+</div>
 
 
+<div
+  className="flex items-center justify-between w-full px-3 py-3 rounded-2xl shadow-lg mb-20 border border-white/10"
+  style={{
+    background: "linear-gradient(to right, #310060 0%, rgba(53, 62, 61, 0.43) 100%)",
+  }}
+>
+  <img src={R1} alt="Robot" className="w-12 h-12 object-contain" />
+
+  <div className="flex flex-col text-white mx-3 flex-1">
+    <span className="font-semibold text-xs sm:text-sm leading-snug">
+      Thrive with AI.
+    </span>
+    <span className="font-semibold text-xs sm:text-sm leading-snug whitespace-nowrap">
+      Grow with Community.
+    </span>
+  </div>
+<button className="bg-gradient-to-r from-[#A800F7] to-[#4C00AD] text-white px-4 py-1.5 text-sm rounded-full shadow-md font-semibold whitespace-nowrap">
+  Join Now
+</button>
 
 
-        <div className="w-full flex justify-between text-white font-semibold text-lg cursor-pointer mt-4 mb-4">
-          <span className="flex items-center gap-2">
-            Join Our AI-Powered Community
-            <img src={I4} alt="icon" className="w-8 h-8 mt-1" />
-          </span>
-        </div>
-
-        <div className="flex items-center justify-between w-full p-4 rounded-xl bg-gradient-to-r from-[#130628] to-[#2c0054] shadow-md mb-20">
-          <img src={R1} alt="Robot" className="w-18 h-18 object-contain" />
-          <div className="flex flex-col text-white ml-4 mr-2 flex-1">
-            <span className="font-semibold text-sm sm:text-base">
-              Thrive with AI.
-            </span>
-            <span className="font-semibold text-sm sm:text-base whitespace-nowrap">
-              Grow with Community.
-            </span>
-          </div>
+</div>
 
 
-          <button className="bg-gradient-to-r from-[#AC68FF] to-[#994EFF] text-white px-4 py-1.5 text-sm rounded-full shadow">
-            Join Now
-          </button>
-        </div>
       </div>
 
       <Footer />

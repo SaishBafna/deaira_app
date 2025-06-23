@@ -239,11 +239,10 @@ const UpdateProfile = () => {
           {/* Text content on the right side */}
           <div className="flex-1">
             <h2 className="text-lg md:text-xl font-semibold text-white">
-              {userData.first_name || 'User'}
+              {userData.first_name || 'Radhika'}
             </h2>
             <div className="flex items-center space-x-2 mt-1 text-white/80 text-xs md:text-sm">
-              <FiPhone size={15} />
-              <p>{userData.mobile || 'No phone number'}</p>
+              <p>{userData.mobile || 'Wallet Address Show'}</p>
             </div>
           </div>
         </div>
@@ -493,3 +492,4 @@ const UpdateProfile = () => {
 };
 
 export default UpdateProfile;
+
