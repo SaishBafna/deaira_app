@@ -71,7 +71,7 @@ const Sidebar = ({ onClose }) => {
     }, []);
 
     return (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] flex flex-col items-center px-4 sm:px-4 lg:px-16 py-6 text-white">
+        <div className="fixed inset-0 z-50 bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] flex flex-col items-center px-4 sm:px-4 lg:px-16 py-6 text-white">
             {/* Blur circles */}
             <div className="fixed w-52 h-52 bg-purple-700 rounded-full blur-3xl top-0 right-10 opacity-50 pointer-events-none -z-10"></div>
             <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none -z-10"></div>

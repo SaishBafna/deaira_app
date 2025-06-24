@@ -57,29 +57,29 @@ const TeamReport = () => {
   ];
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center px-4">
+    <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center">
       {/* Background Glow Circles */}
       <div className="fixed w-52 h-52 bg-purple-700 rounded-full blur-3xl top-0 right-10 opacity-50 pointer-events-none"></div>
       <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none"></div>
       <div className="fixed w-36 h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none"></div>
 
       {/* Header */}
-   <div className="w-full max-w-4xl relative px-6 mt-6 mb-4">
-  {/* Back Button */}
-<button
-  className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center gap-3 text-white font-bold px-2 py-2"
-  onClick={() => navigate(-1)}
->
-  <FiChevronLeft size={24} />
-</button>
+      <div className="w-full max-w-4xl relative px-6 mt-6 mb-4">
+        {/* Back Button */}
+        <button
+          className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center gap-3 text-white font-bold px-2 py-2"
+          onClick={() => navigate(-1)}
+        >
+          <FiChevronLeft size={24} />
+        </button>
 
 
-  {/* Centered Title */}
-  <h1 className="text-3xl font-bold text-white text-center">Team</h1>
+        {/* Centered Title */}
+        <h1 className="text-3xl font-bold text-white text-center">Team</h1>
 
-  {/* Right Spacer to Balance */}
-  <div className="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6" />
-</div>
+        {/* Right Spacer to Balance */}
+        <div className="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6" />
+      </div>
 
 
       {/* Tabs & Search */}
@@ -88,21 +88,19 @@ const TeamReport = () => {
         <div className="flex w-full gap-4">
           <button
             onClick={() => setActiveTab("team")}
-            className={`flex-1 py-3 rounded-lg shadow font-semibold ${
-              activeTab === "team"
-                ? "bg-white text-gray-900"
-                : "bg-gradient-to-r from-teal-400 to-fuchsia-500 text-white"
-            }`}
+            className={`flex-1 py-2 rounded-lg shadow font-semibold ${activeTab === "team"
+                ? "bg-white text-[#3C3A60] text-[18px]"
+                : "bg-gradient-to-r from-teal-400 to-fuchsia-500 text-[#C1C1C1] text-[14px]"
+              }`}
           >
             My Team
           </button>
           <button
             onClick={() => setActiveTab("direct")}
-            className={`flex-1 py-3 rounded-lg shadow font-semibold ${
-              activeTab === "direct"
-                ? "bg-white text-gray-900"
-                : "bg-gradient-to-r from-teal-400 to-fuchsia-500 text-white"
-            }`}
+            className={`flex-1 py-2 rounded-lg shadow font-semibold ${activeTab === "direct"
+                ? "bg-white text-[#3C3A60] text-[18px]"
+                : "bg-gradient-to-r from-teal-400 to-fuchsia-500 text-[#C1C1C1] text-[14px]"
+              }`}
           >
             My Direct
           </button>
@@ -128,8 +126,8 @@ const TeamReport = () => {
       </div>
 
       {/* Date + Level */}
-      <div className="w-full  px-4 mt-5">
-        <div className="flex flex-wrap items-center justify-between px-4 py-2 rounded-md gap-3 border border-[#0F0F0F08] border-opacity-10 bg-[#0F0F0F09]">
+      <div className="w-full max-w-4xl mt-5">
+        <div className="flex flex-wrap items-center justify-between px-4 py-2 gap-3 border border-[#FFFFFF40] bg-[#0F0F0F09]">
           <div>
             <p className="text-sm text-white">2025</p>
             <p className="text-lg font-bold text-white">
@@ -143,10 +141,10 @@ const TeamReport = () => {
                 style={{ backgroundColor: "#08001a" }}
                 className="appearance-none text-white text-sm font-semibold px-6 py-2 pr-2 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-400 w-full hover:brightness-110"
               >
-                <option className="text-black">Level : All</option>
-                <option className="text-black">Level : 1</option>
-                <option className="text-black">Level : 2</option>
-                <option className="text-black">Level : 3</option>
+                <option className="text-white">Level : All</option>
+                <option className="text-white">Level : 1</option>
+                <option className="text-white">Level : 2</option>
+                <option className="text-white">Level : 3</option>
               </select>
 
               {/* Custom Dropdown Arrow */}
