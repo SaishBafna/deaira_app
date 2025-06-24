@@ -15,6 +15,8 @@ import { BsGraphUpArrow } from "react-icons/bs";
 import { Bitcoin, Brain, Globe, Network } from "lucide-react";
 import { IoMdWallet } from "react-icons/io";
 import { BiCoin } from "react-icons/bi";
+import DLogo from '../assets/Images/Earning/dlogo.png'
+import USDT from '../assets/Images/Earning/usdt.png'
 
 import Group385 from "../assets/Images/Group385.png";
 
@@ -331,7 +333,7 @@ const Homescreen = () => {
           {/* Total Earnings */}
           <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
             <div className="bg-[#00000042] rounded-full p-1 flex items-center justify-center">
-              <img src={dlogo} alt="DLOGO" className="w-7 h-7" />
+              <img src={DLogo} alt="DLOGO" className="w-7 h-7" />
             </div>
             <div>
               <p className="text-[15px] text-white/70 font-bold">Total DeAIra Token</p>
@@ -368,7 +370,7 @@ const Homescreen = () => {
           {/* Daily Growth */}
           <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
             <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
-              <img src={usdt} alt="USDT" className="w-7 h-7" />
+              <img src={USDT} alt="USDT" className="w-7 h-7" />
             </div>
             <div>
               <p className="text-[16px] text-white/70 font-bold">Value in USDT</p>
