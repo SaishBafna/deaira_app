@@ -11,6 +11,8 @@ import DLogo from "../assets/Images/Earning/dlogo.png";
 import USDT from "../assets/Images/Earning/usdt.png";
 import Group417 from "../assets/Images/Group 417.png";
 
+import Header from "../Header/header1"
+
 
 const TokenPreSale = () => {
   return (
@@ -21,14 +23,15 @@ const TokenPreSale = () => {
       <div className="fixed w-16 h-16 sm:w-36 sm:h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none"></div>
 
       {/* Header */}
-      <div className="pt-4 sm:pt-10 text-center z-10">
+      < Header title="Token Pre Sale" />
+      {/* <div className="pt-4 sm:pt-10 text-center z-10">
         <h1 className="text-white text-2xl sm:text-3xl font-bold tracking-wide mt-1">
           Token Pre Sale
         </h1>
-      </div>
+      </div> */}
 
       {/* Invite Banner */}
-      <div className="z-10 w-full flex justify-center pt-3">
+      <div className="z-10 w-full flex justify-center pt-3 mt-8">
         <img
           src={group}
           alt="Invite Banner"
@@ -188,18 +191,18 @@ const TokenPreSale = () => {
 
         <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 mx-2">
           {/* Card 1 */}
-          <div className="bg-[#16193a] rounded-md p-4 sm:p-5 text-white text-center flex flex-col justify-center border border-[#A800F7]">
+          <div className="bg-[#16193a] rounded-md p-2 text-white text-center flex flex-col justify-center border border-[#A800F7]">
             <img src={early} alt="Early Access" className="mx-auto w-25 h-25" />
             <h3 className="font-semibold text-[16px] sm:text-base mb-1">
               Early Access
             </h3>
             <p className="text-[9px] text-[#969696]">
-              Grab the lowest price before public launch.
+              Grab the lowest price before public launch. Secure your position early.
             </p>
           </div>
 
           {/* Card 2 */}
-          <div className="bg-[#16193a] rounded-md p-4 sm:p-5 text-white text-center flex flex-col justify-center border border-[#A800F7]">
+          <div className="bg-[#16193a] rounded-md p-2 text-white text-center flex flex-col justify-center border border-[#A800F7]">
             <img
               src={community}
               alt="Community Token"
@@ -209,37 +212,37 @@ const TokenPreSale = () => {
               Community Token
             </h3>
             <p className="text-[9px] text-[#969696]">
-              Driven by its holders — your vote, your value.
+              Driven by its holders — your vote, your value, your voice.
             </p>
           </div>
 
           {/* Card 3 */}
-          <div className="bg-[#16193a] rounded-md p-4 sm:p-5 text-white text-center flex flex-col justify-center border border-[#A800F7]">
+          <div className="bg-[#16193a] rounded-md p-2 text-white text-center flex flex-col justify-center border border-[#A800F7]">
             <img
               src={secure}
               alt="Secure Contract"
               className="mx-auto w-25 h-25"
             />
             <h3 className="font-semibold text-[16px] sm:text-base mb-1">
-              Secure Contract
+              Secure Smart Contract
             </h3>
             <p className="text-[9px] text-[#969696]">
-              Fully verified & transparent contract.
+              Fully verified & transparent contract investments.
             </p>
           </div>
 
           {/* Card 4 */}
-          <div className="bg-[#16193a] rounded-md p-4 sm:p-5 text-white text-center flex flex-col justify-center border border-[#A800F7]">
+          <div className="bg-[#16193a] rounded-md p-2 text-white text-center flex flex-col justify-center border border-[#A800F7]">
             <img
               src={future}
               alt="CEX Listings"
               className="mx-auto w-25 h-25"
             />
             <h3 className="font-semibold text-[16px] sm:text-base mb-1">
-              CEX Listings
+              Future CEX Listings
             </h3>
             <p className="text-[9px] text-[#969696]">
-              Get in before major exchange listings.
+              Get in before the token lists on major centralized exchanges.
             </p>
           </div>
         </div>

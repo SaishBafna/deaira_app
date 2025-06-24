@@ -10,7 +10,10 @@ const Header1 = ({ title }) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-3 bg-gray-900 text-white shadow-md">
+    <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-3 text-white shadow-md"
+      style={{
+        background: 'linear-gradient(to right, #0E0021 0%, #29004D 100%)',
+      }}>
       <div className="text-2xl font-semibold">{title}</div>
 
       <div className="text-2xl cursor-pointer" onClick={toggleSidebar}>
