@@ -19,7 +19,7 @@ const Footer = () => {
             currentPath === "/" ? "text-purple-500" : "text-zinc-400 hover:text-white"
           } transition-colors`}
         >
-          <BiSolidDashboard  size={24} fill={currentPath === "/" ? "currentColor" : "none"} />
+          <BiSolidDashboard  size={24} />
           <span className="text-sm font-semibold mt-1">Dashboard</span>
         </Link>
 
