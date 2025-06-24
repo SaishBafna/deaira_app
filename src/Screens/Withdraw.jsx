@@ -333,17 +333,30 @@ const WalletPage = () => {
             {/* Currency */}
             <div>
               <label className="block text-white font-semibold mb-1">Currency</label>
-              <select
-                name="currency"
-                value={formData.currency}
-                onChange={handleInputChange}
-                className="w-full px-4 py-2 rounded-md bg-[#00000040] border border-[#DDCDE575] text-white focus:outline-none focus:ring-1 focus:ring-purple-500"
-                required
-              >
-                <option value="USDT">USDT</option>
-                <option value="BTC">BTC</option>
-                <option value="ETH">ETH</option>
-              </select>
+<div className="relative w-full">
+  <select
+    name="currency"
+    value={formData.currency}
+    onChange={handleInputChange}
+    className="w-full px-4 pr-12 py-2 rounded-md bg-[#00000040] border border-[#DDCDE575] text-white appearance-none focus:outline-none focus:ring-1 focus:ring-purple-500"
+    required
+  >
+    <option className="text-white bg-black" value="USDT">USDT</option>
+    <option className="text-white bg-black" value="BTC">BTC</option>
+    <option className="text-white bg-black" value="ETH">ETH</option>
+  </select>
+  <svg
+    className="pointer-events-none absolute right-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path d="M19 9l-7 7-7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+</div>
+
+
+
             </div>
 
             {/* Withdrawal Address */}
