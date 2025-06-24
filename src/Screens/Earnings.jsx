@@ -20,7 +20,7 @@ export default function EarningsScreen() {
       </div>
 
       <div className='mx-4 mb-6'>
-        <img src={EarningBanner} alt="Earnings Banner" className="w-full h-32 object-cover rounded-2xl mb-4" />
+        <img src={EarningBanner} alt="Earnings Banner" className="w-full object-cover rounded-2xl mb-4" />
       </div>
 
       {/* Earnings cards */}

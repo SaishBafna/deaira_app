@@ -260,7 +260,7 @@ const WalletPage = () => {
           onClick={() => navigate(-1)}
         >
           <FiChevronLeft size={20} />
-          <span className="hidden sm:inline">Back</span>
+          {/* <span className="hidden sm:inline">Back</span> */}
         </button>
         <h1 className="text-2xl font-bold text-center text-white">Wallet Dashboard</h1>
         <div className="w-10"></div> {/* Spacer for alignment */}
