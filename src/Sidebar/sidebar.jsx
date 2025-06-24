@@ -203,20 +203,20 @@ const Sidebar = ({ onClose }) => {
                                 onClick={goToDepositReport}
                                 className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
                             >
-                                Deposit History
+                                Deposit Report
                             </button>
-                            <button
+                            {/* <button
                                 onClick={goToActivateReport}
                                 className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
                             >
-                                Activation History
-                            </button>
-                            <button
+                                Activation Report
+                            </button> */}
+                            {/* <button
                                 onClick={goToWithdrawReport}
                                 className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
                             >
-                                Withdraw History
-                            </button>
+                                Withdraw Report
+                            </button> */}
 
                         </div>
                     )}

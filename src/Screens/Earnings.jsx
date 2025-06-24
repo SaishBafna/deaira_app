@@ -31,11 +31,11 @@ export default function EarningsScreen() {
               <img src={DLogo} alt="DAIR Logo" className="w-10 h-10 rounded-full mr-3" />
             </div>
             <div>
-              <p className="text-white text-sm font-medium">DAIR</p>
-              <p className="text-white text-sm font-medium">Earnings</p>
+              <p className="text-white text-[17px] font-medium">DAIR</p>
+              <p className="text-white text-[17px] font-medium">Earnings</p>
             </div>
           </div>
-          <p className="text-white text-xl">$403500.00</p>
+          <p className="text-white text-xl text-center">$403500.00</p>
         </div>
 
         <div className="bg-gray-800/50 rounded-2xl p-4 border border-gray-700/50">
@@ -44,11 +44,11 @@ export default function EarningsScreen() {
               <img src={USDT} alt="DAIR Logo" className="w-10 h-10 rounded-full mr-3" />
             </div>
             <div>
-              <p className="text-white text-sm font-medium">USDT</p>
-              <p className="text-white text-sm font-medium">Earnings</p>
+              <p className="text-white text-[17px] font-medium">USDT</p>
+              <p className="text-white text-[17px] font-medium">Earnings</p>
             </div>
           </div>
-          <p className="text-white text-xl">$404800.00</p>
+          <p className="text-white text-xl text-center">$404800.00</p>
         </div>
       </div>
 
