@@ -59,9 +59,9 @@ const TeamReport = () => {
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center">
       {/* Background Glow Circles */}
-      <div className="fixed w-52 h-52 bg-purple-700 rounded-full blur-3xl top-0 right-10 opacity-50 pointer-events-none"></div>
-      <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none"></div>
-      <div className="fixed w-36 h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none"></div>
+      <div className="fixed w-52 h-52 bg-purple-700 rounded-full blur-3xl top-0 right-10 opacity-50 pointer-events-none -z-10"></div>
+      <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none -z-10"></div>
+      <div className="fixed w-36 h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none -z-10"></div>
 
       {/* Header */}
       <div className="w-full max-w-4xl relative px-6 mt-6 mb-4">
@@ -89,8 +89,8 @@ const TeamReport = () => {
           <button
             onClick={() => setActiveTab("team")}
             className={`flex-1 py-2 rounded-lg shadow font-semibold ${activeTab === "team"
-                ? "bg-white text-[#3C3A60] text-[18px]"
-                : "bg-gradient-to-r from-teal-400 to-fuchsia-500 text-[#C1C1C1] text-[14px]"
+              ? "bg-white text-[#3C3A60] text-[18px]"
+              : "bg-gradient-to-r from-blue-500 to-purple-500 text-[#fff] text-[14px]"
               }`}
           >
             My Team
@@ -98,8 +98,8 @@ const TeamReport = () => {
           <button
             onClick={() => setActiveTab("direct")}
             className={`flex-1 py-2 rounded-lg shadow font-semibold ${activeTab === "direct"
-                ? "bg-white text-[#3C3A60] text-[18px]"
-                : "bg-gradient-to-r from-teal-400 to-fuchsia-500 text-[#C1C1C1] text-[14px]"
+              ? "bg-white text-[#3C3A60] text-[18px]"
+              : "bg-gradient-to-r from-blue-500 to-purple-500 text-[#fff] text-[14px]"
               }`}
           >
             My Direct
