@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { use, useContext, useEffect } from "react";
 import axios from "axios";
 import {
   FiBarChart2,
@@ -15,12 +15,10 @@ import { BsGraphUpArrow } from "react-icons/bs";
 import { Bitcoin, Brain, Globe, Network } from "lucide-react";
 import { IoMdWallet } from "react-icons/io";
 import { BiCoin } from "react-icons/bi";
-import DLogo from '../assets/Images/Earning/dlogo.png'
-import USDT from '../assets/Images/Earning/usdt.png'
+import DLogo from "../assets/Images/Earning/dlogo.png";
+import USDT from "../assets/Images/Earning/usdt.png";
 import { PiBrain } from "react-icons/pi";
 import { RiTeamLine } from "react-icons/ri";
-
-
 
 import Group385 from "../assets/Images/Group385.png";
 
@@ -59,21 +57,13 @@ const Homescreen = () => {
   const [data, setData] = React.useState(null);
   const [wallet, setWallet] = React.useState(null);
   const [copiedItem, setCopiedItem] = React.useState(null);
-const [popupMessage, setPopupMessage] = useState("");
-const [showPopup, setShowPopup] = useState(false); 
 
+  const handleCopyToClipboard = (text, itemName) => {
+    navigator.clipboard.writeText(text);
+    setCopiedItem(itemName);
+    setTimeout(() => setCopiedItem(null), 2000);
+  };
 
-const handleCopyToClipboard = (text, itemName) => {
-  navigator.clipboard.writeText(text);
-  setCopiedItem(itemName);
-  setPopupMessage(`${itemName === "wallet" ? "Wallet address" : "Referral link"} copied to clipboard`);
-  setShowPopup(true);
-  setTimeout(() => {
-    setShowPopup(false);
-    setCopiedItem(null);
-    setPopupMessage("");
-  }, 2000);
-};
   const fetchUserData = async () => {
     try {
       const response = await axios.get(
@@ -173,17 +163,7 @@ const handleCopyToClipboard = (text, itemName) => {
   };
 
   return (
-        <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
-      {/* Popup Notification */}
-   {showPopup && (
-  <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-[#1E1E1E] text-white px-6 py-3 rounded-lg shadow-lg z-50 border border-[#333333] flex items-center justify-center">
-    <svg className="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-    </svg>
-    <span className="font-medium">{popupMessage}</span>
-  </div>
-)}
-
+    <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
       {/* Blur circles - fixed in background */}
       <div className="fixed w-52 h-52 bg-purple-700 rounded-full blur-3xl top-0 right-10 opacity-50 pointer-events-none -z-10"></div>
       <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none -z-10"></div>
@@ -215,12 +195,8 @@ const handleCopyToClipboard = (text, itemName) => {
               src={dash}
             />
             <div className="flex flex-col ml-4 leading-snug">
-              <p className="text-white font-semibold text-[20px]">
-                Welcome
-              </p>
-              <p className="text-white font-semibold text-[20px]">
-                Radhika
-              </p>
+              <p className="text-white font-semibold text-[20px]">Welcome</p>
+              <p className="text-white font-semibold text-[20px]">Radhika</p>
             </div>
           </div>
 
@@ -247,10 +223,11 @@ const handleCopyToClipboard = (text, itemName) => {
           <div
             onClick={handleWalletAction}
             className={`flex-1 flex items-center justify-center px-2 py-1 text-xs font-semibold rounded-lg shadow-md cursor-pointer transition-all h-[40px]
-      ${walletAddress
-                ? "text-red-600 bg-white hover:bg-gray-100"
-                : "text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90"
-              }`}
+      ${
+        walletAddress
+          ? "text-red-600 bg-white hover:bg-gray-100"
+          : "text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90"
+      }`}
           >
             {walletAddress ? (
               <MdLogout className="text-lg" />
@@ -279,7 +256,6 @@ const handleCopyToClipboard = (text, itemName) => {
                   </span>
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -301,9 +277,14 @@ const handleCopyToClipboard = (text, itemName) => {
                   0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB
                 </span>
                 <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
-                <button 
-                  onClick={() => handleCopyToClipboard("0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB", "wallet")}
-                  className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-5 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-16"
+                <button
+                  onClick={() =>
+                    handleCopyToClipboard(
+                      "0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB",
+                      "wallet"
+                    )
+                  }
+                  className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-16"
                 >
                   {copiedItem === "wallet" ? "Copied!" : "Copy"}
                 </button>
@@ -326,10 +307,15 @@ const handleCopyToClipboard = (text, itemName) => {
                 <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
                   https://deaira.pro/register?sponsors
                 </span>
-                <div className="w-px h-8 bg-[#A15FFF] "></div>
-                <button 
-                  onClick={() => handleCopyToClipboard("https://deaira.pro/register?sponsors", "referral")}
-                  className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-6 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-15"
+                <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
+                <button
+                  onClick={() =>
+                    handleCopyToClipboard(
+                      "https://deaira.pro/register?sponsors",
+                      "referral"
+                    )
+                  }
+                  className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-15"
                 >
                   {copiedItem === "referral" ? "Copied!" : "Copy"}
                 </button>
@@ -358,8 +344,12 @@ const handleCopyToClipboard = (text, itemName) => {
               <img src={DLogo} alt="DLOGO" className="w-7 h-7" />
             </div>
             <div>
-              <p className="text-[15px] text-white/70 font-bold">Total DeAIra Token</p>
-              <h3 className="text-xl font-bold">${wallet?.total_income || 0}</h3>
+              <p className="text-[15px] text-white/70 font-bold">
+                Total DeAIra Token
+              </p>
+              <h3 className="text-xl font-bold">
+                ${wallet?.total_income || 0}
+              </h3>
             </div>
           </div>
 
@@ -370,7 +360,9 @@ const handleCopyToClipboard = (text, itemName) => {
               <RiTeamLine className="w-7 h-7 text-[#A8FFD1]" />
             </div>
             <div>
-              <p className="text-[16px] text-white/70 font-bold">Active Members</p>
+              <p className="text-[16px] text-white/70 font-bold">
+                Active Members
+              </p>
               <h3 className="text-xl font-bold">
                 {data?.my_activedownlineCount || 0}
               </h3>
@@ -384,9 +376,7 @@ const handleCopyToClipboard = (text, itemName) => {
               <PiBrain className="w-7 h-7 text-[#A8FFD1]" />
             </div>
             <div>
-              <p className="text-[16px] text-white/70 font-bold">
-                Token Price
-              </p>
+              <p className="text-[16px] text-white/70 font-bold">Token Price</p>
               <h3 className="text-x font-bold mt-1">$0.001</h3>
             </div>
           </div>
@@ -397,7 +387,9 @@ const handleCopyToClipboard = (text, itemName) => {
               <img src={USDT} alt="USDT" className="w-7 h-7" />
             </div>
             <div>
-              <p className="text-[16px] text-white/70 font-bold">Value in USDT</p>
+              <p className="text-[16px] text-white/70 font-bold">
+                Value in USDT
+              </p>
               <h3 className="text-xl font-bold">$1303</h3>
             </div>
           </div>
@@ -427,11 +419,7 @@ const handleCopyToClipboard = (text, itemName) => {
         >
           {/* Centered Token Section */}
           <div className="text-center mb-3">
-            <img
-              src={Coin}
-              alt="AI Robot"
-              className="w-28 h-28 mx-auto"
-            />
+            <img src={Coin} alt="AI Robot" className="w-28 h-28 mx-auto" />
             <div className="text-2xl font-bold mt-2 mb-2">$ DAIR TOKEN</div>
             <div className="text-[19px">
               TOTAL SUPPLY : <span className="font-mono">0001203948</span>
@@ -441,9 +429,7 @@ const handleCopyToClipboard = (text, itemName) => {
           {/* Initial Price Box */}
 
           <div className="w-full flex justify-center">
-            <div className="flex flex-col gap-4">
-
-            </div>
+            <div className="flex flex-col gap-4"></div>
           </div>
           <div className="w-full flex justify-center">
             <div className="flex flex-row">
@@ -532,19 +518,27 @@ const handleCopyToClipboard = (text, itemName) => {
           <div className="text-sm space-y-3">
             <div className="flex justify-between items-center border-b border-white/10 pb-1">
               <span className="text-white whitespace-nowrap">Total Supply</span>
-              <span className="font-medium text-white text-right w-40">40,000,000,000 DAIR</span>
+              <span className="font-medium text-white text-right w-40">
+                40,000,000,000 DAIR
+              </span>
             </div>
             <div className="flex justify-between items-center border-b border-white/10 pb-1">
-              <span className="text-white whitespace-nowrap">Initial Price</span>
-              <span className="font-medium text-white text-right w-40 mr-10">$0.001 / token</span>
+              <span className="text-white whitespace-nowrap">
+                Initial Price
+              </span>
+              <span className="font-medium text-white text-right w-40 mr-10">
+                $0.001 / token
+              </span>
             </div>
             <div className="flex justify-between items-center border-b border-white/10 pb-1">
-              <span className="text-white whitespace-nowrap">Public Sale Allocation</span>
-              <span className="font-medium text-white text-right w-40">20,000,000,000 DAIR</span>
+              <span className="text-white whitespace-nowrap">
+                Public Sale Allocation
+              </span>
+              <span className="font-medium text-white text-right w-40">
+                20,000,000,000 DAIR
+              </span>
             </div>
           </div>
-
-
         </div>
 
         {/* total deaira holdings */}
@@ -562,7 +556,9 @@ const handleCopyToClipboard = (text, itemName) => {
             </div>
             <div className="flex justify-between border-b border-white/10 pb-1">
               <span className="text-white">Total DAIR Air Dropped</span>
-              <span className="font-medium text-left mr-10">$0.001 / token</span>
+              <span className="font-medium text-left mr-10">
+                $0.001 / token
+              </span>
             </div>
             <div className="flex justify-between pb-1">
               <span className="text-white">Air Dropped Date</span>
@@ -580,7 +576,10 @@ const handleCopyToClipboard = (text, itemName) => {
               { label: ["Downline", "Team"], value: "3" },
               { label: ["Total Active", "Team"], value: "0" },
             ].map((item, i) => (
-              <div key={i} className="px-2 relative flex flex-col justify-between min-h-[80px]">
+              <div
+                key={i}
+                className="px-2 relative flex flex-col justify-between min-h-[80px]"
+              >
                 <div className="flex items-center justify-center gap-2">
                   <img src={group} alt="icon" className="w-7 h-7" />
                   <div className="text-left leading-tight text-white/80 text-[10px] sm:text-xs font-normal">
@@ -604,22 +603,25 @@ const handleCopyToClipboard = (text, itemName) => {
             ))}
           </div>
 
-
           {/* Referral Link - Improved Responsiveness */}
           <div
             className="flex items-center rounded-lg px-5 py-3"
             style={{
-              background:
-                "linear-gradient(90deg, #0a0a15 0%, #151528 100%)",
+              background: "linear-gradient(90deg, #0a0a15 0%, #151528 100%)",
               border: "1px dashed #A15FFF",
             }}
           >
             <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
               https://deaira.pro/register?sponsors
             </span>
-            <div className="w-px h-8 bg-[#A15FFF] mx-2"></div>
-            <button 
-              onClick={() => handleCopyToClipboard("https://deaira.pro/register?sponsors", "referral2")}
+            <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
+            <button
+              onClick={() =>
+                handleCopyToClipboard(
+                  "https://deaira.pro/register?sponsors",
+                  "referral2"
+                )
+              }
               className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap"
             >
               {copiedItem === "referral2" ? "Copied!" : "Copy"}
@@ -627,13 +629,17 @@ const handleCopyToClipboard = (text, itemName) => {
           </div>
 
           {/* Total Team Business - Better Mobile Layout */}
-          <div className="flex justify-between items-center text-xs font-medium" style={{ marginBottom: '10px' }}>
+          <div
+            className="flex justify-between items-center text-xs font-medium"
+            style={{ marginBottom: "10px" }}
+          >
             {/* Left side: icon + label */}
             <div className="flex items-center gap-2">
               <img src={group} alt="icon" className="w-7 h-7" />
-              <p className="text-white/70 font-normal text-[17px]">Total Team Business</p>
+              <p className="text-white/70 font-normal text-[17px]">
+                Total Team Business
+              </p>
             </div>
-
 
             {/* Right side: value box */}
             <div
@@ -657,14 +663,9 @@ const handleCopyToClipboard = (text, itemName) => {
           </span>
         </div>
 
-        <div className="mb-15" >
-          <img
-            src={Group416}
-            alt="Group 416"
-            className="w-full h-auto"
-          />
+        <div className="mb-15">
+          <img src={Group416} alt="Group 416" className="w-full h-auto" />
         </div>
-
       </div>
 
       <Footer />
