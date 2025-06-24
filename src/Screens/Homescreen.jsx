@@ -273,7 +273,7 @@ const Homescreen = () => {
                   0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB
                 </span>
                 <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
-                <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
+                <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-16">
                   Copy
                 </button>
               </div>
@@ -297,7 +297,7 @@ const Homescreen = () => {
                   https://deaira.pro/register?sponsors
                 </span>
                 <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
-                <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
+                <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-15">
                   Copy
                 </button>
               </div>

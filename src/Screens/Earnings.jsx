@@ -35,7 +35,7 @@ export default function EarningsScreen() {
               <p className="text-white text-[17px] font-medium">Earnings</p>
             </div>
           </div>
-          <p className="text-white text-xl text-center">$403500.00</p>
+          <p className="text-white text-xl">$403500.00</p>
         </div>
 
         <div className="bg-gray-800/50 rounded-2xl p-4 border border-gray-700/50">
@@ -48,7 +48,7 @@ export default function EarningsScreen() {
               <p className="text-white text-[17px] font-medium">Earnings</p>
             </div>
           </div>
-          <p className="text-white text-xl text-center">$404800.00</p>
+          <p className="text-white text-xl">$404800.00</p>
         </div>
       </div>
 
