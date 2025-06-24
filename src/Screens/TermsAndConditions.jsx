@@ -54,7 +54,7 @@ const TermsAndConditions = () => {
             </div>
 
             {/* Main Content */}
-            <main className="relative z-10 pt-2">
+            <main className="relative z-10 pt-0">
                 {/* Header Section */}
                 <section className="py-5 text-center">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -374,7 +374,7 @@ const TermsAndConditions = () => {
                 </section>
 
                 {/* Call to Action */}
-                <section className="py-20 text-center">
+                <section className="py-6 text-center">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div
                             id="cta"
@@ -408,10 +408,10 @@ const TermsAndConditions = () => {
             </main>
 
             {/* Footer */}
-            <footer className="relative z-10 py-16 border-t border-white/10">
+            <footer className="relative z-10 mb-8  border-t border-white/10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="border-t border-white/10 mt-12 pt-8 text-center text-gray-400">
-                        <p>&copy; 2024 DeAIra. All rights reserved. Built for the decentralized future.</p>
+                    <div className="border-t border-white/10   text-center text-gray-400 ">
+                        <p className="mt-1">&copy; 2024 DeAIra. All rights reserved. Built for the decentralized future.</p>
                     </div>
                 </div>
             </footer>
