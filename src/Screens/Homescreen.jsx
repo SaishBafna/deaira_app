@@ -211,36 +211,6 @@ const Homescreen = () => {
         </div>
 
         {/* First Tab Row */}
-<<<<<<< HEAD
-<div className="w-full flex flex-row gap-2 p-3 justify-center items-center">
-  {/* Wallet Button */}
-  <div
-    onClick={handleWalletAction}
-    className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg shadow-md cursor-pointer transition-all h-[45px]
-      ${
-        walletAddress
-          ? "text-red-600 bg-white hover:bg-gray-100"
-          : "text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90"
-      }`}
-  >
-    {walletAddress ? (
-      <MdLogout className="text-lg" />
-    ) : (
-      <FaWallet className="text-lg" />
-    )}
-    <span className="whitespace-nowrap">
-      {walletAddress ? "Disconnect Wallet" : "Connect Wallet"}
-    </span>
-  </div>
-
-  {/* Buy More DAIR Button */}
-  <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-fuchsia-600 rounded-lg shadow-md hover:opacity-90 transition-all h-[45px]">
-    <BiBot className="text-lg" />
-    <span className="whitespace-nowrap">Buy More DAIR</span>
-  </button>
-</div>
-
-=======
         <div className="w-full flex flex-row gap-2 px-3 py-1 mb-2 justify-center items-center">
           {/* Wallet Button */}
           <div
@@ -265,7 +235,6 @@ const Homescreen = () => {
             Buy More DAIR
           </button>
         </div>
->>>>>>> a15c13e76d5a5da6c114149966bb0ad3a20092a6
 
         <div className="bg-gradient-to-b from-[#0f0529] to-[#1b0436] text-white p-4 rounded-xl shadow-2xl w-full max-w-4xl mx-auto space-y-3 border border-white/10">
           {/* Wallet ID Title & Badge - Horizontally Aligned */}
@@ -356,13 +325,8 @@ const Homescreen = () => {
               <img src={dlogo} alt="DLOGO" className="w-7 h-7" />
             </div>
             <div>
-<<<<<<< HEAD
-              <p className="text-sm text-white/70 font-bold">Total DeAIra Token</p>
-              <h3 className="text-xl font-bold">${wallet?.total_income}</h3>
-=======
               <p className="text-[15px] text-white/70 font-bold">Total DeAIra Token</p>
               <h3 className="text-xl font-bold">${wallet?.total_income || 0}</h3>
->>>>>>> a15c13e76d5a5da6c114149966bb0ad3a20092a6
             </div>
           </div>
 
@@ -387,13 +351,8 @@ const Homescreen = () => {
               <img src={ai} alt="AI" className="w-7 h-7" />
             </div>
             <div>
-<<<<<<< HEAD
-              <p className="text-sm text-white/70 font-bold">
-                Token   Price
-=======
               <p className="text-[16px] text-white/70 font-bold">
                 Token Price
->>>>>>> a15c13e76d5a5da6c114149966bb0ad3a20092a6
               </p>
               <h3 className="text-x font-bold mt-1">$0.001</h3>
             </div>
