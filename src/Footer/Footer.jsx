@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { HiOutlineHome } from "react-icons/hi";
 import { RiCopperCoinFill } from "react-icons/ri";
 import { RiTeamFill } from "react-icons/ri";
+import { BiSolidDashboard } from "react-icons/bi";
 
 const Footer = () => {
   const location = useLocation(); // to show active tab
@@ -18,8 +19,8 @@ const Footer = () => {
             currentPath === "/" ? "text-purple-500" : "text-zinc-400 hover:text-white"
           } transition-colors`}
         >
-          <HiOutlineHome size={24} fill={currentPath === "/" ? "currentColor" : "none"} />
-          <span className="text-sm font-semibold mt-1">Home</span>
+          <BiSolidDashboard  size={24} fill={currentPath === "/" ? "currentColor" : "none"} />
+          <span className="text-sm font-semibold mt-1">Dashboard</span>
         </Link>
 
         {/* Dashboard */}
