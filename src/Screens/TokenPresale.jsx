@@ -36,7 +36,7 @@ const TokenPreSale = () => {
       </div>
 
       {/* Earnings Cards - Stack on small screens */}
-      <div className="w-full grid grid-cols-2 gap-2 mt-4 mb-4">
+      <div className="w-full max-w-[800px] mx-auto grid grid-cols-2 gap-2 mt-4 mb-4">
         <div className="bg-gray-800/50 rounded-2xl p-4 border border-gray-700/50">
           <div className="flex items-center mb-3">
             <div>
@@ -221,8 +221,14 @@ const TokenPreSale = () => {
 
 
       {/* image */}
-      <div>
-        <img src={Group417} alt="Group 417" className="w-full max-w-[800px] mx-auto mt-3 rounded-xl" />
+      {/* <div>
+        <img src={Group417} alt="Group 417" className="w-full mt-3 rounded-xl" />
+      </div> */}
+      <div className=" w-full flex justify-center pt-3">
+        <img
+          src={Group417} alt="Group 417"
+          className="w-full max-w-3xl h-auto rounded-xl"
+        />
       </div>
       {/* <div className="w-[800px] max-w-[95%] mx-auto bg-gradient-to-r from-[#240048] to-[#4a007d] rounded-xl px-8 py-3 flex items-center justify-between border border-[#6a1ab9] shadow-lg mt-4 mb-8">
         <div className="flex-1 pr-2">
