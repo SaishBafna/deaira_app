@@ -180,7 +180,7 @@ const Homescreen = () => {
           <div className="flex items-center">
             <img
               alt="Panel"
-              className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg object-cover"
+              className="w-12 h-12 rounded-lg object-cover mt-1"
               src={dash}
             />
             <div className="flex flex-col ml-4 leading-snug">
@@ -230,7 +230,7 @@ const Homescreen = () => {
           </div>
 
           {/* Buy More DAIR Button */}
-          <button className="flex-1 flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-fuchsia-600 rounded-lg shadow-md hover:opacity-90 transition-all h-[40px]">
+          <button className="flex-1 flex items-center justify-center px-4 py-2 text-xs font-semibold text-white bg-gradient-to-r from-cyan-500 to-fuchsia-600 rounded-lg shadow-md hover:opacity-90 transition-all h-[40px]">
             <BiBot className="text-lg" />
             Buy More DAIR
           </button>
@@ -241,18 +241,14 @@ const Homescreen = () => {
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-semibold">Wallet ID</h1>
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#fff] to-[#a15fff] rounded-xl p-0.4">
+              <div className="p-[1px] rounded-xl bg-gradient-to-r from-[#193362] via-[#193362] to-[#fff] inline-block">
                 <div className="bg-black rounded-xl px-6 py-2">
                   <span className="font-bold text-white text-base sm:text-lg tracking-wide">
                     CA120609
                   </span>
                 </div>
               </div>
-              <div className="bg-black rounded-xl px-6 py-2">
-                <span className="font-bold text-white text-base sm:text-lg tracking-wide">
-                  CA120609
-                </span>
-              </div>
+
             </div>
           </div>
 
@@ -270,7 +266,10 @@ const Homescreen = () => {
                   border: "1px dashed #A15FFF",
                 }}
               >
-                <span className="flex-1 font-mono text-[9px] break-all text-white mr-2">
+                {/* <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
+          https://deaira.pro/register?sponsors
+        </span> */}
+                <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
                   0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB
                 </span>
                 <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
@@ -293,7 +292,8 @@ const Homescreen = () => {
                   border: "1px dashed #A15FFF",
                 }}
               >
-                <span className="flex-1 text-xs break-all text-white mr-4">
+                {/* <span className="flex-1 text-xs break-all text-white mr-4"> */}
+                <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
                   https://deaira.pro/register?sponsors
                 </span>
                 <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
@@ -321,7 +321,7 @@ const Homescreen = () => {
         <div className="w-full grid grid-cols-2 gap-4">
           {/* Total Earnings */}
           <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
-            <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
+            <div className="bg-[#00000042] rounded-full p-1 flex items-center justify-center">
               <img src={dlogo} alt="DLOGO" className="w-7 h-7" />
             </div>
             <div>
@@ -562,7 +562,7 @@ const Homescreen = () => {
               { label: ["Downline", "Team"], value: "3" },
               { label: ["Total Active", "Team"], value: "0" },
             ].map((item, i) => (
-              <div key={i} className="space-y-2 px-2 relative">
+              <div key={i} className="px-2 relative flex flex-col justify-between min-h-[80px]">
                 <div className="flex items-center justify-center gap-2">
                   <img src={group} alt="icon" className="w-7 h-7" />
                   <div className="text-left leading-tight text-white/80 text-[10px] sm:text-xs font-normal">
@@ -571,14 +571,14 @@ const Homescreen = () => {
                     ))}
                   </div>
                 </div>
+
                 <div
-                  className="text-[20px] font-semibold border border-white/80 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md w-22 sm:w-26 mx-auto"
+                  className="text-[20px] font-semibold border border-white/80 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md w-22 mx-auto mt-2"
                   style={{ backgroundColor: "#2e0b72" }}
                 >
                   {item.value}
                 </div>
 
-                {/* Custom vertical gradient divider */}
                 {i < 2 && (
                   <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-[#102442] via-[#4C00AD] to-[#15173A] opacity-70"></div>
                 )}
@@ -586,17 +586,18 @@ const Homescreen = () => {
             ))}
           </div>
 
+
           {/* Referral Link - Improved Responsiveness */}
           <div
-            className="flex justify-between items-center rounded-lg px-3 py-2"
+            className="flex items-center rounded-lg px-5 py-3"
             style={{
               background:
                 "linear-gradient(90deg, #0a0a15 0%, #151528 100%)",
               border: "1px dashed #A15FFF",
             }}
           >
-            <span className="font-mono text-xs break-all text-white mr-4">
-              https://deaira.io/register?id=
+            <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
+              https://deaira.pro/register?sponsors
             </span>
             <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
             <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
@@ -605,11 +606,11 @@ const Homescreen = () => {
           </div>
 
           {/* Total Team Business - Better Mobile Layout */}
-          <div className="flex justify-between items-center text-xs font-medium" style={{marginBottom:'10px'}}>
+          <div className="flex justify-between items-center text-xs font-medium" style={{ marginBottom: '10px' }}>
             {/* Left side: icon + label */}
             <div className="flex items-center gap-2">
               <img src={group} alt="icon" className="w-7 h-7" />
-              <p className="text-white/70 font-normal text-sm">Total Team Business</p>
+              <p className="text-white/70 font-normal text-[17px]">Total Team Business</p>
             </div>
 
 
