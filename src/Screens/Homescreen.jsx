@@ -17,6 +17,10 @@ import { IoMdWallet } from "react-icons/io";
 import { BiCoin } from "react-icons/bi";
 import DLogo from '../assets/Images/Earning/dlogo.png'
 import USDT from '../assets/Images/Earning/usdt.png'
+import { PiBrain } from "react-icons/pi";
+import { RiTeamLine } from "react-icons/ri";
+
+
 
 import Group385 from "../assets/Images/Group385.png";
 
@@ -344,7 +348,8 @@ const Homescreen = () => {
           {/* Active Members */}
           <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
             <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
-              <img src={peoples} alt="People" className="w-7 h-7" />
+              {/* <img src={peoples} alt="People" className="w-7 h-7" /> */}
+              <RiTeamLine className="w-7 h-7 text-[#A8FFD1]" />
             </div>
             <div>
               <p className="text-[16px] text-white/70 font-bold">Active Members</p>
@@ -357,7 +362,8 @@ const Homescreen = () => {
           {/* Token Price */}
           <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
             <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
-              <img src={ai} alt="AI" className="w-7 h-7" />
+              {/* <img src={ai} alt="AI" className="w-7 h-7" /> */}
+              <PiBrain className="w-7 h-7 text-[#A8FFD1]" />
             </div>
             <div>
               <p className="text-[16px] text-white/70 font-bold">
