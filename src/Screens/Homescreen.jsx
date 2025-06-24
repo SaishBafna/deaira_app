@@ -52,6 +52,13 @@ const Homescreen = () => {
   const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL;
   const [data, setData] = React.useState(null);
   const [wallet, setWallet] = React.useState(null);
+  const [copiedItem, setCopiedItem] = React.useState(null);
+
+  const handleCopyToClipboard = (text, itemName) => {
+    navigator.clipboard.writeText(text);
+    setCopiedItem(itemName);
+    setTimeout(() => setCopiedItem(null), 2000);
+  };
 
   const fetchUserData = async () => {
     try {
@@ -266,15 +273,15 @@ const Homescreen = () => {
                   border: "1px dashed #A15FFF",
                 }}
               >
-                {/* <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
-          https://deaira.pro/register?sponsors
-        </span> */}
                 <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
                   0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB
                 </span>
                 <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
-                <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-16">
-                  Copy
+                <button 
+                  onClick={() => handleCopyToClipboard("0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB", "wallet")}
+                  className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-16"
+                >
+                  {copiedItem === "wallet" ? "Copied!" : "Copy"}
                 </button>
               </div>
             </div>
@@ -292,13 +299,15 @@ const Homescreen = () => {
                   border: "1px dashed #A15FFF",
                 }}
               >
-                {/* <span className="flex-1 text-xs break-all text-white mr-4"> */}
                 <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
                   https://deaira.pro/register?sponsors
                 </span>
                 <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
-                <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-15">
-                  Copy
+                <button 
+                  onClick={() => handleCopyToClipboard("https://deaira.pro/register?sponsors", "referral")}
+                  className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-15"
+                >
+                  {copiedItem === "referral" ? "Copied!" : "Copy"}
                 </button>
               </div>
             </div>
@@ -333,7 +342,6 @@ const Homescreen = () => {
           {/* Active Members */}
           <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
             <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
-              {/* <HiUsers className="text-[#310060] text-xl" /> */}
               <img src={peoples} alt="People" className="w-7 h-7" />
             </div>
             <div>
@@ -347,7 +355,6 @@ const Homescreen = () => {
           {/* Token Price */}
           <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
             <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
-              {/* <SiBitcoinsv className="text-[#310060] text-xl" /> */}
               <img src={ai} alt="AI" className="w-7 h-7" />
             </div>
             <div>
@@ -361,7 +368,6 @@ const Homescreen = () => {
           {/* Daily Growth */}
           <div className="bg-[#310060] rounded-xl px-2 py-4 text-white shadow-md flex items-center gap-2 hover:scale-[1.02] transition-transform">
             <div className="bg-[#00000042] rounded-full p-2 flex items-center justify-center">
-              {/* <BsGraphUpArrow className="text-[#310060] text-xl" /> */}
               <img src={usdt} alt="USDT" className="w-7 h-7" />
             </div>
             <div>
@@ -426,16 +432,6 @@ const Homescreen = () => {
                   <div className="text-[12px] text-white">Initial Price</div>
                   <div className="text-[12px] text-[#00F798]">$00.13/Token</div>
                 </div>
-                {/* <div className="flex items-center gap-3 text-sm font-semibold text-white mb-2">
-                  <div className="bg-[#1E2A3A] rounded-full p-3 flex items-center justify-center">
-                    <FiTrendingUp className="text-[#31FFB1] w-5 h-5" />
-                  </div>
-                  Initial Price
-                </div>
-
-                <div className="text-lg font-semibold text-[#31FFB1]">
-                  $00.13<span className="text-base">/Token</span>
-                </div> */}
               </div>
             </div>
           </div>
@@ -447,10 +443,6 @@ const Homescreen = () => {
             AI - Powered Suggestions
             <img src={I2} alt="icon" className="w-8 h-8" />
           </span>
-          {/* <span className="text-[10px] inline-flex items-center gap-1 text-sm text-white hover:text-purple-200 transition-colors cursor-pointer">
-            See More
-            <FiChevronRight className="text-white" />
-          </span> */}
         </div>
 
         <div className="w-full px-0">
@@ -600,8 +592,11 @@ const Homescreen = () => {
               https://deaira.pro/register?sponsors
             </span>
             <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
-            <button className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap">
-              Copy
+            <button 
+              onClick={() => handleCopyToClipboard("https://deaira.pro/register?sponsors", "referral2")}
+              className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap"
+            >
+              {copiedItem === "referral2" ? "Copied!" : "Copy"}
             </button>
           </div>
 
@@ -617,7 +612,7 @@ const Homescreen = () => {
             {/* Right side: value box */}
             <div
               className="text-sm sm:text-base font-bold border border-white/80 px-4 py-1.5 rounded-md text-center"
-              style={{ backgroundColor: "#2e0b72", minWidth: "80px" }} // <- Match width of stat boxes
+              style={{ backgroundColor: "#2e0b72", minWidth: "80px" }}
             >
               1
             </div>
@@ -643,31 +638,6 @@ const Homescreen = () => {
             className="w-full h-auto"
           />
         </div>
-
-
-        {/* <div
-          className="flex items-center justify-between w-full px-3 py-3 rounded-2xl shadow-lg mb-20 border border-white/10"
-          style={{
-            background: "linear-gradient(to right, #310060 0%, rgba(53, 62, 61, 0.43) 100%)",
-          }}
-        >
-          <img src={R1} alt="Robot" className="w-12 h-12 object-contain" />
-
-          <div className="flex flex-col text-white mx-3 flex-1">
-            <span className="font-semibold text-xs sm:text-sm leading-snug">
-              Thrive with AI.
-            </span>
-            <span className="font-semibold text-xs sm:text-sm leading-snug whitespace-nowrap">
-              Grow with Community.
-            </span>
-          </div>
-          <button className="bg-gradient-to-r from-[#A800F7] to-[#4C00AD] text-white px-4 py-1.5 text-sm rounded-full shadow-md font-semibold whitespace-nowrap">
-            Join Now
-          </button>
-
-
-        </div> */}
-
 
       </div>
 
