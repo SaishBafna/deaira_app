@@ -205,7 +205,7 @@ const UpdateProfile = () => {
     <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center p-4 md:p-6 gap-4 md:gap-6 text-white">
 
       {/* Header */}
-      <div className="w-full max-w-4xl flex items-center justify-between mb-2 md:mb-4">
+      <div className="w-full max-w-4xl flex items-center justify-between  mt-2">
         <button className="flex items-center gap-2 text-white/80 hover:text-white" onClick={() => navigate(-1)}>
           <FiChevronLeft size={20} />
           <span className="hidden sm:inline">Back</span>

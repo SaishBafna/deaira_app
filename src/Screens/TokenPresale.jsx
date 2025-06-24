@@ -7,9 +7,10 @@ import community from "../assets/Images/community.png";
 import secure from "../assets/Images/secure.png";
 import future from "../assets/Images/future.png";
 import Footer from "../Footer/Footer";
-import DLogo from '../assets/Images/Earning/dlogo.png'
-import USDT from '../assets/Images/Earning/usdt.png'
-import Group417 from '../assets/Images/Group 417.png'
+import DLogo from "../assets/Images/Earning/dlogo.png";
+import USDT from "../assets/Images/Earning/usdt.png";
+import Group417 from "../assets/Images/Group 417.png";
+
 
 const TokenPreSale = () => {
   return (
@@ -40,35 +41,42 @@ const TokenPreSale = () => {
         <div className="bg-gray-800/50 rounded-2xl p-4 border border-gray-700/50">
           <div className="flex items-center mb-3">
             <div>
-              <img src={DLogo} alt="DAIR Logo" className="w-10 h-10 rounded-full mr-3" />
+              <img
+                src={DLogo}
+                alt="DAIR Logo"
+                className="w-10 h-10 rounded-full mr-3"
+              />
             </div>
             <div>
               <p className="text-white text-[17px] font-medium">DAIR</p>
               <p className="text-white text-[17px] font-medium">Earnings</p>
             </div>
           </div>
-          <p className="text-white text-xl text-center">$403500.00</p>
+          <p className="text-white text-xl">$403500.00</p>
         </div>
 
         <div className="bg-gray-800/50 rounded-2xl p-4 border border-gray-700/50">
           <div className="flex items-center mb-3">
             <div>
-              <img src={USDT} alt="DAIR Logo" className="w-10 h-10 rounded-full mr-3" />
+              <img
+                src={USDT}
+                alt="DAIR Logo"
+                className="w-10 h-10 rounded-full mr-3"
+              />
             </div>
             <div>
               <p className="text-white text-[17px] font-medium">USDT</p>
               <p className="text-white text-[17px] font-medium">Earnings</p>
             </div>
           </div>
-          <p className="text-white text-xl text-center">$404800.00</p>
+          <p className="text-white text-xl">$404800.00</p>
         </div>
       </div>
-
 
       {/* Token Presale Card */}
       <div className="w-full max-w-[800px] mx-auto mt-2 p-4 sm:p-8 bg-gradient-to-br from-[#0d0d2b] to-[#012d3a] text-white rounded-2xl border border-[#134D61] shadow-2xl">
         {/* Title */}
-        <h2 className="text-center text-lg sm:text-2xl font-bold mb-6">
+        <h2 className="text-center text-[24px] font-bold mb-6">
           Presale Ending In
         </h2>
 
@@ -76,18 +84,16 @@ const TokenPreSale = () => {
         <div
           className="flex justify-between items-center text-center py-2 px-3 mb-2 rounded-xl"
           style={{
-                  background:
-                    "linear-gradient(90deg, #0a0a15 0%, #151528 100%)",
-                  border: "1px dashed rgb(59, 88, 144)",
-                  
-                }}
+            background: "linear-gradient(90deg, #0a0a15 0%, #151528 100%)",
+            border: "1px dashed rgb(59, 88, 144)",
+          }}
         >
           {["Day", "Hours", "Minutes", "Seconds"].map((label, idx, arr) => (
             <React.Fragment key={label}>
               <div className="flex flex-col items-center px-1 sm:px-2">
                 <p className="text-[11px] sm:text-sm text-gray-300">{label}</p>
                 <p className="text-[#5B00F7] text-lg sm:text-xl font-extrabold">
-                  {[16, 12, 34, 5][idx]}
+                  {[16, 12, 34, "05"][idx]}
                 </p>
               </div>
               {idx < arr.length - 1 && (
@@ -113,7 +119,8 @@ const TokenPreSale = () => {
         {/* Progress Info */}
         <div className="flex justify-between items-center text-[11px] mb-2">
           <p className="text-gray-300">
-            DAIR Raised - <span className=" text-gray-300 font-semibold">62%</span>
+            DAIR Raised -{" "}
+            <span className=" text-gray-300 font-semibold">62%</span>
           </p>
           <p className="text-gray-400 font-medium">
             $3,042,00,00 / 10,00,000,00
@@ -173,7 +180,6 @@ const TokenPreSale = () => {
         </div>
       </div>
 
-
       {/* why buy in presale box */}
       <div className="w-full max-w-[800px] mx-auto px-2 py-2 bg-gradient-to-br from-[#0f1120] to-[#0b0d1a] rounded-xl shadow-md border border-[#134D61] mt-6">
         <h2 className="text-center text-white text-[24px] font-bold mb-3">
@@ -184,7 +190,9 @@ const TokenPreSale = () => {
           {/* Card 1 */}
           <div className="bg-[#16193a] rounded-md p-4 sm:p-5 text-white text-center flex flex-col justify-center border border-[#A800F7]">
             <img src={early} alt="Early Access" className="mx-auto w-25 h-25" />
-            <h3 className="font-semibold text-[16px] sm:text-base mb-1">Early Access</h3>
+            <h3 className="font-semibold text-[16px] sm:text-base mb-1">
+              Early Access
+            </h3>
             <p className="text-[9px] text-[#969696]">
               Grab the lowest price before public launch.
             </p>
@@ -192,8 +200,14 @@ const TokenPreSale = () => {
 
           {/* Card 2 */}
           <div className="bg-[#16193a] rounded-md p-4 sm:p-5 text-white text-center flex flex-col justify-center border border-[#A800F7]">
-            <img src={community} alt="Community Token" className="mx-auto w-20 h-20" />
-            <h3 className="font-semibold text-[16px] sm:text-base mb-1">Community Token</h3>
+            <img
+              src={community}
+              alt="Community Token"
+              className="mx-auto w-20 h-20"
+            />
+            <h3 className="font-semibold text-[16px] sm:text-base mb-1">
+              Community Token
+            </h3>
             <p className="text-[9px] text-[#969696]">
               Driven by its holders — your vote, your value.
             </p>
@@ -201,8 +215,14 @@ const TokenPreSale = () => {
 
           {/* Card 3 */}
           <div className="bg-[#16193a] rounded-md p-4 sm:p-5 text-white text-center flex flex-col justify-center border border-[#A800F7]">
-            <img src={secure} alt="Secure Contract" className="mx-auto w-25 h-25" />
-            <h3 className="font-semibold text-[16px] sm:text-base mb-1">Secure Contract</h3>
+            <img
+              src={secure}
+              alt="Secure Contract"
+              className="mx-auto w-25 h-25"
+            />
+            <h3 className="font-semibold text-[16px] sm:text-base mb-1">
+              Secure Contract
+            </h3>
             <p className="text-[9px] text-[#969696]">
               Fully verified & transparent contract.
             </p>
@@ -210,8 +230,14 @@ const TokenPreSale = () => {
 
           {/* Card 4 */}
           <div className="bg-[#16193a] rounded-md p-4 sm:p-5 text-white text-center flex flex-col justify-center border border-[#A800F7]">
-            <img src={future} alt="CEX Listings" className="mx-auto w-25 h-25" />
-            <h3 className="font-semibold text-[16px] sm:text-base mb-1">CEX Listings</h3>
+            <img
+              src={future}
+              alt="CEX Listings"
+              className="mx-auto w-25 h-25"
+            />
+            <h3 className="font-semibold text-[16px] sm:text-base mb-1">
+              CEX Listings
+            </h3>
             <p className="text-[9px] text-[#969696]">
               Get in before major exchange listings.
             </p>
@@ -219,14 +245,14 @@ const TokenPreSale = () => {
         </div>
       </div>
 
-
       {/* image */}
       {/* <div>
         <img src={Group417} alt="Group 417" className="w-full mt-3 rounded-xl" />
       </div> */}
       <div className=" w-full flex justify-center pt-3">
         <img
-          src={Group417} alt="Group 417"
+          src={Group417}
+          alt="Group 417"
           className="w-full max-w-3xl h-auto rounded-xl"
         />
       </div>
