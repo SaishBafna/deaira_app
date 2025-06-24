@@ -118,7 +118,7 @@ const Sidebar = ({ onClose }) => {
             <div className="space-y-3 w-full bg-gradient-to-r from-[#02010B43] to-[#353E3D43]  border border-[#ffffff10] rounded-xl  p-5 backdrop-blur-md shadow-lg shadow-black/10 mt-4">
                 <div>
                     <Link to="/TeamReport">
-                        <button className="w-full bg-[#ffffff17] hover:from-[#2a0043] hover:via-[#1c1c6f] hover:to-[#10435d] transition-all duration-300 rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm shadow-lg">
+                        <button className="w-full bg-[#ffffff17] hover:from-[#2a0043] hover:via-[#1c1c6f] hover:to-[#10435d] transition-all duration-300 rounded-xl p-2 flex items-center justify-between border border-white/10 backdrop-blur-sm shadow-lg">
                             <div className="flex items-center gap-3">
                                 <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-[#00000042] rounded-full text-white">
                                     <RiTeamFill className="w-4 h-4 text-[#A8FFD1]" />
@@ -136,7 +136,7 @@ const Sidebar = ({ onClose }) => {
                 {/* Activation */}
                 <div>
                     <Link to="/Withdraw">
-                        <button className="w-full bg-[#ffffff17] hover:from-[#2a0043] hover:via-[#1c1c6f] hover:to-[#10435d] transition-all duration-300 rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm shadow-lg">
+                        <button className="w-full bg-[#ffffff17] hover:from-[#2a0043] hover:via-[#1c1c6f] hover:to-[#10435d] transition-all duration-300 rounded-xl p-2 flex items-center justify-between border border-white/10 backdrop-blur-sm shadow-lg">
                             <div className="flex items-center gap-3">
                                 <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-[#00000042] rounded-full text-white">
                                     <BiMoneyWithdraw className="w-4 h-4 text-[#A8FFD1]" />
@@ -152,7 +152,7 @@ const Sidebar = ({ onClose }) => {
                 </div>
                 <div>
                     <Link to="/Earnings">
-                        <button className="w-full bg-[#ffffff17] hover:from-[#2a0043] hover:via-[#1c1c6f] hover:to-[#10435d] transition-all duration-300 rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm shadow-lg">
+                        <button className="w-full bg-[#ffffff17] hover:from-[#2a0043] hover:via-[#1c1c6f] hover:to-[#10435d] transition-all duration-300 rounded-xl p-2 flex items-center justify-between border border-white/10 backdrop-blur-sm shadow-lg">
                             <div className="flex items-center gap-3">
                                 <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-[#00000042] rounded-full text-white">
                                     <PiMoneyBold className="w-4 h-4 text-[#A8FFD1]" />
@@ -182,7 +182,7 @@ const Sidebar = ({ onClose }) => {
                     {/* Main Button */}
                     <button
                         onClick={toggleMenu}
-                        className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm"
+                        className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-2 flex items-center justify-between border border-white/10 backdrop-blur-sm"
                     >
                         <div className="flex items-center gap-3">
                             <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-[#00000042] rounded-full text-white">
@@ -245,7 +245,7 @@ const Sidebar = ({ onClose }) => {
                 </button> */}
 
                 {/* Terms and Conditions */}
-                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
+                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-2 flex items-center justify-between border border-white/10 backdrop-blur-sm">
                     <Link to="/TermsAndConditions">
                         <div className="flex items-center gap-3">
                             <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-[#00000042] rounded-full text-white">
@@ -273,7 +273,7 @@ const Sidebar = ({ onClose }) => {
                     <ChevronDown className="w-5 h-5 text-white/80 bg-white/10 rounded-full p-1" />
                 </button> */}
 
-                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
+                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-2 flex items-center justify-between border border-white/10 backdrop-blur-sm">
                     <Link to="/PrivacyPolicy">
                         <div className="flex items-center gap-3">
                             <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-[#00000042] rounded-full text-white">
@@ -289,7 +289,7 @@ const Sidebar = ({ onClose }) => {
                 </button>
 
                 {/* FAQs */}
-                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-4 flex items-center justify-between border border-white/10 backdrop-blur-sm">
+                <button className="w-full bg-white/5 hover:bg-white/10 transition-all rounded-xl p-2 flex items-center justify-between border border-white/10 backdrop-blur-sm">
                     <Link to="/FAQ">
                         <div className="flex items-center gap-3">
                             <div className="flex items-center justify-center w-9 h-9 p-[5px] bg-[#00000042] rounded-full text-white">
