@@ -59,7 +59,6 @@ const Homescreen = () => {
   const [copiedItem, setCopiedItem] = React.useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
-
   const handleCopyToClipboard = (text, itemName) => {
     navigator.clipboard.writeText(text);
     setCopiedItem(itemName);
@@ -169,7 +168,7 @@ const Homescreen = () => {
   };
 
   return (
-        <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
+    <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
       {/* Popup Notification */}
       {showPopup && (
         <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-[#4E10FF] text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce">
@@ -524,25 +523,49 @@ const Homescreen = () => {
 
           <div className="text-sm space-y-3">
             <div className="flex justify-between items-center border-b border-white/10 pb-1">
-              <span className="text-white whitespace-nowrap">Total Supply</span>
-              <span className="font-medium text-white text-right w-40">
+              <span className="text-white whitespace-nowrap w-[50%]">
+                Total Supply
+              </span>
+              <span className="font-medium text-white text-left w-[48%]">
                 40,000,000,000 DAIR
               </span>
             </div>
+
             <div className="flex justify-between items-center border-b border-white/10 pb-1">
-              <span className="text-white whitespace-nowrap">
+              <span className="text-white whitespace-nowrap w-[50%]">
                 Initial Price
               </span>
-              <span className="font-medium text-white text-right w-40 mr-10">
+              <span className="font-medium text-white text-left w-[48%]">
                 $0.001 / token
               </span>
             </div>
+
             <div className="flex justify-between items-center border-b border-white/10 pb-1">
-              <span className="text-white whitespace-nowrap">
+              <span className="text-white whitespace-nowrap w-[50%]">
                 Public Sale Allocation
               </span>
-              <span className="font-medium text-white text-right w-40">
+              <span className="font-medium text-white text-left w-[48%]">
                 20,000,000,000 DAIR
+              </span>
+            </div>
+
+            <div className="flex justify-between items-center border-b border-white/10 pb-3">
+              <span className="text-white whitespace-nowrap w-[50%]">
+                Available For Public Sale
+              </span>
+              <div className="w-[50%] min-w-[120px]">
+                <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                  <div className="h-1.5 bg-fuchsia-500 rounded-full w-[62%]"></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-between items-center border-b border-white/10 pb-1">
+              <span className="text-white whitespace-nowrap w-[50%]">
+                Expected Listing Price
+              </span>
+              <span className="font-medium text-white text-left w-[48%]">
+                5%
               </span>
             </div>
           </div>
@@ -559,17 +582,17 @@ const Homescreen = () => {
           <div className="text-sm space-y-3">
             <div className="flex justify-between border-b border-white/10 pb-1">
               <span className="text-white">Total DAIR Purchased</span>
-              <span className="font-medium text-left">40,000,000,000 DAIR</span>
+              <span className="font-medium text-white text-left w-[48%]">40,000,000,000 DAIR</span>
             </div>
             <div className="flex justify-between border-b border-white/10 pb-1">
               <span className="text-white">Total DAIR Air Dropped</span>
-              <span className="font-medium text-left mr-10">
+              <span className="font-medium text-white text-left w-[48%]">
                 $0.001 / token
               </span>
             </div>
             <div className="flex justify-between pb-1">
               <span className="text-white">Air Dropped Date</span>
-              <span className="font-medium mr-14">17/06/2025</span>
+              <span className="font-medium text-white text-left w-[48%]">17/06/2025</span>
             </div>
           </div>
         </div>

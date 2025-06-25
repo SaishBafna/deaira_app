@@ -237,7 +237,7 @@ const FAQ = () => {
     {/* FAQ Content */}
     <section className="py-5">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 lg:p-12 shadow-2xl border border-white/20">
+        <div className="bg-white/10  rounded-3xl p-8 lg:p-12 shadow-2xl border border-white/20">
           {/* Search Bar */}
           <div
             id="search"
