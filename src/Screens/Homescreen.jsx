@@ -1,4 +1,4 @@
-import React, { use, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import {
   FiBarChart2,
@@ -57,11 +57,17 @@ const Homescreen = () => {
   const [data, setData] = React.useState(null);
   const [wallet, setWallet] = React.useState(null);
   const [copiedItem, setCopiedItem] = React.useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+
 
   const handleCopyToClipboard = (text, itemName) => {
     navigator.clipboard.writeText(text);
     setCopiedItem(itemName);
-    setTimeout(() => setCopiedItem(null), 2000);
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+      setCopiedItem(null);
+    }, 2000);
   };
 
   const fetchUserData = async () => {
@@ -163,12 +169,13 @@ const Homescreen = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
-      {/* Blur circles - fixed in background */}
-      <div className="fixed w-52 h-52 bg-purple-700 rounded-full blur-3xl top-0 right-10 opacity-50 pointer-events-none -z-10"></div>
-      <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none -z-10"></div>
-      <div className="fixed w-36 h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none -z-10"></div>
-
+        <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
+      {/* Popup Notification */}
+      {showPopup && (
+        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-[#4E10FF] text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce">
+          Copied to clipboard!
+        </div>
+      )}
       {/* Scrollable content */}
       <div className="w-full max-w-4xl flex flex-col gap-2">
         <Header />
@@ -276,7 +283,7 @@ const Homescreen = () => {
                 <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
                   0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB
                 </span>
-                <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
+                <div className="w-px h-8 bg-[#A15FFF] mr-1 "></div>
                 <button
                   onClick={() =>
                     handleCopyToClipboard(
@@ -284,7 +291,7 @@ const Homescreen = () => {
                       "wallet"
                     )
                   }
-                  className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-16"
+                  className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-5 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-16"
                 >
                   {copiedItem === "wallet" ? "Copied!" : "Copy"}
                 </button>
@@ -307,7 +314,7 @@ const Homescreen = () => {
                 <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
                   https://deaira.pro/register?sponsors
                 </span>
-                <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
+                <div className="w-px h-8 bg-[#A15FFF]  "></div>
                 <button
                   onClick={() =>
                     handleCopyToClipboard(
@@ -315,7 +322,7 @@ const Homescreen = () => {
                       "referral"
                     )
                   }
-                  className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-15"
+                  className="flex items-center gap-1 text-sm text-[#A15FFF] hover:opacity-80 px-6 py-1.5 rounded-md transition-all duration-200 hover:bg-[#A15FFF]/10 whitespace-nowrap w-15"
                 >
                   {copiedItem === "referral" ? "Copied!" : "Copy"}
                 </button>
@@ -614,7 +621,7 @@ const Homescreen = () => {
             <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
               https://deaira.pro/register?sponsors
             </span>
-            <div className="w-px h-8 bg-[#A15FFF] mx-1"></div>
+            <div className="w-px h-8 bg-[#A15FFF] mr-3"></div>
             <button
               onClick={() =>
                 handleCopyToClipboard(
