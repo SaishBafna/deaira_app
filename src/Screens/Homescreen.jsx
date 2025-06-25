@@ -56,10 +56,11 @@ const Homescreen = () => {
   const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL;
   const [data, setData] = React.useState(null);
   const [wallet, setWallet] = React.useState(null);
+  const [userData, setUserData] = React.useState(null);
   const [copiedItem, setCopiedItem] = React.useState(null);
   const [showPopup, setShowPopup] = useState(false);
- const [showTermsPopup, setShowTermsPopup] = useState(false);
-
+  const [showTermsPopup, setShowTermsPopup] = useState(false);
+  const [referLink, setReferLink] = useState(false);
 
   const handleCopyToClipboard = (text, itemName) => {
     navigator.clipboard.writeText(text);
@@ -69,29 +70,6 @@ const Homescreen = () => {
       setShowPopup(false);
       setCopiedItem(null);
     }, 2000);
-  };
-
-  const fetchUserData = async () => {
-    try {
-      const response = await axios.get(
-        `${API_BASE_URL}/homepageapi/${encryptedWalletAddress}`,
-        {
-          headers: {
-            Authorization: `Bearer ${jwt_token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (!response.data?.user?.user) {
-        throw new Error("Failed to fetch user data");
-      }
-      console.log("User Data:", response.data);
-      setData(response?.data);
-    } catch (err) {
-      console.error("User data fetch error:", err);
-      throw err;
-    }
   };
 
   const FetchWalletData = async () => {
@@ -104,23 +82,48 @@ const Homescreen = () => {
           },
         }
       );
-      console.log("Wallet Data:", walletResponse?.data);
       setWallet(walletResponse?.data?.wallet);
+      setData(walletResponse?.data);
+      setUserData(walletResponse?.data?.user?.user);
     } catch (error) {
       console.error("Error fetching wallet data:", error);
+
+      try {
+        await disconnectWallet();
+        navigate('/register');
+      } catch (disconnectError) {
+        console.error("Error disconnecting wallet:", disconnectError);
+        // Agar disconnect fail ho jaye to bhi register page pe bhej do
+        navigate('/register');
+      }
     }
   };
 
   useEffect(() => {
     FetchWalletData();
-    fetchUserData();
+    // handleReferralClick();
+    // fetchUserData();
   }, []);
+
+  useEffect(() => {
+    if (userData) {
+      handleReferralClick();
+    }
+  }, [userData]);
+
+  const handleReferralClick = () => {
+    const currentUrl = window.location.origin;
+    const userEmail = userData?.email || 'guest';
+    const referralLink = `${currentUrl}/Register?sponsor_id=${userEmail}`;
+
+    // Copy to clipboard
+    setReferLink(referralLink);
+  };
 
   useEffect(() => {
     const encryptedWalletAddress = localStorage.getItem(
       "encryptedWalletAddress"
     );
-    console.log("encryptedWalletAddress useEffect:", encryptedWalletAddress);
 
     if (!encryptedWalletAddress) {
       navigate("/register");
@@ -143,7 +146,6 @@ const Homescreen = () => {
 
       // If no wallet is connected, connect first
       if (!addressToUse) {
-        console.log("No wallet connected, connecting...");
         addressToUse = await connectWallet();
       }
 
@@ -151,8 +153,6 @@ const Homescreen = () => {
         console.error("Failed to get wallet address");
         return;
       }
-
-      console.log("Using address for token generation:", addressToUse);
 
       // Generate token using the connected address
       const response = await axios.post(
@@ -163,46 +163,41 @@ const Homescreen = () => {
       );
 
       localStorage.setItem("jwt_token", response.data.token);
-      console.log("Token Response:", response.data.token);
     } catch (error) {
       console.error("Token generation failed:", error);
     }
   };
 
   return (
-
-
-
     <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
 
-
-{showTermsPopup && (
-  <div className="fixed inset-0 backdrop-blur-sm bg-black/50 flex items-center justify-center z-50 p-4">
-    <div className="bg-gradient-to-b from-[#1a0033] to-[#0c0c5f] rounded-xl p-6 max-w-md w-full border border-white/20">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-bold text-white">Terms & Conditions</h3>
-        <button 
-          onClick={() => setShowTermsPopup(false)}
-          className="text-white hover:text-gray-300"
-        >
-          ✕
-        </button>
-      </div>
-      <div className="text-sm text-white/80 space-y-3">
-        <p>1. Token allocation is subject to availability during the public sale period.</p>
-        <p>2. Expected listing price is an estimate and may vary based on market conditions.</p>
-        <p>3. All purchases are final and non-refundable.</p>
-        <p>4. By participating, you agree to our full terms of service.</p>
-      </div>
-      <button
-        onClick={() => setShowTermsPopup(false)}
-        className="mt-6 w-full py-2 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg text-white font-semibold"
-      >
-        I Understand
-      </button>
-    </div>
-  </div>
-)}
+      {showTermsPopup && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-gradient-to-b from-[#1a0033] to-[#0c0c5f] rounded-xl p-6 max-w-md w-full border border-white/20">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-bold text-white">Terms & Conditions</h3>
+              <button
+                onClick={() => setShowTermsPopup(false)}
+                className="text-white hover:text-gray-300"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="text-sm text-white/80 space-y-3">
+              <p>1. Token allocation is subject to availability during the public sale period.</p>
+              <p>2. Expected listing price is an estimate and may vary based on market conditions.</p>
+              <p>3. All purchases are final and non-refundable.</p>
+              <p>4. By participating, you agree to our full terms of service.</p>
+            </div>
+            <button
+              onClick={() => setShowTermsPopup(false)}
+              className="mt-6 w-full py-2 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg text-white font-semibold"
+            >
+              I Understand
+            </button>
+          </div>
+        </div>
+      )}
       {/* Popup Notification */}
       {showPopup && (
         <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-[#4E10FF] text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce">
@@ -212,20 +207,6 @@ const Homescreen = () => {
       {/* Scrollable content */}
       <div className="w-full max-w-4xl flex flex-col gap-2">
         <Header />
-        {/* Logo */}
-        {/* <div className="w-full flex justify-center">
-          <img src={Image} alt="Logo" className="h-15 w-auto" />
-        </div> */}
-
-        {/* Search Bar */}
-        {/* <div className="relative">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full pl-5 pr-12 py-3 rounded-xl bg-[#2b2828] text-white placeholder-white/60 border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-          <FiSearch className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/70 text-xl" />
-        </div> */}
         <div className="flex items-center justify-between px-3 pt-4 pb-1 rounded-xl w-full mt-10 max-w-4xl mx-auto">
           {/* Left Section - Profile Info */}
           <div className="flex items-center">
@@ -263,11 +244,10 @@ const Homescreen = () => {
           <div
             onClick={handleWalletAction}
             className={`flex-1 flex items-center justify-center px-2 py-1 text-xs font-semibold rounded-lg shadow-md cursor-pointer transition-all h-[40px]
-      ${
-        walletAddress
-          ? "text-red-600 bg-white hover:bg-gray-100"
-          : "text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90"
-      }`}
+      ${walletAddress
+                ? "text-red-600 bg-white hover:bg-gray-100"
+                : "text-white bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:opacity-90"
+              }`}
           >
             {walletAddress ? (
               <MdLogout className="text-lg" />
@@ -314,13 +294,13 @@ const Homescreen = () => {
                 }}
               >
                 <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
-                  0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB
+                  {walletAddress}
                 </span>
                 <div className="w-px h-8 bg-[#A15FFF] mr-1 "></div>
                 <button
                   onClick={() =>
                     handleCopyToClipboard(
-                      "0x6A5DD142F16e565E51a66EF03870a8836Cb6CaB",
+                      walletAddress,
                       "wallet"
                     )
                   }
@@ -345,13 +325,13 @@ const Homescreen = () => {
                 }}
               >
                 <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
-                  https://deaira.pro/register?sponsors
+                  {referLink}
                 </span>
                 <div className="w-px h-8 bg-[#A15FFF]  "></div>
                 <button
                   onClick={() =>
                     handleCopyToClipboard(
-                      "https://deaira.pro/register?sponsors",
+                      referLink,
                       "referral"
                     )
                   }
@@ -590,21 +570,17 @@ const Homescreen = () => {
 
 
 
- <div className="relative w-[50%] min-w-[120px]">
-  <span 
-    className="absolute -top-4 right-0 text-[10px] text-gray-400 font-semibold cursor-pointer hover:text-white transition"
-    onClick={() => setShowTermsPopup(true)}
-  >
-    *T&C Apply
-  </span>
-  <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
-    <div className="h-1.5 bg-fuchsia-500 rounded-full w-[62%]"></div>
-  </div>
-</div>
-
-
-
-
+              <div className="relative w-[50%] min-w-[120px]">
+                <span
+                  className="absolute -top-4 right-0 text-[10px] text-gray-400 font-semibold cursor-pointer hover:text-white transition"
+                  onClick={() => setShowTermsPopup(true)}
+                >
+                  *T&C Apply
+                </span>
+                <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                  <div className="h-1.5 bg-fuchsia-500 rounded-full w-[62%]"></div>
+                </div>
+              </div>
             </div>
 
             <div className="flex justify-between items-center border-b border-white/10 pb-1">
@@ -689,13 +665,13 @@ const Homescreen = () => {
             }}
           >
             <span className="flex-1 text-xs text-white mr-4 overflow-hidden text-ellipsis whitespace-nowrap">
-              https://deaira.pro/register?sponsors
+              {referLink}
             </span>
             <div className="w-px h-8 bg-[#A15FFF] mr-3"></div>
             <button
               onClick={() =>
                 handleCopyToClipboard(
-                  "https://deaira.pro/register?sponsors",
+                  referLink,
                   "referral2"
                 )
               }

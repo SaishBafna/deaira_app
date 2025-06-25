@@ -29,7 +29,7 @@ const Register = () => {
   // Check for sponsor ID in URL parameters on component mount
   useEffect(() => {
     // Check for both possible parameter names
-    const urlSponsorId = searchParams.get("sponsors_id") || searchParams.get("sponcer_id");
+    const urlSponsorId = searchParams.get("sponsor_id") || searchParams.get("sponcer_id");
     if (urlSponsorId) {
       setSponsorId(urlSponsorId);
       validateSponsorId(urlSponsorId);
@@ -180,7 +180,7 @@ const Register = () => {
         toast.success("Registration successful!");
         // Redirect to home or dashboard after successful registration
         setTimeout(() => {
-          navigate("/");
+          navigate("/TokenPresale");
         }, 2000);
       }
     } catch (error) {
