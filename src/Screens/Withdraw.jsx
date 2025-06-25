@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FiChevronLeft } from 'react-icons/fi';
 import { toast } from 'react-toastify';
+import { WalletContext } from "../context/walletcontext";
 
 const WalletPage = () => {
   const navigate = useNavigate();
+  const { walletAddress, connectWallet, disconnectWallet } = useContext(WalletContext);
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const jwt_token = localStorage.getItem('jwt_token');
   const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
@@ -30,7 +32,7 @@ const WalletPage = () => {
   });
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  
+
 
   // Fetch all required data
   useEffect(() => {
@@ -84,6 +86,16 @@ const WalletPage = () => {
         console.error('API Error:', err);
         setError(err.response?.data?.message || err.message || 'Failed to load data');
         toast.error(err.response?.data?.message || 'Failed to load wallet data');
+
+
+        try {
+          await disconnectWallet();
+          navigate('/register');
+        } catch (disconnectError) {
+          console.error("Error disconnecting wallet:", disconnectError);
+          // Agar disconnect fail ho jaye to bhi register page pe bhej do
+          navigate('/register');
+        }
       } finally {
         setLoading(false);
       }
@@ -164,7 +176,7 @@ const WalletPage = () => {
     try {
       setLoading(true);
       const amount = parseFloat(formData.withdrawalAmount);
-      
+
       const response = await axios.post(
         `${API_BASE_URL}/payment_withdraw`,
         {
@@ -333,27 +345,27 @@ const WalletPage = () => {
             {/* Currency */}
             <div>
               <label className="block text-white font-semibold mb-1">Currency</label>
-<div className="relative w-full">
-  <select
-    name="currency"
-    value={formData.currency}
-    onChange={handleInputChange}
-    className="w-full px-4 pr-12 py-2 rounded-md bg-[#00000040] border border-[#DDCDE575] text-white appearance-none focus:outline-none focus:ring-1 focus:ring-purple-500"
-    required
-  >
-    <option className="text-white bg-black" value="USDT">USDT</option>
-    <option className="text-white bg-black" value="BTC">BTC</option>
-    <option className="text-white bg-black" value="ETH">ETH</option>
-  </select>
-  <svg
-    className="pointer-events-none absolute right-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path d="M19 9l-7 7-7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-</div>
+              <div className="relative w-full">
+                <select
+                  name="currency"
+                  value={formData.currency}
+                  onChange={handleInputChange}
+                  className="w-full px-4 pr-12 py-2 rounded-md bg-[#00000040] border border-[#DDCDE575] text-white appearance-none focus:outline-none focus:ring-1 focus:ring-purple-500"
+                  required
+                >
+                  <option className="text-white bg-black" value="USDT">USDT</option>
+                  <option className="text-white bg-black" value="BTC">BTC</option>
+                  <option className="text-white bg-black" value="ETH">ETH</option>
+                </select>
+                <svg
+                  className="pointer-events-none absolute right-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 9l-7 7-7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
 
 
 
@@ -427,25 +439,25 @@ const WalletPage = () => {
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
           <div className="bg-gradient-to-b from-[#1a1a40] to-[#3b007d] rounded-xl p-6 max-w-md w-full">
             <h2 className="text-xl font-bold text-white mb-4">Confirm Withdrawal</h2>
-            
+
             <div className="space-y-4 mb-6">
               <div>
                 <p className="text-white/80 text-sm">Amount</p>
                 <p className="text-white font-bold">${parseFloat(formData.withdrawalAmount).toFixed(2)} {formData.currency}</p>
               </div>
-              
+
               <div>
                 <p className="text-white/80 text-sm">Withdrawal Address</p>
                 <p className="text-white font-mono break-all">{formData.withdrawalAddress}</p>
               </div>
-              
+
               <div className="p-4 bg-[#00000040] rounded-lg border border-[#DDCDE575]">
                 <p className="text-yellow-400 text-sm">
                   Please double-check the withdrawal address. Transactions cannot be reversed once submitted.
                 </p>
               </div>
             </div>
-            
+
             <div className="flex space-x-4">
               <button
                 onClick={() => setShowConfirmation(false)}

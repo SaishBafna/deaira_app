@@ -48,8 +48,7 @@ import { WalletContext } from "../context/walletcontext";
 import { MdLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 const Homescreen = () => {
-  const { walletAddress, connectWallet, disconnectWallet } =
-    useContext(WalletContext);
+  const { walletAddress, connectWallet, disconnectWallet } = useContext(WalletContext);
   const navigate = useNavigate();
   const encryptedWalletAddress = localStorage.getItem("encryptedWalletAddress");
   const jwt_token = localStorage.getItem("jwt_token");
@@ -85,6 +84,7 @@ const Homescreen = () => {
       setWallet(walletResponse?.data?.wallet);
       setData(walletResponse?.data);
       setUserData(walletResponse?.data?.user?.user);
+      console.log("Wallet Data:", walletResponse?.data?.user?.user);
     } catch (error) {
       console.error("Error fetching wallet data:", error);
 
@@ -217,20 +217,22 @@ const Homescreen = () => {
             />
             <div className="flex flex-col ml-4 leading-snug">
               <p className="text-white font-semibold text-[20px]">Welcome</p>
-              <p className="text-white font-semibold text-[20px]">Radhika</p>
+              <p className="text-white font-semibold text-[20px]">{userData?.first_name || "Guest"}</p>
             </div>
           </div>
 
           {/* Right Section - ID Button */}
-          <button
-            className="text-black px-6 py-2 sm:px-7 sm:py-2.5 text-sm sm:text-base rounded-xl font-semibold transition hover:opacity-90 shadow-md"
-            style={{
-              backgroundImage: "linear-gradient(to right, #E0B9F2, #4E10FF)",
-              minWidth: "120px",
-            }}
-          >
-            ID: CA120609
-          </button>
+          {userData?.unique_id ? (
+            <button
+              className="text-black px-6 py-2 sm:px-7 sm:py-2.5 text-sm sm:text-base rounded-xl font-semibold transition hover:opacity-90 shadow-md"
+              style={{
+                backgroundImage: "linear-gradient(to right, #E0B9F2, #4E10FF)",
+                minWidth: "120px",
+              }}
+            >
+              ID:  {userData.unique_id}
+            </button>
+          ) : null}
         </div>
 
         {/* Panel Image */}
@@ -268,15 +270,17 @@ const Homescreen = () => {
           {/* Wallet ID Title & Badge - Horizontally Aligned */}
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-semibold">Wallet ID</h1>
-            <div className="relative">
-              <div className="p-[1px] rounded-xl bg-gradient-to-r from-[#193362] via-[#193362] to-[#fff] inline-block">
-                <div className="bg-black rounded-xl px-6 py-2">
-                  <span className="font-bold text-white text-base sm:text-lg tracking-wide">
-                    CA120609
-                  </span>
+            {userData?.unique_id ? (
+              <div className="relative">
+                <div className="p-[1px] rounded-xl bg-gradient-to-r from-[#193362] via-[#193362] to-[#fff] inline-block">
+                  <div className="bg-black rounded-xl px-6 py-2">
+                    <span className="font-bold text-white text-base sm:text-lg tracking-wide">
+                      {userData.unique_id}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : null}
           </div>
 
           <div className="w-full h-px bg-gradient-to-br from-[#06124a00] via-[#3D3E67] to-[#06124a00]"></div>

@@ -118,7 +118,6 @@ const Register = () => {
     setIsConnectingWallet(true);
     try {
       const connect = await connectWallet();
-      console.log(connect)
       // toast.success("Wallet connected successfully!");
       // The useEffect will automatically trigger checkWalletStatus
     } catch (error) {
@@ -131,8 +130,6 @@ const Register = () => {
 
   const checkWalletStatus = async () => {
     if (!walletAddress) return;
-
-    console.log("Checking wallet status for:", walletAddress);
     setIsLoading(true);
 
     try {
@@ -141,13 +138,12 @@ const Register = () => {
         `${API_BASE_URL}/WalletCheck/${encodedWalletAddress}`
       );
 
-      console.log("Wallet check response:", response.data);
       const { status } = response.data;
 
       if (status === "success") {
         // If wallet already registered, redirect to home
         setTimeout(() => {
-          navigate("/");
+          navigate("/TokenPresale");
         }, 3000);
       } else {
         setWalletChecked(true);
@@ -196,9 +192,7 @@ const Register = () => {
       const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/generateToken`, {
         email: walletAddress
       });
-      console.log('Token Response:', response.data);
       localStorage.setItem("jwt_token", response.data.token);
-      console.log('Token Response:', response.data.token);
     } catch (error) {
       console.error('Token generation failed:', error);
     }
