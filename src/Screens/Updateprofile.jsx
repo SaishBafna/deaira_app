@@ -359,7 +359,7 @@ const UpdateProfile = () => {
                     className="w-full bg-[#00000040] border border-[#DDCDE575] rounded-[10px] pl-4 pr-16 py-2 md:py-3 focus:outline-none focus:ring-1 focus:ring-[#5B00F7] text-white"
                     placeholder="Enter OTP"
                     style={{ height: '44px', minHeight: '44px' }}
-                    disabled={!otpSent}
+                    // disabled={!otpSent}
                   />
                   <button
                     onClick={generateOTP}
@@ -390,7 +390,7 @@ const UpdateProfile = () => {
       <input
         className="w-full bg-[#00000040] border border-[#DDCDE575] rounded-[10px] pl-4 pr-16 py-2 md:py-3 focus:outline-none focus:ring-1 focus:ring-[#5B00F7] text-white"
         placeholder="Please Select Your Country"
-        disabled
+        // disabled
         type="text"
         name="otp"
         style={{ height: '44px', minHeight: '44px' }}
@@ -399,7 +399,7 @@ const UpdateProfile = () => {
         <input
         className="w-full bg-[#00000040] border border-[#DDCDE575] rounded-[10px] pl-4 mt-[13px] pr-16 py-2 md:py-3 focus:outline-none focus:ring-1 focus:ring-[#5B00F7] text-white"
         placeholder="Enter Identity Card Name"
-        disabled
+        // disabled
         type="text"
         name="otp"
         style={{ height: '44px', minHeight: '44px' }}
