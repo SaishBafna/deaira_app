@@ -4,6 +4,7 @@ import { WalletContext } from "../context/walletcontext";
 import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import Image from '../assets/Images/logo.png';
 
 const Register = () => {
   const { walletAddress, connectWallet } = useContext(WalletContext);
@@ -11,7 +12,6 @@ const Register = () => {
   const [searchParams] = useSearchParams();
   const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL;
   const [sponsorId, setSponsorId] = useState("");
-  const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [walletChecked, setWalletChecked] = useState(false);
   const [isConnectingWallet, setIsConnectingWallet] = useState(false);
@@ -28,12 +28,13 @@ const Register = () => {
 
   // Check for sponsor ID in URL parameters on component mount
   useEffect(() => {
-    const urlSponsorId = searchParams.get("sponcer_id");
+    // Check for both possible parameter names
+    const urlSponsorId = searchParams.get("sponsors_id") || searchParams.get("sponcer_id");
     if (urlSponsorId) {
       setSponsorId(urlSponsorId);
       validateSponsorId(urlSponsorId);
     }
-  }, []);
+  }, [searchParams]);
 
   // Check wallet status whenever walletAddress changes
   useEffect(() => {
@@ -141,18 +142,13 @@ const Register = () => {
       );
 
       console.log("Wallet check response:", response.data);
-      const { status, email1, e_status } = response.data;
+      const { status } = response.data;
 
-      if (status === "success" && email1 && e_status === "1") {
+      if (status === "success") {
+        // If wallet already registered, redirect to home
         setTimeout(() => {
           navigate("/");
         }, 3000);
-      } else if (email1 && e_status === "0") {
-        await axios.post(`${API_BASE_URL}/SendMailOtp`, { email: walletAddress });
-
-        navigate("/OtpVerifictaion", {
-          state: { email: email1, walletAddress }
-        });
       } else {
         setWalletChecked(true);
       }
@@ -173,24 +169,19 @@ const Register = () => {
   };
 
   const handleRegister = async () => {
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      toast.error("Please enter a valid email address");
-      return;
-    }
-
     setIsLoading(true);
     try {
       const response = await axios.post(`${API_BASE_URL}/register`, {
-        email,
         sponcer_id: sponsorId,
         walletAddress,
       });
 
       if (response.data.message === "User created successfully") {
-        toast.success("Registration successful! Sending OTP...");
-        await axios.post(`${API_BASE_URL}/SendMailOtp`, { email: walletAddress });
-
-        navigate("/OtpVerifictaion");
+        toast.success("Registration successful!");
+        // Redirect to home or dashboard after successful registration
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
       }
     } catch (error) {
       console.error("Registration error:", error);
@@ -218,15 +209,6 @@ const Register = () => {
       <div className="w-full max-w-md relative z-10">
         {/* Logo Section */}
         <div className="flex items-center justify-between mb-8">
-          {/* <button
-            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
-            onClick={() => navigate(-1)}
-          >
-            <ChevronLeft
-              size={20}
-              className="group-hover:-translate-x-1 transition-transform"
-            />
-          </button> */}
           <div className="w-16"></div>
           <h2 className="text-xl font-semibold text-white">Registration</h2>
           <div className="w-16"></div>
@@ -234,13 +216,10 @@ const Register = () => {
 
         <div className="flex justify-center mb-8">
           <div className="flex flex-col items-center">
-            {/* <div className="w-16 h-16 bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-500 rounded-2xl flex items-center justify-center shadow-2xl mb-3 rotate-3 hover:rotate-0 transition-transform duration-300">
-              <div className="text-white font-bold text-2xl">D</div>
-            </div> */}
             <div>
-              
+              <img src={Image} alt="DEAIRA Logo" className="w-34" />
             </div>
-            <h1 className="text-2xl font-bold text-white mb-1">DEAIRA</h1>
+            {/* <h1 className="text-2xl font-bold text-white mb-1">DEAIRA</h1> */}
           </div>
         </div>
 
@@ -249,6 +228,15 @@ const Register = () => {
           <div className="space-y-6">
             {walletAddress && walletChecked ? (
               <>
+                <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+                  <div className="flex items-center gap-2 text-sm">
+                    <Wallet size={16} className="text-purple-400" />
+                    <span className="font-medium">Connected Wallet:</span>
+                    <span className="text-white/80 truncate">
+                      {walletAddress}
+                    </span>
+                  </div>
+                </div>
                 <div>
                   <label className="block text-white/80 text-sm font-medium mb-2">
                     Sponsor ID
@@ -287,39 +275,10 @@ const Register = () => {
                     </div>
                   )}
                 </div>
-
-                <div>
-                  <label className="block text-white/80 text-sm font-medium mb-2">
-                    Email *
-                  </label>
-                  <div className="relative">
-                    <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-purple-400" size={18} />
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded pl-12 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-white placeholder-white/40"
-                      placeholder="Enter your email"
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
-                </div>
-
-                <div className="bg-white/5 rounded-lg p-3 border border-white/10">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Wallet size={16} className="text-purple-400" />
-                    <span className="font-medium">Connected Wallet:</span>
-                    <span className="text-white/80 truncate">
-                      {walletAddress}
-                    </span>
-                  </div>
-                </div>
-
                 <button
                   onClick={handleRegister}
-                  disabled={isLoading || !email}
-                  className={`w-full font-medium py-3 transition-colors shadow-lg rounded-lg ${isLoading || !email ? "opacity-70 cursor-not-allowed" : "hover:opacity-90"
+                  disabled={isLoading}
+                  className={`w-full font-medium py-3 transition-colors shadow-lg rounded-lg ${isLoading ? "opacity-70 cursor-not-allowed" : "hover:opacity-90"
                     } active:scale-95 transition-transform`}
                   style={{
                     background: "linear-gradient(180deg, #A800F7 0%, rgba(233, 171, 255, 0.34) 100%)",
@@ -362,7 +321,7 @@ const Register = () => {
                     {isConnectingWallet ? (
                       <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7938l3-2.647z"></path>
                       </svg>
                     ) : (
                       <Wallet size={20} />
