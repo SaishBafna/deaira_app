@@ -40,7 +40,7 @@ const TokenPreSale = () => {
       </div>
 
       {/* Earnings Cards - Stack on small screens */}
-      <div className="w-full max-w-[800px] mx-auto grid grid-cols-2 gap-2 mt-4 mb-4">
+      {/* <div className="w-full max-w-[800px] mx-auto grid grid-cols-2 gap-2 mt-4 mb-4">
         <div className="bg-gray-800/50 rounded-2xl p-4 border border-gray-700/50">
           <div className="flex items-center mb-3">
             <div>
@@ -74,7 +74,7 @@ const TokenPreSale = () => {
           </div>
           <p className="text-white text-xl">$404800.00</p>
         </div>
-      </div>
+      </div> */}
 
       {/* Token Presale Card */}
       <div className="w-full max-w-[800px] mx-auto mt-2 p-4 sm:p-8 bg-gradient-to-br from-[#0d0d2b] to-[#012d3a] text-white rounded-2xl border border-[#134D61] shadow-2xl">
