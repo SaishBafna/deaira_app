@@ -58,6 +58,8 @@ const Homescreen = () => {
   const [wallet, setWallet] = React.useState(null);
   const [copiedItem, setCopiedItem] = React.useState(null);
   const [showPopup, setShowPopup] = useState(false);
+ const [showTermsPopup, setShowTermsPopup] = useState(false);
+
 
   const handleCopyToClipboard = (text, itemName) => {
     navigator.clipboard.writeText(text);
@@ -168,7 +170,39 @@ const Homescreen = () => {
   };
 
   return (
+
+
+
     <div className="w-full min-h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative flex flex-col items-center px-4 sm:px-8 lg:px-16 py-6">
+
+
+{showTermsPopup && (
+  <div className="fixed inset-0 backdrop-blur-sm bg-black/50 flex items-center justify-center z-50 p-4">
+    <div className="bg-gradient-to-b from-[#1a0033] to-[#0c0c5f] rounded-xl p-6 max-w-md w-full border border-white/20">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-xl font-bold text-white">Terms & Conditions</h3>
+        <button 
+          onClick={() => setShowTermsPopup(false)}
+          className="text-white hover:text-gray-300"
+        >
+          ✕
+        </button>
+      </div>
+      <div className="text-sm text-white/80 space-y-3">
+        <p>1. Token allocation is subject to availability during the public sale period.</p>
+        <p>2. Expected listing price is an estimate and may vary based on market conditions.</p>
+        <p>3. All purchases are final and non-refundable.</p>
+        <p>4. By participating, you agree to our full terms of service.</p>
+      </div>
+      <button
+        onClick={() => setShowTermsPopup(false)}
+        className="mt-6 w-full py-2 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg text-white font-semibold"
+      >
+        I Understand
+      </button>
+    </div>
+  </div>
+)}
       {/* Popup Notification */}
       {showPopup && (
         <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-[#4E10FF] text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce">
@@ -553,11 +587,24 @@ const Homescreen = () => {
               <span className="text-white whitespace-nowrap w-[50%]">
                 Available For Public Sale
               </span>
-              <div className="w-[50%] min-w-[120px]">
-                <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-1.5 bg-fuchsia-500 rounded-full w-[62%]"></div>
-                </div>
-              </div>
+
+
+
+ <div className="relative w-[50%] min-w-[120px]">
+  <span 
+    className="absolute -top-4 right-0 text-[10px] text-gray-400 font-semibold cursor-pointer hover:text-white transition"
+    onClick={() => setShowTermsPopup(true)}
+  >
+    *T&C Apply
+  </span>
+  <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+    <div className="h-1.5 bg-fuchsia-500 rounded-full w-[62%]"></div>
+  </div>
+</div>
+
+
+
+
             </div>
 
             <div className="flex justify-between items-center border-b border-white/10 pb-1">
