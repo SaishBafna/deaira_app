@@ -218,7 +218,7 @@ const Register = () => {
       <div className="w-full max-w-md relative z-10">
         {/* Logo Section */}
         <div className="flex items-center justify-between mb-8">
-          <button
+          {/* <button
             className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
             onClick={() => navigate(-1)}
           >
@@ -226,15 +226,19 @@ const Register = () => {
               size={20}
               className="group-hover:-translate-x-1 transition-transform"
             />
-          </button>
+          </button> */}
+          <div className="w-16"></div>
           <h2 className="text-xl font-semibold text-white">Registration</h2>
           <div className="w-16"></div>
         </div>
 
         <div className="flex justify-center mb-8">
           <div className="flex flex-col items-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-500 rounded-2xl flex items-center justify-center shadow-2xl mb-3 rotate-3 hover:rotate-0 transition-transform duration-300">
+            {/* <div className="w-16 h-16 bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-500 rounded-2xl flex items-center justify-center shadow-2xl mb-3 rotate-3 hover:rotate-0 transition-transform duration-300">
               <div className="text-white font-bold text-2xl">D</div>
+            </div> */}
+            <div>
+              
             </div>
             <h1 className="text-2xl font-bold text-white mb-1">DEAIRA</h1>
           </div>
