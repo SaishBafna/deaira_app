@@ -60,15 +60,11 @@ const Deposit = () => {
         setAmount('');
         alert(`Deposit successful! Transaction hash: ${result.txHash}`);
         
-        // You can now use result.txHash for any further processing
-        console.log('Transaction hash:', result.txHash);
         const response = await axios.post(`${API_BASE_URL}/make_deposite`,{
           amount: amount,
           wallet_address: walletAddress,
           t_hash: result.txHash
         });
-
-        console.log(response.data);
         // Optional: Navigate back or to success page
         // navigate('/dashboard');
       } else if (result.txHash) {

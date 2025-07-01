@@ -60,6 +60,7 @@ const Homescreen = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showTermsPopup, setShowTermsPopup] = useState(false);
   const [referLink, setReferLink] = useState(false);
+  const [teamData, setTeamData] = useState(null);
 
   const handleCopyToClipboard = (text, itemName) => {
     navigator.clipboard.writeText(text);
@@ -84,7 +85,30 @@ const Homescreen = () => {
       setWallet(walletResponse?.data?.wallet);
       setData(walletResponse?.data);
       setUserData(walletResponse?.data?.user?.user);
-      console.log("Wallet Data:", walletResponse?.data?.user?.user);
+    } catch (error) {
+      console.error("Error fetching wallet data:", error);
+
+      try {
+        await disconnectWallet();
+        navigate('/register');
+      } catch (disconnectError) {
+        console.error("Error disconnecting wallet:", disconnectError);
+        // Agar disconnect fail ho jaye to bhi register page pe bhej do
+        navigate('/register');
+      }
+    }
+  };
+  const FetchBusinessData = async () => {
+    try {
+      const Response = await axios.get(
+        `${API_BASE_URL}/getBusinessAnalysis/${encryptedWalletAddress}`,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt_token}`,
+          },
+        }
+      );
+      setTeamData(Response.data);
     } catch (error) {
       console.error("Error fetching wallet data:", error);
 
@@ -101,6 +125,7 @@ const Homescreen = () => {
 
   useEffect(() => {
     FetchWalletData();
+    FetchBusinessData();
     // handleReferralClick();
     // fetchUserData();
   }, []);
@@ -372,7 +397,7 @@ const Homescreen = () => {
                 Total DeAIra Token
               </p>
               <h3 className="text-xl font-bold">
-                ${wallet?.total_income || 0}
+                ${wallet?.total_buying || 0}
               </h3>
             </div>
           </div>
@@ -388,7 +413,7 @@ const Homescreen = () => {
                 Active Members
               </p>
               <h3 className="text-xl font-bold">
-                {data?.my_activedownlineCount || 0}
+                {teamData?.active_team_count || 0}
               </h3>
             </div>
           </div>
@@ -446,7 +471,7 @@ const Homescreen = () => {
             <img src={Coin} alt="AI Robot" className="w-28 h-28 mx-auto" />
             <div className="text-2xl font-bold mt-2 mb-2">$ DAIR TOKEN</div>
             <div className="text-[19px">
-              TOTAL SUPPLY : <span className="font-mono">0001203948</span>
+              TOTAL SUPPLY : <span className="font-mono">40,000,000,000 DAIR</span>
             </div>
           </div>
 
@@ -466,7 +491,7 @@ const Homescreen = () => {
                 </div>
                 <div>
                   <div className="text-[12px] text-white">Initial Price</div>
-                  <div className="text-[12px] text-[#00F798]">$00.13/Token</div>
+                  <div className="text-[12px] text-[#00F798]">$0.001/Token</div>
                 </div>
               </div>
             </div>
@@ -609,17 +634,17 @@ const Homescreen = () => {
           <div className="text-sm space-y-3">
             <div className="flex justify-between border-b border-white/10 pb-1">
               <span className="text-white">Total DAIR Purchased</span>
-              <span className="font-medium text-white text-left w-[48%]">40,000,000,000 DAIR</span>
+              <span className="font-medium text-white text-left w-[48%]">${wallet?.total_buying || 0} DAIR</span>
             </div>
             <div className="flex justify-between border-b border-white/10 pb-1">
               <span className="text-white">Total DAIR Air Dropped</span>
               <span className="font-medium text-white text-left w-[48%]">
-                $0.001 / token
+                ${wallet?.first_rate || 0} / token
               </span>
             </div>
             <div className="flex justify-between pb-1">
               <span className="text-white">Air Dropped Date</span>
-              <span className="font-medium text-white text-left w-[48%]">17/06/2025</span>
+              <span className="font-medium text-white text-left w-[48%]">{wallet?.first_buy || 0}</span>
             </div>
           </div>
         </div>
@@ -629,9 +654,9 @@ const Homescreen = () => {
           {/* Top Row - Team Stats */}
           <div className="grid grid-cols-3 text-center relative">
             {[
-              { label: ["Direct", "Team"], value: "1" },
-              { label: ["Downline", "Team"], value: "3" },
-              { label: ["Total Active", "Team"], value: "0" },
+              { label: ["Direct", "Team"], value: teamData?.direct_count },
+              { label: ["Downline", "Team"], value: teamData?.total_team_count || 0 },
+              { label: ["Total Active", "Team"], value: teamData?.active_team_count || 0 },
             ].map((item, i) => (
               <div
                 key={i}
@@ -703,7 +728,7 @@ const Homescreen = () => {
               className="text-sm sm:text-base font-bold border border-white/80 px-4 py-1.5 rounded-md text-center"
               style={{ backgroundColor: "#2e0b72", minWidth: "80px" }}
             >
-              1
+              ${teamData?.total_team_business || 0}
             </div>
           </div>
 

@@ -35,7 +35,6 @@ const Dashboard = () => {
         }
       );
       
-      console.log('Wallet Data:', walletResponse?.data);
       setUser(walletResponse?.data?.user?.user);
       setWallet(walletResponse?.data?.wallet);
     }

@@ -143,8 +143,6 @@ const WalletPage = () => {
   // Validate withdrawal form
   const validateWithdrawal = (e) => {
     e.preventDefault();
-
-    console.log('Form Data:', formData);
     // Validation
     if (!formData.otp || !formData.withdrawalAmount || !formData.withdrawalAddress) {
       toast.error('Please fill all fields and verify OTP');

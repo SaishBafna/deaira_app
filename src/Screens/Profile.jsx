@@ -20,7 +20,6 @@ import Header1 from '../Header/header1';
 import { Copy } from 'lucide-react';
 
 const currentUrl = window.location.origin;
-console.log("Current URL:", currentUrl);
 
 
 const Profile = () => {
@@ -32,9 +31,6 @@ const Profile = () => {
   const [data, Setdata] = React.useState([]);
   const [user, setUser] = React.useState([]);
   const jwt_token = localStorage.getItem('jwt_token');
-  console.log('Encrypted Wallet Address:', encryptedWalletAddress);
-  console.log('JWT Token:', jwt_token); 
-  console.log('Base URL:', `${BASE_URL}/homepageapi/${encryptedWalletAddress}`);
 
   const copyReferralLink = () => {
     navigator.clipboard.writeText(`${currentUrl}?${data?.user?.user?.email}`);
@@ -49,7 +45,6 @@ const Profile = () => {
           'Content-Type': 'application/json'
         },
       });
-      console.log('User Data:', response.data);
       Setdata(response.data)
       setUser(response.data.user.user);
 

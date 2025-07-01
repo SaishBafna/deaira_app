@@ -97,7 +97,6 @@ function Kyc() {
 
             if (response.data && response.data.user && response.data.user.user) {
                 const user = response.data.user.user;
-                console.log('User data fetched:', user);
                 setUserData(user);
                 setKycStatus(user.kyc_status);
 

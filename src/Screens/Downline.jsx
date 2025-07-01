@@ -19,7 +19,6 @@ const DownLine = () => {
     const BASE_URL = import.meta.env.VITE_API_BASE_URL;
     const encryptedWalletAddress = localStorage.getItem('encryptedWalletAddress');
     const jwt_token = localStorage.getItem('jwt_token');
-    console.log('Encrypted Wallet Address:', jwt_token);
     // State for user data from homepage API
     const [userData, setUserData] = useState(null);
     // State for direct team data
@@ -80,7 +79,6 @@ const DownLine = () => {
             // Then fetch direct team using user ID
             const team = await fetchDirectTeam(user.id);
             setDirectTeam(team);
-            console.log('Direct Team Data:', team);
 
         } catch (err) {
             console.error('API Error:', err);

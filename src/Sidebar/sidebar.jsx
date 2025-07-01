@@ -39,27 +39,6 @@ const Sidebar = ({ onClose }) => {
     const navigate = useNavigate();
 
     const toggleMenu = () => setIsOpen(!isOpen);
-    const goToDepositReport = () => {
-        navigate('/DepositReport', {
-            state: {
-                reason: 'deposit',
-            }
-        });
-    };
-    const goToActivateReport = () => {
-        navigate('/DepositReport', {
-            state: {
-                reason: 'activate_pacakage',
-            }
-        });
-    };
-    const goToWithdrawReport = () => {
-        navigate('/DepositReport', {
-            state: {
-                reason: 'payment_withdraw',
-            }
-        });
-    };
     useEffect(() => {
         // Disable body scroll
         document.body.style.overflow = 'hidden';
@@ -117,8 +96,8 @@ const Sidebar = ({ onClose }) => {
 
             <div className="space-y-3 w-full bg-gradient-to-r from-[#02010B43] to-[#353E3D43]  border border-[#ffffff10] rounded-xl  p-5 backdrop-blur-md shadow-lg shadow-black/10 mt-4">
 
-            {/* update profile */}
-                  <div>
+                {/* update profile */}
+                <div>
                     <Link to="/UpdateProfile">
                         <button className="w-full bg-[#ffffff17] hover:from-[#2a0043] hover:via-[#1c1c6f] hover:to-[#10435d] transition-all duration-300 rounded-xl p-2 flex items-center justify-between border border-white/10 backdrop-blur-sm shadow-lg">
                             <div className="flex items-center gap-3">
@@ -221,24 +200,21 @@ const Sidebar = ({ onClose }) => {
                     {/* Submenu */}
                     {isOpen && (
                         <div className="w-full bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-inner">
-                            <button
-                                onClick={goToDepositReport}
-                                className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
-                            >
-                                Deposit Report
-                            </button>
-                            {/* <button
-                                onClick={goToActivateReport}
-                                className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
-                            >
-                                Activation Report
-                            </button> */}
-                            {/* <button
-                                onClick={goToWithdrawReport}
-                                className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm"
-                            >
-                                Withdraw Report
-                            </button> */}
+                            <Link to="/report/Token_Buy">
+                                <button className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm">
+                                    Token Buy
+                                </button>
+                            </Link>
+                            <Link to="/report/level_buy">
+                                <button className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm">
+                                    Level Buy
+                                </button>
+                            </Link>
+                            <Link to="/report/free_tokens">
+                                <button className="w-full text-left px-4 py-3 hover:bg-white/10 transition text-white text-sm">
+                                    Free Tokens
+                                </button>
+                            </Link>
 
                         </div>
                     )}

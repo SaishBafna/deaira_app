@@ -80,7 +80,6 @@ const DirectTeam = () => {
             // Then fetch direct team using user ID
             const team = await fetchDirectTeam(user.id);
             setDirectTeam(team);
-            console.log('Direct Team Data:', team);
 
         } catch (err) {
             console.error('API Error:', err);

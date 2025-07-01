@@ -19,7 +19,6 @@ const Header = () => {
         email: walletAddress
       });
       localStorage.setItem("jwt_token", response.data.token);
-      console.log('Token Response:', response.data.token);
       // You can store it in localStorage or context as needed
     } catch (error) {
       console.error('Token generation failed:', error);
