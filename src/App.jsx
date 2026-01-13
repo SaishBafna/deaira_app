@@ -22,6 +22,8 @@ import DirectTeam from './Screens/DirectTeam.jsx';
 import DownLine from './Screens/Downline.jsx';
 import EarningsScreen from './Screens/Earnings.jsx';
 import TokenPresale from './Screens/TokenPreSale.jsx';
+import PackageActivation from './Screens/Active_package.jsx';
+import DirectDeposit from './Screens/Deposit.jsx';
 
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/UpdateProfile" element={<UpdateProfile />} />
           <Route path="/Deposit" element={<Deposit />} />
+          <Route path="/Direct_deposit" element={<DirectDeposit />} />
           <Route path="/Withdraw" element={<Withdraw />} />
           <Route path="/ActivationPackage" element={<ActivationPackage />} />
           <Route path="/report/:reason" element={<DynamicHistory />} />
@@ -52,8 +55,7 @@ function App() {
           <Route path="/Earnings" element={<EarningsScreen />} />
           <Route path="/DownLine" element={<DownLine />} />
           <Route path="/TokenPresale" element={<TokenPresale/>} />
-
-
+          <Route path="/Package_active" element={<PackageActivation/>} />
         </Routes>
       </div>
     </Router>
