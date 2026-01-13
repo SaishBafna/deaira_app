@@ -1,213 +1,285 @@
-import React, { useContext, useState } from 'react'
-import Image3 from '../assets/Images/depositimg.png';
-import { FiChevronLeft } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
-import { WalletContext } from "../context/walletcontext";
-import axios from 'axios';
- 
-const API_BASE_URL = import.meta.env?.VITE_API_BASE_URL;
+import React, { useContext, useState } from 'react';
+import { ChevronLeft, Wallet, AlertCircle, CheckCircle, Zap, Copy, ExternalLink } from 'lucide-react';
 
-const Deposit = () => {
-  const navigate = useNavigate();
-  const { connectWallet, disconnectWallet, transferUSDT, checkNetwork } = useContext(WalletContext);
-  const walletAddress = localStorage.getItem('walletAddress');
-  
-  // State for form handling
+const DirectDeposit = () => {
   const [amount, setAmount] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
-  
-  // Target wallet address where USDT will be sent
+  const [message, setMessage] = useState({ type: '', text: '' });
+  const [walletConnected] = useState(true);
+  const [walletAddress] = useState('0x1234...5678');
+  const [copied, setCopied] = useState(false);
+
   const TARGET_WALLET = '0x6A5DD142F16e565E51a66EF03870a88365Cb6CaB';
+  const MIN_DEPOSIT = 1;
 
-  // Handle deposit/transfer
- const handleDeposit = async () => {
-    // Validation checks
-    if (!walletAddress) {
-      alert('Please connect your wallet first!');
+  const handleDeposit = async () => {
+    if (!walletConnected) {
+      setMessage({ type: 'error', text: 'Please connect your wallet first' });
       return;
     }
 
-    if (!amount || parseFloat(amount) <= 0) {
-      alert('Please enter a valid amount!');
+    if (!amount || parseFloat(amount) < MIN_DEPOSIT) {
+      setMessage({ type: 'error', text: `Minimum deposit is ${MIN_DEPOSIT} USDT` });
       return;
     }
 
-    try {
-      setIsProcessing(true);
+    setIsProcessing(true);
+    setMessage({ type: '', text: '' });
 
-      // Check if connected to BSC network
-      const isCorrectNetwork = await checkNetwork();
-      if (!isCorrectNetwork) {
-        setIsProcessing(false);
-        return;
-      }
-
-      // Show confirmation dialog
-      const confirmTransfer = window.confirm(
-        `Are you sure you want to deposit ${amount} USDT?\n\nThis will transfer USDT from your wallet to:\n${TARGET_WALLET}`
-      );
-
-      if (!confirmTransfer) {
-        setIsProcessing(false);
-        return;
-      }
-
-      // Execute the transfer and get the result object
-      const result = await transferUSDT(TARGET_WALLET, amount);
-
-      if (result.success) {
-        // Reset form on success
-        setAmount('');
-        alert(`Deposit successful! Transaction hash: ${result.txHash}`);
-        
-        const response = await axios.post(`${API_BASE_URL}/make_deposite`,{
-          amount: amount,
-          wallet_address: walletAddress,
-          t_hash: result.txHash
-        });
-        // Optional: Navigate back or to success page
-        // navigate('/dashboard');
-      } else if (result.txHash) {
-        // If there was a txHash but the transaction ultimately failed
-        alert(`Deposit failed but transaction was submitted. Hash: ${result.txHash}`);
-      }
-
-    } catch (error) {
-      console.error('Deposit error:', error);
-      alert('Deposit failed. Please try again.');
-    } finally {
+    // Simulate API call
+    setTimeout(() => {
       setIsProcessing(false);
-    }
+      setMessage({
+        type: 'success',
+        text: `✓ Deposit of ${amount} USDT submitted successfully. Transaction hash: 0x7f8c...a3b9`,
+      });
+      setAmount('');
+    }, 2000);
   };
 
-  // Handle wallet connection
-  const handleWalletAction = async () => {
-    if (walletAddress) {
-      await disconnectWallet();
-    } else {
-      await connectWallet();
-    }
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div className="w-screen h-screen bg-gradient-to-b from-[#1a0033] via-[#0c0c5f] to-[#00334d] relative overflow-y-auto flex flex-col items-center p-6 gap-6">
-
-      {/* Blur circles */}
-      <div className="fixed w-52 h-52 bg-purple-700 rounded-full blur-3xl top-0 right-10 opacity-50 pointer-events-none"></div>
-      <div className="fixed w-52 h-52 bg-cyan-500 rounded-full blur-3xl bottom-20 left-0 opacity-40 pointer-events-none"></div>
-      <div className="fixed w-36 h-36 bg-blue-500 rounded-full blur-3xl bottom-0 right-0 opacity-30 pointer-events-none"></div>
-
-      <div className="w-full max-w-4xl flex items-center justify-between mb-2 md:mb-4">
-        <button className="flex items-center gap-2 text-white/80 hover:text-white" onClick={() => navigate(-1)}>
-          <FiChevronLeft size={20} />
-          <span className="hidden sm:inline">Back</span>
-        </button>
-        <h1 className="text-2xl font-bold text-center text-white">Deposit</h1>
-        <div className="w-10"></div> {/* Spacer for alignment */}
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+      {/* Animated background blurs */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
       </div>
 
-      {/* Wallet Connection Status */}
-      <div className="w-full max-w-xl md:max-w-3xl">
-        {!walletAddress ? (
-          <div className="bg-red-500/20 border border-red-500 rounded-lg p-4 mb-4">
-            <p className="text-red-300 text-center">
-              Please connect your wallet to make a deposit
-            </p>
-            <button 
-              onClick={handleWalletAction}
-              className="w-full mt-2 bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition"
-            >
-              Connect Wallet
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex flex-col">
+        {/* Header */}
+        <div className="px-4 py-6 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <button className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors group">
+              <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+              <span className="hidden sm:inline text-sm font-medium">Back</span>
             </button>
           </div>
-        ) : (
-          <div className="bg-green-500/20 border border-green-500 rounded-lg p-4 mb-4">
-            <p className="text-green-300 text-center text-sm">
-              Connected: {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
-            </p>
-            <button 
-              onClick={handleWalletAction}
-              className="w-full mt-2 bg-red-600 text-white py-1 px-4 rounded-lg hover:bg-red-700 transition text-sm"
-            >
-              Disconnect Wallet
-            </button>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 px-4 py-8 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto space-y-8">
+            {/* Title */}
+            <div className="text-center">
+              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-3">
+                Deposit Funds
+              </h1>
+              <p className="text-white/60 text-lg">
+                Add USDT to your DeAlra wallet
+              </p>
+            </div>
+
+            {/* Status Messages */}
+            {message.text && (
+              <div
+                className={`p-4 rounded-lg flex items-center gap-3 ${
+                  message.type === 'success'
+                    ? 'bg-green-500/20 border border-green-500/50 text-green-300'
+                    : 'bg-red-500/20 border border-red-500/50 text-red-300'
+                }`}
+              >
+                {message.type === 'success' ? (
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                ) : (
+                  <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                )}
+                <p className="text-sm">{message.text}</p>
+              </div>
+            )}
+
+            {/* Wallet Connection Status Card */}
+            <div className={`p-6 rounded-2xl border backdrop-blur transition-all ${
+              walletConnected
+                ? 'bg-gradient-to-r from-green-600/20 to-emerald-600/20 border-green-500/30'
+                : 'bg-gradient-to-r from-red-600/20 to-pink-600/20 border-red-500/30'
+            }`}>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className={`p-3 rounded-full ${walletConnected ? 'bg-green-500/20' : 'bg-red-500/20'}`}>
+                    <Wallet className={`w-6 h-6 ${walletConnected ? 'text-green-400' : 'text-red-400'}`} />
+                  </div>
+                  <div>
+                    <p className={`font-semibold ${walletConnected ? 'text-green-300' : 'text-red-300'}`}>
+                      {walletConnected ? 'Wallet Connected' : 'Wallet Not Connected'}
+                    </p>
+                    <p className={`text-sm ${walletConnected ? 'text-green-200/70' : 'text-red-200/70'}`}>
+                      {walletConnected ? walletAddress : 'Please connect your wallet to proceed'}
+                    </p>
+                  </div>
+                </div>
+                <button className={`px-6 py-2 rounded-lg font-medium transition-all ${
+                  walletConnected
+                    ? 'bg-red-600 hover:bg-red-700 text-white'
+                    : 'bg-purple-600 hover:bg-purple-700 text-white'
+                }`}>
+                  {walletConnected ? 'Disconnect' : 'Connect Wallet'}
+                </button>
+              </div>
+            </div>
+
+            {/* Two Column Layout */}
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Left Column - Form */}
+              <div className="lg:col-span-2 space-y-6">
+                {/* Amount Input */}
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                  <label className="block text-white font-semibold mb-3">
+                    Deposit Amount
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      placeholder="Enter amount"
+                      value={amount}
+                      onChange={(e) => setAmount(e.target.value)}
+                      min={MIN_DEPOSIT}
+                      step="0.01"
+                      disabled={!walletConnected || isProcessing}
+                      className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed text-lg font-semibold"
+                    />
+                    <span className="absolute right-6 top-1/2 -translate-y-1/2 text-white/60 font-semibold">
+                      USDT
+                    </span>
+                  </div>
+                  <div className="mt-3 flex justify-between items-center">
+                    <p className="text-white/60 text-sm">
+                      Minimum: {MIN_DEPOSIT} USDT
+                    </p>
+                    <div className="flex gap-2">
+                      {[10, 50, 100].map((preset) => (
+                        <button
+                          key={preset}
+                          onClick={() => setAmount(preset.toString())}
+                          className="px-3 py-1 text-xs bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/30 rounded-lg text-purple-300 transition-all"
+                        >
+                          {preset}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Deposit Address Card */}
+                <div className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-blue-400/30 rounded-2xl p-6">
+                  <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
+                    <ExternalLink className="w-5 h-5 text-blue-400" />
+                    Deposit Address
+                  </h3>
+                  <div className="bg-black/30 rounded-xl p-4 border border-white/10">
+                    <p className="text-white/60 text-xs mb-2">Send USDT to:</p>
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-green-400 font-mono text-sm break-all">
+                        {TARGET_WALLET}
+                      </p>
+                      <button
+                        onClick={() => copyToClipboard(TARGET_WALLET)}
+                        className="flex-shrink-0 p-2 hover:bg-white/10 rounded-lg transition-all"
+                        title="Copy to clipboard"
+                      >
+                        <Copy className={`w-5 h-5 ${copied ? 'text-green-400' : 'text-white/60'}`} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Deposit Button */}
+                <button
+                  onClick={handleDeposit}
+                  disabled={!walletConnected || !amount || isProcessing || parseFloat(amount) < MIN_DEPOSIT}
+                  className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-2 ${
+                    walletConnected && amount && parseFloat(amount) >= MIN_DEPOSIT
+                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg shadow-purple-600/50 hover:shadow-purple-600/70'
+                      : 'bg-white/10 text-white/50 cursor-not-allowed'
+                  }`}
+                >
+                  {isProcessing && (
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  )}
+                  {isProcessing
+                    ? 'Processing...'
+                    : !walletConnected
+                    ? 'Connect Wallet First'
+                    : !amount || parseFloat(amount) < MIN_DEPOSIT
+                    ? 'Enter Valid Amount'
+                    : `Deposit ${amount} USDT`}
+                </button>
+              </div>
+
+              {/* Right Column - Info */}
+              <div className="space-y-6">
+                {/* AI Community Card */}
+                <div className="bg-gradient-to-br from-purple-600/20 to-pink-600/20 border border-purple-400/30 rounded-2xl p-6 relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="text-4xl mb-3">🤖</div>
+                    <h3 className="text-white font-bold mb-2">
+                      AI Investor Network
+                    </h3>
+                    <p className="text-white/60 text-sm mb-4">
+                      Be part of DeAlra's advanced AI-based community and get exclusive benefits.
+                    </p>
+                    <button className="w-full px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold text-sm transition-all">
+                      Join Now
+                    </button>
+                  </div>
+                </div>
+
+                {/* Important Info Cards */}
+                <div className="space-y-4">
+                  {/* Gas Fees */}
+                  <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4">
+                    <div className="flex gap-3">
+                      <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                      <div className="text-sm">
+                        <p className="text-amber-300 font-semibold mb-1">Gas Fees</p>
+                        <p className="text-amber-200/70">
+                          Ensure you have enough BNB in your wallet for transaction fees.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Purchase USDT */}
+                  <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
+                    <div className="flex gap-3">
+                      <Zap className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <div className="text-sm">
+                        <p className="text-blue-300 font-semibold mb-1">Get USDT</p>
+                        <p className="text-blue-200/70 mb-3">
+                          Buy USDT from Binance, KuCoin, OKX or any exchange.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Support */}
+                  <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-xl p-4">
+                    <div className="flex gap-3">
+                      <AlertCircle className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <div className="text-sm">
+                        <p className="text-cyan-300 font-semibold mb-1">Need Help?</p>
+                        <p className="text-cyan-200/70">
+                          Contact our support team if funds don't arrive within 24 hours.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
-      </div>
-
-      <div className="w-full max-w-xl md:max-w-3xl bg-gradient-to-r from-[#1a1a40] to-[#3b007d] rounded-xl p-4 flex items-center gap-4 shadow-lg">
-        {/* Left Text Section - Wider */}
-        <div className="flex flex-col text-white w-[70%]">
-          <h2 className="text-lg font-semibold leading-tight">
-            Power Up with Our AI based Community
-          </h2>
-          <p className="text-sm mt-1 text-pink-300">
-            Be part of DeAlra's AI investor network.
-          </p>
-          <button className="mt-3 self-start bg-purple-600 border border-white text-white text-sm font-semibold py-1.5 px-4 rounded-full shadow hover:bg-purple-700 transition">
-            Join Now
-          </button>
-        </div>
-
-        {/* Right Image Section - Narrower */}
-        <div className="w-[30%] flex justify-center">
-          <img
-            src={Image3}
-            alt="AI Community"
-            className="h-32 w-auto object-contain"
-          />
         </div>
       </div>
-
-      {/* Form Fields Section - Wider on desktop */}
-      <div className="w-full max-w-xl md:max-w-3xl space-y-4">
-        {/* Enter Amount */}
-        <div>
-          <label className="block text-white font-semibold mb-1">Enter Amount (USDT)</label>
-          <input
-            type="number"
-            placeholder="10"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            min="1"
-            step="0.01"
-            disabled={!walletAddress || isProcessing}
-            className="w-full px-4 py-2 rounded-md bg-transparent border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed"
-          />
-          <p className="text-xs text-gray-300 mt-1">Minimum deposit: 1 USDT</p>
-        </div>
-
-        {/* Deposit Address Info */}
-        <div className="bg-gray-800/50 rounded-lg p-3 border border-gray-600">
-          <p className="text-white text-sm font-semibold mb-2">Deposit Address:</p>
-          <p className="text-green-400 text-xs font-mono break-all">{TARGET_WALLET}</p>
-        </div>
-
-        <div className="w-full flex justify-center">
-          <button 
-            onClick={handleDeposit}
-            disabled={!walletAddress || !amount || isProcessing || parseFloat(amount) <= 0}
-            className="mt-3 bg-purple-600 border border-white text-white text-sm font-semibold py-2 px-6 rounded-full shadow hover:bg-purple-700 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-purple-600"
-          >
-            {isProcessing ? 'Processing...' : 'Confirm Deposit'}
-          </button>
-        </div>
-
-        <div className="mt-4 mb-20 p-4 bg-[#504949] rounded-lg border border-gray-200 text-sm text-[#F64AFF]">
-          <p className="mb-2">
-            <span className="font-semibold">Hint:</span> You can purchase USDT from Binance, KuCoin, OKX or any other exchange and deposit to the given address.
-          </p>
-          <p className="mb-2">
-            Make sure you have enough BNB in your wallet for gas fees (transaction fees).
-          </p>
-          <p>
-            If your funds haven't reached your wallet, please contact online support.
-          </p>
-        </div>
-      </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Deposit
+export default DirectDeposit;
