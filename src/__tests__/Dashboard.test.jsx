@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import Dashboard from "../Dashboard";
+import Dashboard from "../Screens/Dashboard";
 
 describe("Dashboard Component Tests", () => {
 

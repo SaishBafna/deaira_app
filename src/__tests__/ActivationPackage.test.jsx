@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import ActivationPackage from "./ActivationPackage";
+import ActivationPackage from "../Screens/ActivationPackage";
 import { MemoryRouter } from "react-router-dom";
 
 const renderWithRouter = () => {

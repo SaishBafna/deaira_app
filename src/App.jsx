@@ -24,6 +24,8 @@ import EarningsScreen from './Screens/Earnings.jsx';
 import TokenPresale from './Screens/TokenPreSale.jsx';
 import PackageActivation from './Screens/Active_package.jsx';
 import DirectDeposit from './Screens/Deposit.jsx';
+import Daily_earning from './Screens/Daily_earning.jsx';
+import EKyc from './Screens/E_kyc.jsx';
 
 
 function App() {
@@ -50,12 +52,14 @@ function App() {
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/OtpVerifictaion" element={<OtpVerifictaion />} />
           <Route path="/Kyc" element={<Kyc />} />
+          <Route path="/EKyc" element={<EKyc />} />
           <Route path="/DirectTeam" element={<DirectTeam />} />
           <Route path="/DownLine" element={<DownLine />} />
           <Route path="/Earnings" element={<EarningsScreen />} />
           <Route path="/DownLine" element={<DownLine />} />
           <Route path="/TokenPresale" element={<TokenPresale/>} />
           <Route path="/Package_active" element={<PackageActivation/>} />
+          <Route path="/Daily_earning" element={<Daily_earning/>} />
         </Routes>
       </div>
     </Router>
